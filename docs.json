@@ -9,13 +9,22 @@
   "navigation": {
     "tabs": [
       {
-        "tab": "\u6587\u6863\u6307\u5357",
+        "tab": "\u9879\u76ee\u6587\u6863",
         "groups": [
           {
-            "group": "\u5f00\u59cb\u4f7f\u7528",
+            "group": "\u90e8\u7f72\u4e0e\u914d\u7f6e",
             "pages": [
-              "docs/index",
-              "docs/mintlify-deployment"
+              "docs/installation/BT",
+              "docs/channel/other_setting"
+            ]
+          },
+          {
+            "group": "\u4e1a\u52a1\u63a5\u53e3\u8bf4\u660e",
+            "pages": [
+              "docs/api-key-invite-payment-code-route",
+              "docs/api-key-invite-payment-code-map",
+              "docs/subscription-redemption-order-routes",
+              "docs/ionet-client"
             ]
           }
         ]
