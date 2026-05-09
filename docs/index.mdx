@@ -1,16 +1,30 @@
 ---
-title: "LDX API 文档测试"
-description: "用于验证 GitHub 文档仓库和 Mintlify 部署链路。"
+title: "LDX API 文档"
+description: "LDX 后端接口与模型中转接口的开发者文档入口。"
 ---
 
-# LDX API 文档测试
+# LDX API 文档
 
-这个页面用于验证 `ldx-api-docs` 仓库可以被正常写入，并可作为 Mintlify 文档站点的入口。
+这里是 LDX API 的开发者文档入口，用于集中维护后端接口说明、OpenAPI Reference 和 Mintlify 部署流程。
 
-如果你能在 Mintlify 预览或线上站点看到这个页面，说明基础部署链路已经打通。
+当前文档采用如下发布方式：
 
-## 后续计划
+```text
+内网 GitLab 源仓库
+        ↓ GitLab CI 白名单同步
+GitHub docs-only 发布仓库
+        ↓ Mintlify 自动部署
+Mintlify 文档站点
+```
 
-- 接入 `docs/openapi/api.json` 生成业务 API Reference。
-- 接入 `docs/openapi/relay.json` 生成模型中转 API Reference。
-- 从内网 GitLab CI 同步白名单文档到这个仓库。
+## 当前内容
+
+- `docs/openapi/api.json`：业务接口 OpenAPI 描述。
+- `docs/openapi/relay.json`：模型中转接口 OpenAPI 描述。
+- `docs/mintlify-deployment.md`：Mintlify 文档部署流程。
+
+## 维护原则
+
+- 内网 GitLab 是文档源头。
+- GitHub 仓库只保存允许发布到 Mintlify 的文档子集。
+- 同步内容必须走白名单，避免误上传内部测试报告、SQL 文件、日志或敏感说明。

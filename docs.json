@@ -1,17 +1,30 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
-  "name": "LDX API Docs",
-  "description": "Mintlify deployment test for LDX API documentation.",
+  "name": "LDX API \u6587\u6863",
+  "description": "LDX \u540e\u7aef\u63a5\u53e3\u3001\u6a21\u578b\u4e2d\u8f6c\u63a5\u53e3\u4e0e\u6587\u6863\u90e8\u7f72\u8bf4\u660e\u3002",
   "colors": {
     "primary": "#2563EB"
   },
   "navigation": {
-    "groups": [
+    "tabs": [
       {
-        "group": "Getting Started",
-        "pages": [
-          "docs/index"
+        "tab": "\u6587\u6863\u6307\u5357",
+        "groups": [
+          {
+            "group": "\u5f00\u59cb\u4f7f\u7528",
+            "pages": [
+              "docs/index",
+              "docs/mintlify-deployment"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "openapi": [
+          "docs/openapi/api.json",
+          "docs/openapi/relay.json"
         ]
       }
     ]
