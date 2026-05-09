@@ -1,0 +1,19 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "maple",
+  "name": "LDX API Docs",
+  "description": "Mintlify deployment test for LDX API documentation.",
+  "colors": {
+    "primary": "#2563EB"
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Getting Started",
+        "pages": [
+          "docs/index"
+        ]
+      }
+    ]
+  }
+}
