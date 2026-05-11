@@ -1,32 +1,58 @@
 {
   "$schema": "https://mintlify.com/docs.json",
   "theme": "maple",
-  "name": "LDX API \u6587\u6863",
-  "description": "LDX \u540e\u7aef\u63a5\u53e3\u3001\u6a21\u578b\u4e2d\u8f6c\u63a5\u53e3\u4e0e\u6587\u6863\u90e8\u7f72\u8bf4\u660e\u3002",
+  "name": "LDX API 文档",
+  "description": "LDX 后端接口、模型中转接口与文档部署说明。",
   "colors": {
     "primary": "#2563EB"
   },
   "navigation": {
     "tabs": [
       {
-        "tab": "\u9879\u76ee\u6587\u6863",
+        "tab": "项目文档",
         "groups": [
           {
-            "group": "\u90e8\u7f72\u4e0e\u914d\u7f6e",
+            "group": "部署与配置",
             "pages": [
               "docs/installation/BT",
               "docs/channel/other_setting",
-              "docs/mintlify-maintenance"
             ]
           },
           {
-            "group": "\u4e1a\u52a1\u63a5\u53e3\u8bf4\u660e",
+            "group": "术语与多语种",
+            "pages": [
+              "docs/translation-glossary",
+              "docs/translation-glossary.fr",
+              "docs/translation-glossary.ru"
+            ]
+          },
+          {
+            "group": "业务接口说明",
             "pages": [
               "docs/api-key-invite-payment-code-route",
               "docs/api-key-invite-payment-code-map",
               "docs/subscription-redemption-order-routes",
               "docs/ionet-client"
             ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Backend API",
+            "openapi": {
+              "source": "/docs/openapi/api.json",
+              "directory": "backend-api-reference"
+            }
+          },
+          {
+            "group": "Relay API",
+            "openapi": {
+              "source": "/docs/openapi/relay.json",
+              "directory": "relay-api-reference"
+            }
           }
         ]
       }
