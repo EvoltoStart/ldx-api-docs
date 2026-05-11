@@ -56,35 +56,22 @@ Mintlify 入口配置在项目根目录：
 docs.json
 ```
 
-当前配置主要包含两类内容：
+当前配置当前先发布项目文档导航：
 
 ```text
 项目文档
-API Reference
 ```
 
 项目文档通过 `navigation.tabs[].groups[].pages` 配置。
 
-OpenAPI 接口文档通过 `navigation.tabs[].groups[].openapi.source` 配置：
+OpenAPI 文件当前仍同步到 GitHub 仓库（便于后续接入），路径如下：
 
-```json
-"groups": [
-  {
-    "group": "Backend API",
-    "openapi": {
-      "source": "docs/openapi/api.json",
-      "directory": "backend-api-reference"
-    }
-  },
-  {
-    "group": "Relay API",
-    "openapi": {
-      "source": "docs/openapi/relay.json",
-      "directory": "relay-api-reference"
-    }
-  }
-]
+```text
+docs/openapi/api.json
+docs/openapi/relay.json
 ```
+
+说明：当前 Mintlify 部署在读取 OpenAPI 时存在抓取失败（日志显示 `Fetched 0 OpenApi file(s)`），因此暂未在导航中启用 API Reference，待排障完成后再恢复。
 
 注意：
 

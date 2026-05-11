@@ -29,25 +29,6 @@
             ]
           }
         ]
-      },
-      {
-        "tab": "API Reference",
-        "groups": [
-          {
-            "group": "Backend API",
-            "openapi": {
-              "source": "docs/openapi/api.json",
-              "directory": "backend-api-reference"
-            }
-          },
-          {
-            "group": "Relay API",
-            "openapi": {
-              "source": "docs/openapi/relay.json",
-              "directory": "relay-api-reference"
-            }
-          }
-        ]
       }
     ]
   }
