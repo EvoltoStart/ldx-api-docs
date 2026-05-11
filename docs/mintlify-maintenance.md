@@ -65,12 +65,24 @@ API Reference
 
 项目文档通过 `navigation.tabs[].groups[].pages` 配置。
 
-OpenAPI 接口文档通过 `navigation.tabs[].openapi` 配置：
+OpenAPI 接口文档通过 `navigation.tabs[].groups[].openapi.source` 配置：
 
 ```json
-"openapi": [
-  "docs/openapi/api.json",
-  "docs/openapi/relay.json"
+"groups": [
+  {
+    "group": "Backend API",
+    "openapi": {
+      "source": "docs/openapi/api.json",
+      "directory": "backend-api-reference"
+    }
+  },
+  {
+    "group": "Relay API",
+    "openapi": {
+      "source": "docs/openapi/relay.json",
+      "directory": "relay-api-reference"
+    }
+  }
 ]
 ```
 

@@ -32,9 +32,21 @@
       },
       {
         "tab": "API Reference",
-        "openapi": [
-          "docs/openapi/api.json",
-          "docs/openapi/relay.json"
+        "groups": [
+          {
+            "group": "Backend API",
+            "openapi": {
+              "source": "docs/openapi/api.json",
+              "directory": "backend-api-reference"
+            }
+          },
+          {
+            "group": "Relay API",
+            "openapi": {
+              "source": "docs/openapi/relay.json",
+              "directory": "relay-api-reference"
+            }
+          }
         ]
       }
     ]
