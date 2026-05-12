@@ -22,7 +22,6 @@
               {
                 "group": "项目文档",
                 "pages": [
-                  "docs/zh/project/installation/BT",
                   "docs/zh/project/channel/other_setting"
                 ]
               },
@@ -69,7 +68,6 @@
               {
                 "group": "Project Docs",
                 "pages": [
-                  "docs/en/project/installation/BT",
                   "docs/en/project/channel/other_setting"
                 ]
               },
