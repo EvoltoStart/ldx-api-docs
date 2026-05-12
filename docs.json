@@ -11,36 +11,10 @@
   "colors": {
     "primary": "#16A34A"
   },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:support@example.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "/docs/zh/project/installation/BT"
-    }
-  },
   "navigation": {
     "languages": [
       {
         "language": "cn",
-        "navbar": {
-          "links": [
-            {
-              "label": "支持",
-              "href": "mailto:support@example.com"
-            }
-          ],
-          "primary": {
-            "type": "button",
-            "label": "控制台",
-            "href": "/docs/zh/project/installation/BT"
-          }
-        },
         "tabs": [
           {
             "tab": "指南",
