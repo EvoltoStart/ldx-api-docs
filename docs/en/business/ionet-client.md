@@ -1,18 +1,21 @@
+---
+title: "io.net Client"
+description: "Records the request and response example for updating an io.net cluster name."
+---
+
 # io.net Client
 
-This page records the minimal request example for the io.net client integration.
+Request URL:
 
-## Update Cluster Name
+```text
+Request URL
+https://api.io.solutions/v1/io-cloud/clusters/654fc0a9-0d4a-4db4-9b95-3f56189348a2/update-name
+Request Method
+PUT
+```
 
-- Request URL: `https://api.io.solutions/v1/io-cloud/clusters/{cluster_id}/update-name`
-- Method: `PUT`
-- Replace `{cluster_id}` with the real cluster ID.
-
-## Response Example
+Response example:
 
 ```json
-{
-  "status": "succeeded",
-  "message": "Cluster name updated successfully"
-}
+{"status":"succeeded","message":"Cluster name updated successfully"}
 ```

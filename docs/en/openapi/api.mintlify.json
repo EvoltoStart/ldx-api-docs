@@ -84,14 +84,14 @@
       "get": {
         "summary": "Get Initialization Status",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -105,7 +105,7 @@
       "post": {
         "summary": "Initialize System",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
@@ -129,7 +129,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -145,14 +145,14 @@
       "get": {
         "summary": "Get System Status",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -168,14 +168,14 @@
       "get": {
         "summary": "Test System Status",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -191,14 +191,14 @@
       "get": {
         "summary": "Get Uptime Kuma Status",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -214,14 +214,14 @@
       "get": {
         "summary": "Get Notice",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -237,14 +237,14 @@
       "get": {
         "summary": "Get User Agreement",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -260,14 +260,14 @@
       "get": {
         "summary": "Get Privacy Policy",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -283,14 +283,14 @@
       "get": {
         "summary": "Get About Information",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -306,14 +306,14 @@
       "get": {
         "summary": "Get Home Page Content",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -329,14 +329,14 @@
       "get": {
         "summary": "Get Pricing",
         "deprecated": false,
-        "description": "🔓 无需鉴权（可选登录）",
+        "description": "No authentication required (optional login)",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -352,14 +352,14 @@
       "get": {
         "summary": "List Models",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -375,14 +375,14 @@
       "get": {
         "summary": "Get Ratio Configuration",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "System"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -398,7 +398,7 @@
       "get": {
         "summary": "Send Email Verification Code",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
@@ -415,7 +415,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -431,7 +431,7 @@
       "get": {
         "summary": "Send Password Reset Email",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
@@ -448,7 +448,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -464,7 +464,7 @@
       "post": {
         "summary": "Reset Password",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
@@ -491,7 +491,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -507,7 +507,7 @@
       "post": {
         "summary": "User Registration",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
@@ -540,7 +540,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -556,7 +556,7 @@
       "post": {
         "summary": "User Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
@@ -580,7 +580,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -596,7 +596,7 @@
       "post": {
         "summary": "Two-Factor Authentication Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权（登录流程）",
+        "description": "No authentication required (login flow)",
         "tags": [
           "User Authentication"
         ],
@@ -617,7 +617,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -633,14 +633,14 @@
       "get": {
         "summary": "User Logout",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -656,14 +656,14 @@
       "get": {
         "summary": "Get User Groups",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -679,14 +679,14 @@
       "post": {
         "summary": "Begin Passkey Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -702,14 +702,14 @@
       "post": {
         "summary": "Finish Passkey Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "User Authentication"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -725,7 +725,7 @@
       "get": {
         "summary": "GitHub OAuth Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权（OAuth回调）",
+        "description": "No authentication required (OAuth callback)",
         "tags": [
           "OAuth"
         ],
@@ -742,7 +742,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -758,7 +758,7 @@
       "get": {
         "summary": "Discord OAuth Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权（OAuth回调）",
+        "description": "No authentication required (OAuth callback)",
         "tags": [
           "OAuth"
         ],
@@ -775,7 +775,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -791,14 +791,14 @@
       "get": {
         "summary": "OIDC Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权（OAuth回调）",
+        "description": "No authentication required (OAuth callback)",
         "tags": [
           "OAuth"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -814,14 +814,14 @@
       "get": {
         "summary": "LinuxDO OAuth Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权（OAuth回调）",
+        "description": "No authentication required (OAuth callback)",
         "tags": [
           "OAuth"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -837,14 +837,14 @@
       "get": {
         "summary": "Generate OAuth State",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "OAuth"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -860,14 +860,14 @@
       "get": {
         "summary": "WeChat OAuth Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权（OAuth回调）",
+        "description": "No authentication required (OAuth callback)",
         "tags": [
           "OAuth"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -883,14 +883,14 @@
       "get": {
         "summary": "Bind WeChat",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "OAuth"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -906,7 +906,7 @@
       "get": {
         "summary": "Bind Email",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "OAuth"
         ],
@@ -932,7 +932,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -948,14 +948,14 @@
       "get": {
         "summary": "Telegram Login",
         "deprecated": false,
-        "description": "🔓 无需鉴权（OAuth回调）",
+        "description": "No authentication required (OAuth callback)",
         "tags": [
           "OAuth"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -971,14 +971,14 @@
       "get": {
         "summary": "Bind Telegram",
         "deprecated": false,
-        "description": "🔓 无需鉴权",
+        "description": "No authentication required",
         "tags": [
           "OAuth"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -994,14 +994,14 @@
       "get": {
         "summary": "Get Current User Group",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1017,14 +1017,14 @@
       "get": {
         "summary": "Get Current User Profile",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1038,7 +1038,7 @@
       "put": {
         "summary": "Update Current User Profile",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
@@ -1068,7 +1068,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1082,14 +1082,14 @@
       "delete": {
         "summary": "Log Out Current User",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1105,14 +1105,14 @@
       "get": {
         "summary": "Get User Available Model",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1128,14 +1128,14 @@
       "get": {
         "summary": "Generate Access Token",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1151,14 +1151,14 @@
       "get": {
         "summary": "Get Passkey Status",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1172,14 +1172,14 @@
       "delete": {
         "summary": "Delete Passkey",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1195,14 +1195,14 @@
       "post": {
         "summary": "Begin Register Passkey",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1218,14 +1218,14 @@
       "post": {
         "summary": "Finish Register Passkey",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1241,14 +1241,14 @@
       "post": {
         "summary": "Begin Verification Passkey",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1264,14 +1264,14 @@
       "post": {
         "summary": "Finish Verification Passkey",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1287,14 +1287,14 @@
       "get": {
         "summary": "Get Invite Code",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1310,7 +1310,7 @@
       "post": {
         "summary": "Convert Invite Quota",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
@@ -1331,7 +1331,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1347,7 +1347,7 @@
       "put": {
         "summary": "Update User Settings",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "User Management"
         ],
@@ -1377,7 +1377,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1393,14 +1393,14 @@
       "get": {
         "summary": "List All Top-up Records",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1416,7 +1416,7 @@
       "get": {
         "summary": "List All User",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1442,7 +1442,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1456,7 +1456,7 @@
       "post": {
         "summary": "Create User",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1472,7 +1472,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1486,7 +1486,7 @@
       "put": {
         "summary": "Update User",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1502,7 +1502,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1518,14 +1518,14 @@
       "post": {
         "summary": "Admin Complete Top-up",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1541,7 +1541,7 @@
       "get": {
         "summary": "Search User",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1567,7 +1567,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1583,7 +1583,7 @@
       "get": {
         "summary": "Get Specific User",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1601,7 +1601,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1615,7 +1615,7 @@
       "delete": {
         "summary": "Delete User",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1633,7 +1633,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1649,7 +1649,7 @@
       "delete": {
         "summary": "Admin Reset User Passkey",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1667,7 +1667,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1683,7 +1683,7 @@
       "delete": {
         "summary": "Admin Disable User 2FA",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1701,7 +1701,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1717,7 +1717,7 @@
       "post": {
         "summary": "Manage User Status",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "User Management"
         ],
@@ -1748,7 +1748,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1764,14 +1764,14 @@
       "get": {
         "summary": "Get Top-up Profile",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1787,14 +1787,14 @@
       "get": {
         "summary": "Get User Top-up Records",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1810,14 +1810,14 @@
       "post": {
         "summary": "Create EPay Payment",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1833,14 +1833,14 @@
       "post": {
         "summary": "Get Payment Amount",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1856,14 +1856,14 @@
       "post": {
         "summary": "Create Stripe Payment",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1879,14 +1879,14 @@
       "post": {
         "summary": "Get Stripe Payment Amount",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1902,14 +1902,14 @@
       "post": {
         "summary": "Create Creem Payment",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1925,14 +1925,14 @@
       "get": {
         "summary": "EPay Callback",
         "deprecated": false,
-        "description": "🔓 无需鉴权（支付回调）",
+        "description": "See endpoint details.",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1948,14 +1948,14 @@
       "post": {
         "summary": "Stripe Webhook",
         "deprecated": false,
-        "description": "🔓 无需鉴权（Webhook回调）",
+        "description": "See endpoint details.",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1971,14 +1971,14 @@
       "post": {
         "summary": "Creem Webhook",
         "deprecated": false,
-        "description": "🔓 无需鉴权（Webhook回调）",
+        "description": "See endpoint details.",
         "tags": [
           "Top-ups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -1994,14 +1994,14 @@
       "get": {
         "summary": "Get 2FA Status",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Two-Factor Authentication"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2017,14 +2017,14 @@
       "post": {
         "summary": "Set Up 2FA",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Two-Factor Authentication"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2040,7 +2040,7 @@
       "post": {
         "summary": "Enable 2FA",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Two-Factor Authentication"
         ],
@@ -2061,7 +2061,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2077,7 +2077,7 @@
       "post": {
         "summary": "Disable 2FA",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Two-Factor Authentication"
         ],
@@ -2098,7 +2098,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2114,14 +2114,14 @@
       "post": {
         "summary": "Regenerate Backup Codes",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Two-Factor Authentication"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2137,14 +2137,14 @@
       "get": {
         "summary": "Get 2FA Statistics",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Two-Factor Authentication"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2160,14 +2160,14 @@
       "post": {
         "summary": "General Security Verification",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Security Verification"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2183,14 +2183,14 @@
       "get": {
         "summary": "Get Verification Status",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Security Verification"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2206,7 +2206,7 @@
       "get": {
         "summary": "List All Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2268,7 +2268,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2282,7 +2282,7 @@
       "post": {
         "summary": "Add Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2311,7 +2311,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2325,7 +2325,7 @@
       "put": {
         "summary": "Update Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2341,7 +2341,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2357,7 +2357,7 @@
       "get": {
         "summary": "Search Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2392,7 +2392,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2408,14 +2408,14 @@
       "get": {
         "summary": "Get Channel Model List",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2431,14 +2431,14 @@
       "get": {
         "summary": "Get Enabled Model List",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2454,7 +2454,7 @@
       "get": {
         "summary": "Get Specific Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2472,7 +2472,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2486,7 +2486,7 @@
       "delete": {
         "summary": "Delete Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2504,7 +2504,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2520,7 +2520,7 @@
       "post": {
         "summary": "Get Channel Key",
         "deprecated": false,
-        "description": "👑 需要超级管理员权限（Root）+ 安全验证",
+        "description": "See endpoint details.",
         "tags": [
           "Channel Management"
         ],
@@ -2538,7 +2538,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2554,14 +2554,14 @@
       "get": {
         "summary": "Test All Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2577,7 +2577,7 @@
       "get": {
         "summary": "Test Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2595,7 +2595,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2611,14 +2611,14 @@
       "get": {
         "summary": "Update All Channel Balance",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2634,7 +2634,7 @@
       "get": {
         "summary": "Update Channel Balance",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2652,7 +2652,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2668,14 +2668,14 @@
       "delete": {
         "summary": "Delete Disabled Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2691,7 +2691,7 @@
       "post": {
         "summary": "Bulk Delete Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2715,7 +2715,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2731,14 +2731,14 @@
       "post": {
         "summary": "Repair Channel Capabilities",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2754,7 +2754,7 @@
       "get": {
         "summary": "Get Upstream Model List",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2772,7 +2772,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2788,7 +2788,7 @@
       "post": {
         "summary": "List Models",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2815,7 +2815,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2831,7 +2831,7 @@
       "post": {
         "summary": "Bulk Set Channel Tags",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2858,7 +2858,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2874,7 +2874,7 @@
       "get": {
         "summary": "Get Tagged Models",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2891,7 +2891,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2907,7 +2907,7 @@
       "post": {
         "summary": "Disable Tagged Channels",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2928,7 +2928,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2944,7 +2944,7 @@
       "post": {
         "summary": "Enable Tagged Channels",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -2965,7 +2965,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -2981,7 +2981,7 @@
       "put": {
         "summary": "Edit Tagged Channels",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -3011,7 +3011,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3027,7 +3027,7 @@
       "post": {
         "summary": "Copy Channel",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -3063,7 +3063,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3079,7 +3079,7 @@
       "post": {
         "summary": "Manage Multiple Keys",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Channel Management"
         ],
@@ -3115,7 +3115,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3131,7 +3131,7 @@
       "get": {
         "summary": "List All Token",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Token Management"
         ],
@@ -3157,7 +3157,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3171,7 +3171,7 @@
       "post": {
         "summary": "Create Token",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Token Management"
         ],
@@ -3187,7 +3187,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3201,7 +3201,7 @@
       "put": {
         "summary": "Update Token",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Token Management"
         ],
@@ -3217,7 +3217,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3233,7 +3233,7 @@
       "get": {
         "summary": "Search Token",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Token Management"
         ],
@@ -3250,7 +3250,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3266,7 +3266,7 @@
       "get": {
         "summary": "Get Specific Token",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Token Management"
         ],
@@ -3284,7 +3284,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3298,7 +3298,7 @@
       "delete": {
         "summary": "Delete Token",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Token Management"
         ],
@@ -3316,7 +3316,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3332,7 +3332,7 @@
       "post": {
         "summary": "Bulk Delete Token",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Token Management"
         ],
@@ -3356,7 +3356,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3372,7 +3372,7 @@
       "get": {
         "summary": "Get Token Usage",
         "deprecated": false,
-        "description": "🔑 需要令牌认证（TokenAuth）",
+        "description": "See endpoint details.",
         "tags": [
           "Token Management"
         ],
@@ -3390,7 +3390,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3406,7 +3406,7 @@
       "get": {
         "summary": "List All Redemption Code",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Redemption Codes"
         ],
@@ -3432,7 +3432,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3446,7 +3446,7 @@
       "post": {
         "summary": "Create Redemption Code",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Redemption Codes"
         ],
@@ -3462,7 +3462,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3476,7 +3476,7 @@
       "put": {
         "summary": "Update Redemption Code",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Redemption Codes"
         ],
@@ -3492,7 +3492,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3508,7 +3508,7 @@
       "get": {
         "summary": "Search Redemption Code",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Redemption Codes"
         ],
@@ -3525,7 +3525,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3541,7 +3541,7 @@
       "get": {
         "summary": "Get Specific Redemption Code",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Redemption Codes"
         ],
@@ -3559,7 +3559,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3573,7 +3573,7 @@
       "delete": {
         "summary": "Delete Redemption Code",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Redemption Codes"
         ],
@@ -3591,7 +3591,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3607,14 +3607,14 @@
       "delete": {
         "summary": "Delete Invalid Redemption Code",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Redemption Codes"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3630,7 +3630,7 @@
       "get": {
         "summary": "List All Logs",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Logs"
         ],
@@ -3656,7 +3656,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3670,14 +3670,14 @@
       "delete": {
         "summary": "Delete Historical Logs",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Logs"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3693,14 +3693,14 @@
       "get": {
         "summary": "Get Log Statistics",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Logs"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3716,14 +3716,14 @@
       "get": {
         "summary": "Get Personal Log Statistics",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Logs"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3739,7 +3739,7 @@
       "get": {
         "summary": "Search Logs",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Logs"
         ],
@@ -3756,7 +3756,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3772,14 +3772,14 @@
       "get": {
         "summary": "Get Personal Logs",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Logs"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3795,7 +3795,7 @@
       "get": {
         "summary": "Search Personal Logs",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Logs"
         ],
@@ -3812,7 +3812,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3828,7 +3828,7 @@
       "get": {
         "summary": "Get by Token Get Logs",
         "deprecated": false,
-        "description": "🔓 无需鉴权（通过令牌查询）",
+        "description": "See endpoint details.",
         "tags": [
           "Logs"
         ],
@@ -3845,7 +3845,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3861,14 +3861,14 @@
       "get": {
         "summary": "List All Quota Data",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Analytics"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3884,14 +3884,14 @@
       "get": {
         "summary": "Get Personal Quota Data",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Analytics"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3907,14 +3907,14 @@
       "get": {
         "summary": "List All Group",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Groups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3930,14 +3930,14 @@
       "get": {
         "summary": "Get Preset Group",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Groups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3951,14 +3951,14 @@
       "post": {
         "summary": "Create Preset Group",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Groups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3972,14 +3972,14 @@
       "put": {
         "summary": "Update Preset Group",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Groups"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -3995,7 +3995,7 @@
       "delete": {
         "summary": "Delete Preset Group",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Groups"
         ],
@@ -4013,7 +4013,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4029,14 +4029,14 @@
       "get": {
         "summary": "List All Midjourney Tasks",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Tasks"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4052,14 +4052,14 @@
       "get": {
         "summary": "Get Personal Midjourney Tasks",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Tasks"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4075,14 +4075,14 @@
       "get": {
         "summary": "List All Tasks",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Tasks"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4098,14 +4098,14 @@
       "get": {
         "summary": "Get Personal Tasks",
         "deprecated": false,
-        "description": "🔐 需要登录（User权限）",
+        "description": "User authentication required",
         "tags": [
           "Tasks"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4121,14 +4121,14 @@
       "get": {
         "summary": "List All Provider",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Providers"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4142,14 +4142,14 @@
       "post": {
         "summary": "Create Provider",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Providers"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4163,14 +4163,14 @@
       "put": {
         "summary": "Update Provider",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Providers"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4186,7 +4186,7 @@
       "get": {
         "summary": "Search Provider",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Providers"
         ],
@@ -4203,7 +4203,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4219,7 +4219,7 @@
       "get": {
         "summary": "Get Specific Provider",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Providers"
         ],
@@ -4237,7 +4237,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4251,7 +4251,7 @@
       "delete": {
         "summary": "Delete Provider",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Providers"
         ],
@@ -4269,7 +4269,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4285,7 +4285,7 @@
       "get": {
         "summary": "Search Model",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Model Management"
         ],
@@ -4302,7 +4302,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4318,7 +4318,7 @@
       "get": {
         "summary": "Get Specific Model",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Model Management"
         ],
@@ -4336,7 +4336,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4350,7 +4350,7 @@
       "delete": {
         "summary": "Delete Model",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Model Management"
         ],
@@ -4368,7 +4368,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4384,14 +4384,14 @@
       "get": {
         "summary": "Preview Upstream Model Sync",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Model Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4407,14 +4407,14 @@
       "post": {
         "summary": "Sync Upstream Model",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Model Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4430,14 +4430,14 @@
       "get": {
         "summary": "Get Missing Models",
         "deprecated": false,
-        "description": "👨‍💼 需要管理员权限（Admin）",
+        "description": "Admin permission required",
         "tags": [
           "Model Management"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4453,14 +4453,14 @@
       "get": {
         "summary": "Get System Options",
         "deprecated": false,
-        "description": "👑 需要超级管理员权限（Root）",
+        "description": "See endpoint details.",
         "tags": [
           "System Settings"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4474,14 +4474,14 @@
       "put": {
         "summary": "Update System Options",
         "deprecated": false,
-        "description": "👑 需要超级管理员权限（Root）",
+        "description": "See endpoint details.",
         "tags": [
           "System Settings"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4497,14 +4497,14 @@
       "post": {
         "summary": "Reset Model Ratio",
         "deprecated": false,
-        "description": "👑 需要超级管理员权限（Root）",
+        "description": "See endpoint details.",
         "tags": [
           "System Settings"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4520,14 +4520,14 @@
       "post": {
         "summary": "Migrate Console Settings",
         "deprecated": false,
-        "description": "👑 需要超级管理员权限（Root）",
+        "description": "See endpoint details.",
         "tags": [
           "System Settings"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4543,14 +4543,14 @@
       "get": {
         "summary": "Get Available Sync Channel",
         "deprecated": false,
-        "description": "👑 需要超级管理员权限（Root）",
+        "description": "See endpoint details.",
         "tags": [
           "System Settings"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },
@@ -4566,14 +4566,14 @@
       "post": {
         "summary": "Get Upstream Ratio",
         "deprecated": false,
-        "description": "👑 需要超级管理员权限（Root）",
+        "description": "See endpoint details.",
         "tags": [
           "System Settings"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "headers": {}
           }
         },

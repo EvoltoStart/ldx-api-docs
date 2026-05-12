@@ -1,3 +1,8 @@
+---
+title: "API Key、邀请码与支付代码定位"
+description: "定位 API Key、邀请码和支付相关逻辑在项目代码中的位置。"
+---
+
 # API KEY / 邀请码 / 支付 代码定位
 
 ## 模块一：API KEY

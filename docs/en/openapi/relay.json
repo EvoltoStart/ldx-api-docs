@@ -1,90 +1,115 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "AI模型接口",
+    "title": "Relay API",
     "description": "",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "license": {
+      "name": "Proprietary",
+      "url": "https://example.com/license"
+    }
   },
   "tags": [
     {
-      "name": "获取模型列表"
+      "name": "Models",
+      "description": "Models endpoints"
     },
     {
-      "name": "OpenAI格式(Chat)"
+      "name": "OpenAI Chat",
+      "description": "OpenAI Chat endpoints"
     },
     {
-      "name": "OpenAI格式(Responses)"
+      "name": "OpenAI Responses",
+      "description": "OpenAI Responses endpoints"
     },
     {
-      "name": "图片生成"
+      "name": "Image Generation",
+      "description": "Image Generation endpoints"
     },
     {
-      "name": "图片生成/OpenAI兼容格式"
+      "name": "OpenAI-Compatible Image Generation",
+      "description": "OpenAI-Compatible Image Generation endpoints"
     },
     {
-      "name": "图片生成/Qwen千问"
+      "name": "Qwen Image Generation",
+      "description": "Qwen Image Generation endpoints"
     },
     {
-      "name": "视频生成"
+      "name": "Video Generation",
+      "description": "Video Generation endpoints"
     },
     {
-      "name": "视频生成/Sora兼容格式"
+      "name": "Sora-Compatible Video Generation",
+      "description": "Sora-Compatible Video Generation endpoints"
     },
     {
-      "name": "视频生成/Kling格式"
+      "name": "Kling Video Generation",
+      "description": "Kling Video Generation endpoints"
     },
     {
-      "name": "视频生成/即梦格式"
+      "name": "Jimeng Video Generation",
+      "description": "Jimeng Video Generation endpoints"
     },
     {
-      "name": "Claude格式(Messages)"
+      "name": "Claude Messages",
+      "description": "Claude Messages endpoints"
     },
     {
-      "name": "Gemini格式"
+      "name": "Gemini API",
+      "description": "Gemini API endpoints"
     },
     {
-      "name": "OpenAI格式(Embeddings)"
+      "name": "OpenAI Embeddings",
+      "description": "OpenAI Embeddings endpoints"
     },
     {
-      "name": "文本补全(Completions)"
+      "name": "Text Completions",
+      "description": "Text Completions endpoints"
     },
     {
-      "name": "OpenAI音频(Audio)"
+      "name": "OpenAI Audio",
+      "description": "OpenAI Audio endpoints"
     },
     {
-      "name": "重排序(Rerank)"
+      "name": "Rerank",
+      "description": "Rerank endpoints"
     },
     {
-      "name": "Moderations"
+      "name": "Moderations",
+      "description": "Moderations"
     },
     {
-      "name": "Realtime"
+      "name": "Realtime",
+      "description": "Realtime"
     },
     {
-      "name": "未实现"
+      "name": "Not Implemented",
+      "description": "Not Implemented endpoints"
     },
     {
-      "name": "未实现/Fine-tunes"
+      "name": "Fine-tunes (Not Implemented)",
+      "description": "Fine-tunes (Not Implemented) endpoints"
     },
     {
-      "name": "未实现/Files"
+      "name": "Files (Not Implemented)",
+      "description": "Files (Not Implemented) endpoints"
     }
   ],
   "paths": {
     "/v1/models": {
       "get": {
-        "summary": "获取模型列表",
+        "summary": "List Models",
         "deprecated": false,
-        "description": "获取当前可用的模型列表。\n\n根据请求头自动识别返回格式：\n- 包含 `x-api-key` 和 `anthropic-version` 头时返回 Anthropic 格式\n- 包含 `x-goog-api-key` 头或 `key` 查询参数时返回 Gemini 格式\n- 其他情况返回 OpenAI 格式\n",
-        "operationId": "listModels",
+        "description": "Retrieves the currently available model list. The response format is detected automatically from request headers: - Returns Anthropic format when `x-api-key` and `anthropic-version` headers are present - Returns Gemini format when the `x-goog-api-key` header or `key` query parameter is present - Returns OpenAI format otherwise",
+        "operationId": "get_v1_models",
         "tags": [
-          "获取模型列表"
+          "Models"
         ],
         "parameters": [
           {
             "name": "key",
             "in": "query",
-            "description": "Google API Key (用于 Gemini 格式)",
+            "description": "Google API Key (for Gemini format)",
             "required": false,
             "schema": {
               "type": "string"
@@ -93,7 +118,7 @@
           {
             "name": "x-api-key",
             "in": "header",
-            "description": "Anthropic API Key (用于 Claude 格式)",
+            "description": "Anthropic API Key (for Claude format)",
             "required": false,
             "example": "",
             "schema": {
@@ -103,7 +128,7 @@
           {
             "name": "anthropic-version",
             "in": "header",
-            "description": "Anthropic API 版本",
+            "description": "Anthropic API version",
             "required": false,
             "example": "",
             "schema": {
@@ -114,7 +139,7 @@
           {
             "name": "x-goog-api-key",
             "in": "header",
-            "description": "Google API Key (用于 Gemini 格式)",
+            "description": "Google API Key (for Gemini format)",
             "required": false,
             "example": "",
             "schema": {
@@ -124,7 +149,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取模型列表",
+            "description": "Successfully retrieved model list",
             "content": {
               "application/json": {
                 "schema": {
@@ -135,7 +160,7 @@
             "headers": {}
           },
           "401": {
-            "description": "认证失败",
+            "description": "Authentication failed",
             "content": {
               "application/json": {
                 "schema": {
@@ -155,17 +180,17 @@
     },
     "/v1beta/models": {
       "get": {
-        "summary": "Gemini 格式获取",
+        "summary": "Generate Gemini Content",
         "deprecated": false,
-        "description": "以 Gemini API 格式返回可用模型列表",
-        "operationId": "listModelsGemini",
+        "description": "Returns available models in Gemini API format",
+        "operationId": "get_v1beta_models",
         "tags": [
-          "获取模型列表"
+          "Models"
         ],
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功获取模型列表",
+            "description": "Successfully retrieved model list",
             "content": {
               "application/json": {
                 "schema": {
@@ -185,12 +210,12 @@
     },
     "/v1/chat/completions": {
       "post": {
-        "summary": "创建聊天对话",
+        "summary": "Create Chat Completion",
         "deprecated": false,
-        "description": "根据对话历史创建模型响应。支持流式和非流式响应。\n\n兼容 OpenAI Chat Completions API。\n",
-        "operationId": "createChatCompletion",
+        "description": "Creates a model response from conversation history. Supports streaming and non-streaming responses. Compatible with the OpenAI Chat Completions API.",
+        "operationId": "post_v1_chat_completions",
         "tags": [
-          "OpenAI格式(Chat)"
+          "OpenAI Chat"
         ],
         "parameters": [],
         "requestBody": {
@@ -205,7 +230,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -216,7 +241,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -227,7 +252,7 @@
             "headers": {}
           },
           "429": {
-            "description": "请求频率限制",
+            "description": "Rate limit exceeded",
             "content": {
               "application/json": {
                 "schema": {
@@ -247,12 +272,12 @@
     },
     "/v1/responses": {
       "post": {
-        "summary": "创建响应 (OpenAI Responses API)",
+        "summary": "Create Response",
         "deprecated": false,
-        "description": "OpenAI Responses API，用于创建模型响应。\n支持多轮对话、工具调用、推理等功能。\n",
-        "operationId": "createResponse",
+        "description": "OpenAI Responses API，Used to create model responses. Supports multi-turn conversations, tool calls, and reasoning.",
+        "operationId": "post_v1_responses",
         "tags": [
-          "OpenAI格式(Responses)"
+          "OpenAI Responses"
         ],
         "parameters": [],
         "requestBody": {
@@ -267,7 +292,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -285,29 +310,29 @@
         ]
       }
     },
-	    "/v1/responses/compact": {
-	      "post": {
-	        "summary": "压缩对话 (OpenAI Responses API)",
-	        "deprecated": false,
-	        "description": "OpenAI Responses API，用于对长对话进行 compaction。",
-	        "operationId": "compactResponse",
+    "/v1/responses/compact": {
+      "post": {
+        "summary": "Compact Conversation",
+        "deprecated": false,
+        "description": "OpenAI Responses API，Used to compact long conversations.",
+        "operationId": "post_v1_responses_compact",
         "tags": [
-          "OpenAI格式(Responses)"
+          "OpenAI Responses"
         ],
         "parameters": [],
-	        "requestBody": {
-	          "content": {
-	            "application/json": {
-	              "schema": {
-	                "$ref": "#/components/schemas/ResponsesCompactionRequest"
-	              }
-	            }
-	          },
-	          "required": true
-	        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResponsesCompactionRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
-            "description": "成功压缩对话",
+            "description": "Conversation compacted successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -327,12 +352,12 @@
     },
     "/v1/images/generations": {
       "post": {
-        "summary": "生成图像(qwen-image)",
+        "summary": "Generate Qwen Image",
         "deprecated": false,
-        "description": " 百炼qwen-image系列图片生成",
-        "operationId": "createImage",
+        "description": "Qwen image generation through Bailian",
+        "operationId": "post_v1_images_generations",
         "tags": [
-          "图片生成/Qwen千问"
+          "Qwen Image Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -405,7 +430,7 @@
                       "role": "user",
                       "content": [
                         {
-                          "text": "一副典雅庄重的对联悬挂于厅堂之中，房间是个安静古典的中式布置，桌子上放着一些青花瓷，对联上左书“义本生知人机同道善思新”，右书“通云赋智乾坤启数高志远”， 横批“智启通义”，字体飘逸，在中间挂着一幅中国风的画作，内容是岳阳楼。"
+                          "text": "Example content"
                         }
                       ]
                     }
@@ -423,7 +448,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功生成图像",
+            "description": "Image generated successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -443,12 +468,12 @@
     },
     "/v1/images/edits": {
       "post": {
-        "summary": "编辑图像(qwen-image-edit)",
+        "summary": "Edit Qwen Image",
         "deprecated": false,
-        "description": " 百炼qwen-image系列图片生成",
-        "operationId": "createImage",
+        "description": "Qwen image generation through Bailian",
+        "operationId": "post_v1_images_edits",
         "tags": [
-          "图片生成/Qwen千问"
+          "Qwen Image Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -519,13 +544,13 @@
                   "input"
                 ]
               },
-              "example": "{\n    \"model\": \"qwen-image-edit-plus\",\n    \"input\": {\n        \"messages\": [\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"image\": \"https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/fpakfo/image36.webp\"\n                    },\n                    {\n                        \"text\": \"生成一张符合深度图的图像，遵循以下描述：一辆红色的破旧的自行车停在一条泥泞的小路上，背景是茂密的原始森林\"\n                    }\n                ]\n            }\n        ]\n    },\n    \"parameters\": {\n        \"n\": 2,\n        \"negative_prompt\": \" \",\n        \"prompt_extend\": true,\n        \"watermark\": false\n    }"
+              "example": "Example content"
             }
           }
         },
         "responses": {
           "200": {
-            "description": "成功生成图像",
+            "description": "Image generated successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -545,12 +570,12 @@
     },
     "/v1/videos": {
       "post": {
-        "summary": "创建视频 ",
+        "summary": "Create Video",
         "deprecated": false,
-        "description": "OpenAI 兼容的视频生成接口。\n\n参考文档: https://platform.openai.com/docs/api-reference/videos/create\n",
-        "operationId": "createVideo",
+        "description": "See endpoint details.",
+        "operationId": "post_v1_videos",
         "tags": [
-          "视频生成/Sora兼容格式"
+          "Sora-Compatible Video Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -560,24 +585,24 @@
                 "type": "object",
                 "properties": {
                   "model": {
-                    "description": "模型名称",
+                    "description": "Model name",
                     "example": "sora-2",
                     "type": "string"
                   },
                   "prompt": {
-                    "description": "提示词",
+                    "description": "Prompt",
                     "example": "cute cat dance",
                     "type": "string"
                   },
                   "seconds": {
-                    "description": "生成秒数",
+                    "description": "Generation duration in seconds",
                     "example": "8",
                     "type": "string"
                   },
                   "input_reference": {
                     "format": "binary",
                     "type": "string",
-                    "description": "参考图片文件",
+                    "description": "Reference image file",
                     "example": ""
                   }
                 }
@@ -588,7 +613,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建视频任务",
+            "description": "Video task created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -596,50 +621,50 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "description": "视频 ID"
+                      "description": "Video ID"
                     },
                     "object": {
                       "type": "string",
-                      "description": "对象类型"
+                      "description": "Object type"
                     },
                     "model": {
                       "type": "string",
-                      "description": "使用的模型"
+                      "description": "Model used"
                     },
                     "status": {
                       "type": "string",
-                      "description": "任务状态"
+                      "description": "Task status"
                     },
                     "progress": {
                       "type": "integer",
-                      "description": "进度百分比"
+                      "description": "Progress percentage"
                     },
                     "created_at": {
                       "type": "integer",
-                      "description": "创建时间戳"
+                      "description": "Creation timestamp"
                     },
                     "seconds": {
                       "type": "string",
-                      "description": "视频时长"
+                      "description": "Video duration"
                     },
                     "completed_at": {
                       "type": "integer",
-                      "description": "完成时间戳"
+                      "description": "Completion timestamp"
                     },
                     "expires_at": {
                       "type": "integer",
-                      "description": "过期时间戳"
+                      "description": "Expiration timestamp"
                     },
                     "size": {
                       "type": "string",
-                      "description": "视频尺寸"
+                      "description": "Video size"
                     },
                     "error": {
                       "$ref": "#/components/schemas/OpenAIVideoError"
                     },
                     "metadata": {
                       "type": "object",
-                      "description": "额外元数据",
+                      "description": "Additional metadata",
                       "additionalProperties": true,
                       "properties": {}
                     }
@@ -668,7 +693,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -688,18 +713,18 @@
     },
     "/v1/videos/{task_id}": {
       "get": {
-        "summary": "获取视频任务状态 ",
+        "summary": "Get Video Task Status",
         "deprecated": false,
-        "description": "OpenAI 兼容的视频任务状态查询接口。\n\n返回视频任务的详细状态信息。\n",
-        "operationId": "getVideo",
+        "description": "OpenAI-compatible video task status endpoint. Returns detailed video task status information.",
+        "operationId": "get_v1_videos_task_id",
         "tags": [
-          "视频生成/Sora兼容格式"
+          "Sora-Compatible Video Generation"
         ],
         "parameters": [
           {
             "name": "task_id",
             "in": "path",
-            "description": "视频任务 ID",
+            "description": "Video task ID",
             "required": true,
             "example": "sora-2-123456",
             "schema": {
@@ -709,7 +734,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取视频任务状态",
+            "description": "Video task status retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -761,7 +786,7 @@
             "headers": {}
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -781,18 +806,18 @@
     },
     "/v1/videos/{task_id}/content": {
       "get": {
-        "summary": "获取视频内容",
+        "summary": "Get Video Content",
         "deprecated": false,
-        "description": "获取已完成视频任务的视频文件内容。\n\n此接口会代理返回视频文件流。\n",
-        "operationId": "getVideoContent",
+        "description": "Gets the video file content for a completed video task. This endpoint proxies and returns the video file stream.",
+        "operationId": "get_v1_videos_task_id_content",
         "tags": [
-          "视频生成/Sora兼容格式"
+          "Sora-Compatible Video Generation"
         ],
         "parameters": [
           {
             "name": "task_id",
             "in": "path",
-            "description": "视频任务 ID",
+            "description": "Video task ID",
             "required": true,
             "example": "video-abc123",
             "schema": {
@@ -802,7 +827,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取视频内容",
+            "description": "Video content retrieved successfully",
             "content": {
               "video/mp4": {
                 "schema": {
@@ -814,7 +839,7 @@
             "headers": {}
           },
           "404": {
-            "description": "视频不存在或未完成",
+            "description": "Video not found or not completed",
             "content": {
               "application/json": {
                 "schema": {
@@ -834,12 +859,12 @@
     },
     "/kling/v1/videos/text2video": {
       "post": {
-        "summary": "Kling 文生视频",
+        "summary": "Create Kling Text-to-Video Task",
         "deprecated": false,
-        "description": "使用 Kling 模型从文本描述生成视频。\n\n支持的模型：kling-v1, kling-v1-5 等\n",
-        "operationId": "createKlingText2Video",
+        "description": "See endpoint details.",
+        "operationId": "post_kling_v1_videos_text2video",
         "tags": [
-          "视频生成/Kling格式"
+          "Kling Video Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -850,7 +875,7 @@
               },
               "example": {
                 "model": "kling-v1",
-                "prompt": "宇航员站起身走了",
+                "prompt": "An astronaut stands up and walks away",
                 "duration": 5,
                 "width": 1280,
                 "height": 720,
@@ -861,7 +886,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建视频生成任务",
+            "description": "Video generation task created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -872,7 +897,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -892,18 +917,18 @@
     },
     "/kling/v1/videos/text2video/{task_id}": {
       "get": {
-        "summary": "获取 Kling 文生视频任务状态",
+        "summary": "Get Kling Text-to-Video Task Status",
         "deprecated": false,
-        "description": "查询 Kling 文生视频任务的状态和结果。",
-        "operationId": "getKlingText2Video",
+        "description": "Queries the status and result of a Kling text-to-video task.",
+        "operationId": "get_kling_v1_videos_text2video_task_id",
         "tags": [
-          "视频生成/Kling格式"
+          "Kling Video Generation"
         ],
         "parameters": [
           {
             "name": "task_id",
             "in": "path",
-            "description": "任务 ID",
+            "description": "Task ID",
             "required": true,
             "example": "task-abc123",
             "schema": {
@@ -913,7 +938,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取任务状态",
+            "description": "Task status retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -924,7 +949,7 @@
             "headers": {}
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -944,12 +969,12 @@
     },
     "/kling/v1/videos/image2video": {
       "post": {
-        "summary": "Kling 图生视频",
+        "summary": "Create Kling Image-to-Video Task",
         "deprecated": false,
-        "description": "使用 Kling 模型从图片生成视频。\n\n支持通过 image 参数传入图片 URL 或 Base64 编码的图片数据。\n",
-        "operationId": "createKlingImage2Video",
+        "description": "Generates a video from an image using a Kling model. Supports passing an image URL or Base64-encoded image data through the `image` parameter.",
+        "operationId": "post_kling_v1_videos_image2video",
         "tags": [
-          "视频生成/Kling格式"
+          "Kling Video Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -960,7 +985,7 @@
               },
               "example": {
                 "model": "kling-v1",
-                "prompt": "人物转身走开",
+                "prompt": "A person turns around and walks away",
                 "image": "https://example.com/image.jpg",
                 "duration": 5,
                 "width": 1280,
@@ -971,7 +996,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建视频生成任务",
+            "description": "Video generation task created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -982,7 +1007,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -1002,18 +1027,18 @@
     },
     "/kling/v1/videos/image2video/{task_id}": {
       "get": {
-        "summary": "获取 Kling 图生视频任务状态",
+        "summary": "Get Kling Image-to-Video Task Status",
         "deprecated": false,
-        "description": "查询 Kling 图生视频任务的状态和结果。",
-        "operationId": "getKlingImage2Video",
+        "description": "Queries the status and result of a Kling image-to-video task.",
+        "operationId": "get_kling_v1_videos_image2video_task_id",
         "tags": [
-          "视频生成/Kling格式"
+          "Kling Video Generation"
         ],
         "parameters": [
           {
             "name": "task_id",
             "in": "path",
-            "description": "任务 ID",
+            "description": "Task ID",
             "required": true,
             "example": "task-abc123",
             "schema": {
@@ -1023,7 +1048,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取任务状态",
+            "description": "Task status retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1034,7 +1059,7 @@
             "headers": {}
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1052,20 +1077,20 @@
         ]
       }
     },
-    "/jimeng/": {
+    "/jimeng": {
       "post": {
-        "summary": "即梦视频生成",
+        "summary": "Create Jimeng Video",
         "deprecated": false,
-        "description": "即梦官方 API 格式的视频生成接口。\n\n支持通过 Action 参数指定操作类型：\n- `CVSync2AsyncSubmitTask`: 提交视频生成任务\n- `CVSync2AsyncGetResult`: 获取任务结果\n\n需要在查询参数中指定 Action 和 Version。\n",
-        "operationId": "createJimengVideo",
+        "description": "Video generation endpoint using the official Jimeng API format. Use the Action parameter to specify the operation type: - `CVSync2AsyncSubmitTask`: submit a video generation task - `CVSync2AsyncGetResult`: get task result Action and Version must be specified as query parameters.",
+        "operationId": "post_jimeng",
         "tags": [
-          "视频生成/即梦格式"
+          "Jimeng Video Generation"
         ],
         "parameters": [
           {
             "name": "Action",
             "in": "query",
-            "description": "API 操作类型",
+            "description": "API operation type",
             "required": true,
             "schema": {
               "type": "string",
@@ -1078,7 +1103,7 @@
           {
             "name": "Version",
             "in": "query",
-            "description": "API 版本",
+            "description": "API version",
             "required": true,
             "example": "2022-08-31",
             "schema": {
@@ -1091,35 +1116,35 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "description": "即梦官方 API 请求格式",
+                "description": "Official Jimeng API request format",
                 "properties": {
                   "req_key": {
                     "type": "string",
-                    "description": "请求类型标识"
+                    "description": "Request type identifier"
                   },
                   "prompt": {
                     "type": "string",
-                    "description": "文本描述"
+                    "description": "Text prompt"
                   },
                   "binary_data_base64": {
                     "type": "array",
                     "items": {
                       "type": "string"
                     },
-                    "description": "Base64 编码的图片数据"
+                    "description": "Base64-encoded image data"
                   }
                 }
               },
               "example": {
                 "req_key": "jimeng_video_generation",
-                "prompt": "一只猫在弹钢琴"
+                "prompt": "A cat is playing the piano"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "成功处理请求",
+            "description": "Request processed successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1127,15 +1152,15 @@
                   "properties": {
                     "code": {
                       "type": "integer",
-                      "description": "响应码"
+                      "description": "Response code"
                     },
                     "message": {
                       "type": "string",
-                      "description": "响应消息"
+                      "description": "Response message"
                     },
                     "data": {
                       "type": "object",
-                      "description": "响应数据",
+                      "description": "Response data",
                       "properties": {}
                     }
                   }
@@ -1145,7 +1170,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -1165,12 +1190,12 @@
     },
     "/v1/video/generations": {
       "post": {
-        "summary": "创建视频生成任务",
+        "summary": "Create Video Generation Task",
         "deprecated": false,
-        "description": "提交视频生成任务，支持文生视频和图生视频。\n\n返回任务 ID，可通过 GET 接口查询任务状态。\n",
-        "operationId": "createVideoGeneration",
+        "description": "See endpoint details.",
+        "operationId": "post_v1_video_generations",
         "tags": [
-          "视频生成"
+          "Video Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -1181,7 +1206,7 @@
               },
               "example": {
                 "model": "kling-v1",
-                "prompt": "宇航员在月球上漫步",
+                "prompt": "An astronaut walks on the moon",
                 "duration": 5,
                 "width": 1280,
                 "height": 720
@@ -1192,7 +1217,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建视频生成任务",
+            "description": "Video generation task created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1203,7 +1228,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -1223,18 +1248,18 @@
     },
     "/v1/video/generations/{task_id}": {
       "get": {
-        "summary": "获取视频生成任务状态",
+        "summary": "Get Video Generation Task Status",
         "deprecated": false,
-        "description": "查询视频生成任务的状态和结果。\n\n任务状态：\n- `queued`: 排队中\n- `in_progress`: 生成中\n- `completed`: 已完成\n- `failed`: 失败\n",
-        "operationId": "getVideoGeneration",
+        "description": "Queries the status and result of a video generation task. Task status: - `queued`: queued - `in_progress`: in progress - `completed`: completed - `failed`: Failed",
+        "operationId": "get_v1_video_generations_task_id",
         "tags": [
-          "视频生成"
+          "Video Generation"
         ],
         "parameters": [
           {
             "name": "task_id",
             "in": "path",
-            "description": "任务 ID",
+            "description": "Task ID",
             "required": true,
             "example": "abcd1234efgh",
             "schema": {
@@ -1244,7 +1269,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取任务状态",
+            "description": "Task status retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1255,7 +1280,7 @@
             "headers": {}
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1275,18 +1300,18 @@
     },
     "/v1/messages": {
       "post": {
-        "summary": "Claude 聊天",
+        "summary": "Create Claude Message",
         "deprecated": false,
-        "description": "Anthropic Claude Messages API 格式的请求。\n需要在请求头中包含 `anthropic-version`。\n",
-        "operationId": "createMessage",
+        "description": "See endpoint details.",
+        "operationId": "post_v1_messages",
         "tags": [
-          "Claude格式(Messages)"
+          "Claude Messages"
         ],
         "parameters": [
           {
             "name": "anthropic-version",
             "in": "header",
-            "description": "Anthropic API 版本",
+            "description": "Anthropic API version",
             "required": true,
             "example": "",
             "schema": {
@@ -1297,7 +1322,7 @@
           {
             "name": "x-api-key",
             "in": "header",
-            "description": "Anthropic API Key (可选，也可使用 Bearer Token)",
+            "description": "See endpoint details.",
             "required": false,
             "example": "",
             "schema": {
@@ -1317,7 +1342,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1337,18 +1362,18 @@
     },
     "/v1beta/models/{model}:generateContent": {
       "post": {
-        "summary": "Gemini 图片(Nano Banana)",
+        "summary": "Generate Gemini Image",
         "deprecated": false,
-        "description": "Gemini 图片生成",
-        "operationId": "geminiRelayV1Beta",
+        "description": "See endpoint details.",
+        "operationId": "post_v1beta_models_model_generatecontent",
         "tags": [
-          "Gemini格式"
+          "Gemini API"
         ],
         "parameters": [
           {
             "name": "model",
             "in": "path",
-            "description": "模型名称",
+            "description": "Model name",
             "required": true,
             "example": "gemini-3-pro-image-preview",
             "schema": {
@@ -1442,7 +1467,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
@@ -1462,18 +1487,18 @@
     },
     "/v1/engines/{model}/embeddings": {
       "post": {
-        "summary": "Gemini 嵌入(Embeddings)",
+        "summary": "Create Gemini Embeddings",
         "deprecated": false,
-        "description": "使用指定引擎/模型创建嵌入",
-        "operationId": "createEngineEmbedding",
+        "description": "See endpoint details.",
+        "operationId": "post_v1_engines_model_embeddings",
         "tags": [
-          "Gemini格式"
+          "Gemini API"
         ],
         "parameters": [
           {
             "name": "model",
             "in": "path",
-            "description": "模型/引擎 ID",
+            "description": "See endpoint details.",
             "required": true,
             "example": "",
             "schema": {
@@ -1493,7 +1518,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建嵌入",
+            "description": "Embeddings created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1513,12 +1538,12 @@
     },
     "/v1/embeddings": {
       "post": {
-        "summary": "创建文本嵌入",
+        "summary": "Create Embeddings",
         "deprecated": false,
-        "description": "将文本转换为向量嵌入",
-        "operationId": "createEmbedding",
+        "description": "See endpoint details.",
+        "operationId": "post_v1_embeddings",
         "tags": [
-          "OpenAI格式(Embeddings)"
+          "OpenAI Embeddings"
         ],
         "parameters": [],
         "requestBody": {
@@ -1533,7 +1558,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建嵌入",
+            "description": "Embeddings created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1553,12 +1578,12 @@
     },
     "/v1/completions": {
       "post": {
-        "summary": "创建文本补全",
+        "summary": "Create Completion",
         "deprecated": false,
-        "description": "基于给定提示创建文本补全",
-        "operationId": "createCompletion",
+        "description": "See endpoint details.",
+        "operationId": "post_v1_completions",
         "tags": [
-          "文本补全(Completions)"
+          "Text Completions"
         ],
         "parameters": [],
         "requestBody": {
@@ -1573,7 +1598,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1593,12 +1618,12 @@
     },
     "/v1/audio/transcriptions": {
       "post": {
-        "summary": "音频转录",
+        "summary": "Create Audio Transcription",
         "deprecated": false,
-        "description": "将音频转换为文本",
-        "operationId": "createTranscription",
+        "description": "Converts audio to text",
+        "operationId": "post_v1_audio_transcriptions",
         "tags": [
-          "OpenAI音频(Audio)"
+          "OpenAI Audio"
         ],
         "parameters": [],
         "requestBody": {
@@ -1610,7 +1635,7 @@
                   "file": {
                     "type": "string",
                     "format": "binary",
-                    "description": "音频文件",
+                    "description": "See endpoint details.",
                     "example": ""
                   },
                   "model": {
@@ -1619,7 +1644,7 @@
                   },
                   "language": {
                     "type": "string",
-                    "description": "ISO-639-1 语言代码",
+                    "description": "See endpoint details.",
                     "example": ""
                   },
                   "prompt": {
@@ -1665,7 +1690,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功转录",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1685,12 +1710,12 @@
     },
     "/v1/audio/translations": {
       "post": {
-        "summary": "音频翻译",
+        "summary": "Create Audio Translation",
         "deprecated": false,
-        "description": "将音频翻译为英文文本",
-        "operationId": "createTranslation",
+        "description": "Translates audio to English text",
+        "operationId": "post_v1_audio_translations",
         "tags": [
-          "OpenAI音频(Audio)"
+          "OpenAI Audio"
         ],
         "parameters": [],
         "requestBody": {
@@ -1732,7 +1757,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功翻译",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1752,12 +1777,12 @@
     },
     "/v1/audio/speech": {
       "post": {
-        "summary": "文本转语音",
+        "summary": "Create Speech",
         "deprecated": false,
-        "description": "将文本转换为音频",
-        "operationId": "createSpeech",
+        "description": "Converts text to audio",
+        "operationId": "post_v1_audio_speech",
         "tags": [
-          "OpenAI音频(Audio)"
+          "OpenAI Audio"
         ],
         "parameters": [],
         "requestBody": {
@@ -1772,7 +1797,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功生成音频",
+            "description": "See endpoint details.",
             "content": {
               "audio/mpeg": {
                 "schema": {
@@ -1793,12 +1818,12 @@
     },
     "/v1/rerank": {
       "post": {
-        "summary": "文档重排序",
+        "summary": "Rerank Documents",
         "deprecated": false,
-        "description": "根据查询对文档列表进行相关性重排序",
-        "operationId": "createRerank",
+        "description": "Reranks documents by relevance to the query",
+        "operationId": "post_v1_rerank",
         "tags": [
-          "重排序(Rerank)"
+          "Rerank"
         ],
         "parameters": [],
         "requestBody": {
@@ -1813,7 +1838,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功重排序",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1833,10 +1858,10 @@
     },
     "/v1/moderations": {
       "post": {
-        "summary": "内容审核",
+        "summary": "Create Moderation",
         "deprecated": false,
-        "description": "检查文本内容是否违反使用政策",
-        "operationId": "createModeration",
+        "description": "Checks whether text content violates usage policies",
+        "operationId": "post_v1_moderations",
         "tags": [
           "Moderations"
         ],
@@ -1853,7 +1878,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功审核",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1873,10 +1898,10 @@
     },
     "/v1/realtime": {
       "get": {
-        "summary": "实时 WebSocket 连接",
+        "summary": "Realtime WebSocket Connection",
         "deprecated": false,
-        "description": "建立 WebSocket 连接用于实时对话。\n\n**注意**: 这是一个 WebSocket 端点，需要使用 WebSocket 协议连接。\n\n连接 URL 示例: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n",
-        "operationId": "createRealtimeSession",
+        "description": "See endpoint details.",
+        "operationId": "get_v1_realtime",
         "tags": [
           "Realtime"
         ],
@@ -1884,7 +1909,7 @@
           {
             "name": "model",
             "in": "query",
-            "description": "要使用的模型",
+            "description": "See endpoint details.",
             "required": false,
             "schema": {
               "type": "string",
@@ -1894,11 +1919,11 @@
         ],
         "responses": {
           "101": {
-            "description": "WebSocket 协议切换",
+            "description": "See endpoint details.",
             "headers": {}
           },
           "400": {
-            "description": "请求错误",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1918,17 +1943,17 @@
     },
     "/v1/fine-tunes": {
       "get": {
-        "summary": "列出微调任务 (未实现)",
+        "summary": "List Fine-tune Jobs (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "listFineTunes",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "get_v1_fine_tunes",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1946,12 +1971,12 @@
         ]
       },
       "post": {
-        "summary": "创建微调任务 (未实现)",
+        "summary": "Create Fine-tune Job (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "createFineTune",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "post_v1_fine_tunes",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [],
         "requestBody": {
@@ -1966,7 +1991,7 @@
         },
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1986,12 +2011,12 @@
     },
     "/v1/fine-tunes/{fine_tune_id}": {
       "get": {
-        "summary": "获取微调任务详情 (未实现)",
+        "summary": "Get Fine-tune Job (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "retrieveFineTune",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "get_v1_fine_tunes_fine_tune_id",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2007,7 +2032,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2027,12 +2052,12 @@
     },
     "/v1/fine-tunes/{fine_tune_id}/cancel": {
       "post": {
-        "summary": "取消微调任务 (未实现)",
+        "summary": "Cancel Fine-tune Job (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "cancelFineTune",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "post_v1_fine_tunes_fine_tune_id_cancel",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2048,7 +2073,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2068,12 +2093,12 @@
     },
     "/v1/fine-tunes/{fine_tune_id}/events": {
       "get": {
-        "summary": "获取微调任务事件 (未实现)",
+        "summary": "List Fine-tune Events (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "listFineTuneEvents",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "get_v1_fine_tunes_fine_tune_id_events",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2089,7 +2114,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2109,17 +2134,17 @@
     },
     "/v1/files": {
       "get": {
-        "summary": "列出文件 (未实现)",
+        "summary": "List Files (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "listFiles",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "get_v1_files",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2137,12 +2162,12 @@
         ]
       },
       "post": {
-        "summary": "上传文件 (未实现)",
+        "summary": "Upload File (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "createFile",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "post_v1_files",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [],
         "requestBody": {
@@ -2167,7 +2192,7 @@
         },
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2187,12 +2212,12 @@
     },
     "/v1/files/{file_id}": {
       "get": {
-        "summary": "获取文件信息 (未实现)",
+        "summary": "Get File (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "retrieveFile",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "get_v1_files_file_id",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2208,7 +2233,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2226,12 +2251,12 @@
         ]
       },
       "delete": {
-        "summary": "删除文件 (未实现)",
+        "summary": "Delete File (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "deleteFile",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "delete_v1_files_file_id",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2247,7 +2272,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2267,12 +2292,12 @@
     },
     "/v1/files/{file_id}/content": {
       "get": {
-        "summary": "获取文件内容 (未实现)",
+        "summary": "Get File Content (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
-        "operationId": "downloadFile",
+        "description": "This endpoint is not implemented yet",
+        "operationId": "get_v1_files_file_id_content",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2288,7 +2313,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2317,20 +2342,20 @@
             "properties": {
               "message": {
                 "type": "string",
-                "description": "错误信息"
+                "description": "See endpoint details."
               },
               "type": {
                 "type": "string",
-                "description": "错误类型"
+                "description": "See endpoint details."
               },
               "param": {
                 "type": "string",
-                "description": "相关参数",
+                "description": "See endpoint details.",
                 "nullable": true
               },
               "code": {
                 "type": "string",
-                "description": "错误代码",
+                "description": "See endpoint details.",
                 "nullable": true
               }
             }
@@ -2342,15 +2367,15 @@
         "properties": {
           "prompt_tokens": {
             "type": "integer",
-            "description": "提示词 Token 数"
+            "description": "See endpoint details."
           },
           "completion_tokens": {
             "type": "integer",
-            "description": "补全 Token 数"
+            "description": "See endpoint details."
           },
           "total_tokens": {
             "type": "integer",
-            "description": "总 Token 数"
+            "description": "See endpoint details."
           },
           "prompt_tokens_details": {
             "type": "object",
@@ -2390,21 +2415,21 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "模型 ID",
+            "description": "Model ID",
             "example": "gpt-4"
           },
           "object": {
             "type": "string",
-            "description": "对象类型",
+            "description": "Object type",
             "example": "model"
           },
           "created": {
             "type": "integer",
-            "description": "创建时间戳"
+            "description": "Creation timestamp"
           },
           "owned_by": {
             "type": "string",
-            "description": "模型所有者",
+            "description": "See endpoint details.",
             "example": "openai"
           }
         }
@@ -2478,7 +2503,7 @@
               "tool",
               "developer"
             ],
-            "description": "消息角色"
+            "description": "See endpoint details."
           },
           "content": {
             "oneOf": [
@@ -2492,11 +2517,11 @@
                 }
               }
             ],
-            "description": "消息内容"
+            "description": "See endpoint details."
           },
           "name": {
             "type": "string",
-            "description": "发送者名称"
+            "description": "See endpoint details."
           },
           "tool_calls": {
             "type": "array",
@@ -2506,11 +2531,11 @@
           },
           "tool_call_id": {
             "type": "string",
-            "description": "工具调用 ID（用于 tool 角色消息）"
+            "description": "See endpoint details."
           },
           "reasoning_content": {
             "type": "string",
-            "description": "推理内容"
+            "description": "See endpoint details."
           }
         }
       },
@@ -2535,7 +2560,7 @@
             "properties": {
               "url": {
                 "type": "string",
-                "description": "图片 URL 或 base64"
+                "description": "See endpoint details."
               },
               "detail": {
                 "type": "string",
@@ -2552,7 +2577,7 @@
             "properties": {
               "data": {
                 "type": "string",
-                "description": "Base64 编码的音频数据"
+                "description": "See endpoint details."
               },
               "format": {
                 "type": "string",
@@ -2628,7 +2653,7 @@
               },
               "parameters": {
                 "type": "object",
-                "description": "JSON Schema 格式的参数定义",
+                "description": "See endpoint details.",
                 "properties": {}
               }
             }
@@ -2648,7 +2673,7 @@
           },
           "json_schema": {
             "type": "object",
-            "description": "JSON Schema 定义",
+            "description": "See endpoint details.",
             "properties": {}
           }
         }
@@ -2662,7 +2687,7 @@
         "properties": {
           "model": {
             "type": "string",
-            "description": "模型 ID",
+            "description": "Model ID",
             "example": "gpt-4"
           },
           "messages": {
@@ -2670,32 +2695,32 @@
             "items": {
               "$ref": "#/components/schemas/Message"
             },
-            "description": "对话消息列表"
+            "description": "See endpoint details."
           },
           "temperature": {
             "type": "number",
             "minimum": 0,
             "maximum": 2,
             "default": 1,
-            "description": "采样温度"
+            "description": "See endpoint details."
           },
           "top_p": {
             "type": "number",
             "minimum": 0,
             "maximum": 1,
             "default": 1,
-            "description": "核采样参数"
+            "description": "See endpoint details."
           },
           "n": {
             "type": "integer",
             "minimum": 1,
             "default": 1,
-            "description": "生成数量"
+            "description": "See endpoint details."
           },
           "stream": {
             "type": "boolean",
             "default": false,
-            "description": "是否流式响应"
+            "description": "See endpoint details."
           },
           "stream_options": {
             "type": "object",
@@ -2717,15 +2742,15 @@
                 }
               }
             ],
-            "description": "停止序列"
+            "description": "See endpoint details."
           },
           "max_tokens": {
             "type": "integer",
-            "description": "最大生成 Token 数"
+            "description": "See endpoint details."
           },
           "max_completion_tokens": {
             "type": "integer",
-            "description": "最大补全 Token 数"
+            "description": "See endpoint details."
           },
           "presence_penalty": {
             "type": "number",
@@ -2796,7 +2821,7 @@
               "medium",
               "high"
             ],
-            "description": "推理强度 (用于支持推理的模型)"
+            "description": "See endpoint details."
           },
           "modalities": {
             "type": "array",
@@ -3031,7 +3056,7 @@
             "type": "string"
           },
           "input": {
-            "description": "输入内容，可以是字符串或消息数组",
+            "description": "See endpoint details.",
             "oneOf": [
               {
                 "type": "string"
@@ -3170,9 +3195,9 @@
           }
         }
       },
-	      "ResponsesCompactionResponse": {
-	        "type": "object",
-	        "properties": {
+      "ResponsesCompactionResponse": {
+        "type": "object",
+        "properties": {
           "id": {
             "type": "string"
           },
@@ -3197,44 +3222,44 @@
             "type": "object",
             "properties": {}
           }
-	        }
-	      },
-	      "ResponsesCompactionRequest": {
-	        "type": "object",
-	        "required": [
-	          "model"
-	        ],
-	        "properties": {
-	          "model": {
-	            "type": "string"
-	          },
-	          "input": {
-	            "description": "输入内容，可以是字符串或消息数组",
-	            "oneOf": [
-	              {
-	                "type": "string"
-	              },
-	              {
-	                "type": "array",
-	                "items": {
-	                  "type": "object",
-	                  "properties": {}
-	                }
-	              }
-	            ]
-	          },
-	          "instructions": {
-	            "type": "string"
-	          },
-	          "previous_response_id": {
-	            "type": "string"
-	          }
-	        }
-	      },
-	      "ResponsesStreamResponse": {
-	        "type": "object",
-	        "properties": {
-	          "type": {
+        }
+      },
+      "ResponsesCompactionRequest": {
+        "type": "object",
+        "required": [
+          "model"
+        ],
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "input": {
+            "description": "See endpoint details.",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            ]
+          },
+          "instructions": {
+            "type": "string"
+          },
+          "previous_response_id": {
+            "type": "string"
+          }
+        }
+      },
+      "ResponsesStreamResponse": {
+        "type": "object",
+        "properties": {
+          "type": {
             "type": "string"
           },
           "response": {
@@ -3530,7 +3555,7 @@
                 }
               }
             ],
-            "description": "要嵌入的文本"
+            "description": "See endpoint details."
           },
           "encoding_format": {
             "type": "string",
@@ -3542,7 +3567,7 @@
           },
           "dimensions": {
             "type": "integer",
-            "description": "输出向量维度"
+            "description": "See endpoint details."
           }
         }
       },
@@ -3602,7 +3627,7 @@
           },
           "prompt": {
             "type": "string",
-            "description": "图像描述"
+            "description": "See endpoint details."
           },
           "n": {
             "type": "integer",
@@ -3717,7 +3742,7 @@
           "file": {
             "type": "string",
             "format": "binary",
-            "description": "音频文件"
+            "description": "See endpoint details."
           },
           "model": {
             "type": "string",
@@ -3725,7 +3750,7 @@
           },
           "language": {
             "type": "string",
-            "description": "ISO-639-1 语言代码"
+            "description": "See endpoint details."
           },
           "prompt": {
             "type": "string"
@@ -3803,7 +3828,7 @@
           },
           "input": {
             "type": "string",
-            "description": "要转换的文本",
+            "description": "See endpoint details.",
             "maxLength": 4096
           },
           "voice": {
@@ -3851,7 +3876,7 @@
           },
           "query": {
             "type": "string",
-            "description": "查询文本"
+            "description": "See endpoint details."
           },
           "documents": {
             "type": "array",
@@ -3866,11 +3891,11 @@
                 }
               ]
             },
-            "description": "要重排序的文档列表"
+            "description": "See endpoint details."
           },
           "top_n": {
             "type": "integer",
-            "description": "返回前 N 个结果"
+            "description": "See endpoint details."
           },
           "return_documents": {
             "type": "boolean",
@@ -4115,66 +4140,66 @@
       },
       "VideoRequest": {
         "type": "object",
-        "description": "视频生成请求",
+        "description": "See endpoint details.",
         "properties": {
           "model": {
             "type": "string",
-            "description": "模型/风格 ID",
+            "description": "See endpoint details.",
             "example": "kling-v1"
           },
           "prompt": {
             "type": "string",
-            "description": "文本描述提示词",
-            "example": "宇航员站起身走了"
+            "description": "Text promptPrompt",
+            "example": "An astronaut stands up and walks away"
           },
           "image": {
             "type": "string",
-            "description": "图片输入 (URL 或 Base64)",
+            "description": "See endpoint details.",
             "example": "https://example.com/image.jpg"
           },
           "duration": {
             "type": "number",
-            "description": "视频时长（秒）",
+            "description": "See endpoint details.",
             "example": 5
           },
           "width": {
             "type": "integer",
-            "description": "视频宽度",
+            "description": "See endpoint details.",
             "example": 1280
           },
           "height": {
             "type": "integer",
-            "description": "视频高度",
+            "description": "See endpoint details.",
             "example": 720
           },
           "fps": {
             "type": "integer",
-            "description": "视频帧率",
+            "description": "See endpoint details.",
             "example": 30
           },
           "seed": {
             "type": "integer",
-            "description": "随机种子",
+            "description": "See endpoint details.",
             "example": 20231234
           },
           "n": {
             "type": "integer",
-            "description": "生成视频数量",
+            "description": "See endpoint details.",
             "example": 1
           },
           "response_format": {
             "type": "string",
-            "description": "响应格式",
+            "description": "See endpoint details.",
             "example": "url"
           },
           "user": {
             "type": "string",
-            "description": "用户标识",
+            "description": "See endpoint details.",
             "example": "user-1234"
           },
           "metadata": {
             "type": "object",
-            "description": "扩展参数 (如 negative_prompt, style, quality_level 等)",
+            "description": "See endpoint details.",
             "additionalProperties": true,
             "properties": {}
           }
@@ -4182,32 +4207,32 @@
       },
       "VideoResponse": {
         "type": "object",
-        "description": "视频生成任务提交响应",
+        "description": "See endpoint details.",
         "properties": {
           "task_id": {
             "type": "string",
-            "description": "任务 ID",
+            "description": "Task ID",
             "example": "abcd1234efgh"
           },
           "status": {
             "type": "string",
-            "description": "任务状态",
+            "description": "Task status",
             "example": "queued"
           }
         }
       },
       "VideoTaskResponse": {
         "type": "object",
-        "description": "视频任务状态查询响应",
+        "description": "See endpoint details.",
         "properties": {
           "task_id": {
             "type": "string",
-            "description": "任务 ID",
+            "description": "Task ID",
             "example": "abcd1234efgh"
           },
           "status": {
             "type": "string",
-            "description": "任务状态",
+            "description": "Task status",
             "enum": [
               "queued",
               "in_progress",
@@ -4218,12 +4243,12 @@
           },
           "url": {
             "type": "string",
-            "description": "视频资源 URL（成功时）",
+            "description": "See endpoint details.",
             "example": "https://example.com/video.mp4"
           },
           "format": {
             "type": "string",
-            "description": "视频格式",
+            "description": "See endpoint details.",
             "example": "mp4"
           },
           "metadata": {
@@ -4236,76 +4261,76 @@
       },
       "VideoTaskMetadata": {
         "type": "object",
-        "description": "视频任务元数据",
+        "description": "See endpoint details.",
         "properties": {
           "duration": {
             "type": "number",
-            "description": "实际生成的视频时长",
+            "description": "See endpoint details.",
             "example": 5
           },
           "fps": {
             "type": "integer",
-            "description": "实际帧率",
+            "description": "See endpoint details.",
             "example": 30
           },
           "width": {
             "type": "integer",
-            "description": "实际宽度",
+            "description": "See endpoint details.",
             "example": 1280
           },
           "height": {
             "type": "integer",
-            "description": "实际高度",
+            "description": "See endpoint details.",
             "example": 720
           },
           "seed": {
             "type": "integer",
-            "description": "使用的随机种子",
+            "description": "See endpoint details.",
             "example": 20231234
           }
         }
       },
       "VideoTaskError": {
         "type": "object",
-        "description": "视频任务错误信息",
+        "description": "See endpoint details.",
         "properties": {
           "code": {
             "type": "integer",
-            "description": "错误码"
+            "description": "See endpoint details."
           },
           "message": {
             "type": "string",
-            "description": "错误信息"
+            "description": "See endpoint details."
           }
         }
       },
       "OpenAIVideo": {
         "type": "object",
-        "description": "OpenAI 兼容的视频对象",
+        "description": "See endpoint details.",
         "properties": {
           "id": {
             "type": "string",
-            "description": "视频 ID",
+            "description": "Video ID",
             "example": "video-abc123"
           },
           "task_id": {
             "type": "string",
-            "description": "任务 ID (兼容旧接口)",
+            "description": "See endpoint details.",
             "deprecated": true
           },
           "object": {
             "type": "string",
-            "description": "对象类型",
+            "description": "Object type",
             "example": "video"
           },
           "model": {
             "type": "string",
-            "description": "使用的模型",
+            "description": "Model used",
             "example": "sora"
           },
           "status": {
             "type": "string",
-            "description": "任务状态",
+            "description": "Task status",
             "enum": [
               "queued",
               "in_progress",
@@ -4316,39 +4341,39 @@
           },
           "progress": {
             "type": "integer",
-            "description": "进度百分比",
+            "description": "Progress percentage",
             "example": 100
           },
           "created_at": {
             "type": "integer",
-            "description": "创建时间戳"
+            "description": "Creation timestamp"
           },
           "completed_at": {
             "type": "integer",
-            "description": "完成时间戳"
+            "description": "Completion timestamp"
           },
           "expires_at": {
             "type": "integer",
-            "description": "过期时间戳"
+            "description": "Expiration timestamp"
           },
           "seconds": {
             "type": "string",
-            "description": "视频时长"
+            "description": "Video duration"
           },
           "size": {
             "type": "string",
-            "description": "视频尺寸"
+            "description": "Video size"
           },
           "remixed_from_video_id": {
             "type": "string",
-            "description": "源视频 ID（如果是基于其他视频生成）"
+            "description": "See endpoint details."
           },
           "error": {
             "$ref": "#/components/schemas/OpenAIVideoError"
           },
           "metadata": {
             "type": "object",
-            "description": "额外元数据",
+            "description": "Additional metadata",
             "additionalProperties": true,
             "properties": {}
           }
@@ -4356,15 +4381,15 @@
       },
       "OpenAIVideoError": {
         "type": "object",
-        "description": "OpenAI 视频错误信息",
+        "description": "See endpoint details.",
         "properties": {
           "message": {
             "type": "string",
-            "description": "错误信息"
+            "description": "See endpoint details."
           },
           "code": {
             "type": "string",
-            "description": "错误码"
+            "description": "See endpoint details."
           }
         }
       },
@@ -4549,2691 +4574,16 @@
       "BearerAuth": {
         "type": "http",
         "scheme": "bearer",
-        "description": "使用 Bearer Token 认证。\n格式: `Authorization: Bearer sk-xxxxxx`\n"
-      },
-      "SessionAuth": {
-        "type": "apiKey",
-        "in": "cookie",
-        "name": "session",
-        "description": "Session认证，通过登录接口获取"
-      },
-      "AccessToken": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "Authorization",
-        "description": "Access Token认证，格式: Bearer {access_token}，通过 /api/user/token 接口生成"
-      },
-      "NewApiUser": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "New-Api-User",
-        "description": "用户ID请求头，必须与当前登录用户ID匹配，使用Session或AccessToken认证时必须提供"
-      },
-      "Combination": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination2": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination11": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination3": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination12": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination4": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination13": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination5": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination14": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination6": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination15": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination7": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination16": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination8": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination17": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination9": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination18": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination10": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination19": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination20": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination110": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination21": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination111": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination22": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination112": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination23": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination113": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination24": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination114": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination25": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination115": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination26": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination116": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination27": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination117": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination28": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination118": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination29": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination119": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination30": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination120": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination31": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination121": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination32": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination122": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination33": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination123": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination34": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination124": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination35": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination125": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination36": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination126": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination37": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination127": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination38": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination128": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination39": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination129": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination40": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination130": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination41": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination131": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination42": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination132": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination43": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination133": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination44": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination134": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination45": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination135": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination46": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination136": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination47": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination137": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination48": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination138": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination49": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination139": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination50": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination140": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination51": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination141": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination52": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination142": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination53": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination143": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination54": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination144": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination55": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination145": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination56": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination146": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination57": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination147": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination58": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination148": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination59": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination149": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination60": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination150": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination61": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination151": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination62": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination152": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination63": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination153": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination64": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination154": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination65": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination155": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination66": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination156": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination67": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination157": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination68": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination158": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination69": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination159": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination70": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination160": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination71": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination161": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination72": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination162": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination73": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination163": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination74": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination164": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination75": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination165": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination76": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination166": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination77": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination167": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination78": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination168": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination79": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination169": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination80": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination170": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination81": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination171": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination82": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination172": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination83": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination173": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination84": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination174": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination85": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination175": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination86": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination176": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination87": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination177": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination88": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination178": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination89": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination179": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination90": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination180": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination91": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination181": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination92": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination182": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination93": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination183": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination94": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination184": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination95": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination185": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination96": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination186": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination97": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination187": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination98": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination188": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination99": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination189": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination100": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination190": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination101": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination191": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination102": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination192": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination103": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination193": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination104": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination194": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination105": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination195": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination106": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination196": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination107": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination197": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination108": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination198": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination109": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination199": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination200": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1100": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination201": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1101": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination202": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1102": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination203": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1103": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination204": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1104": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination205": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1105": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination206": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1106": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination207": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1107": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination208": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1108": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination209": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1109": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination210": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1110": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination211": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1111": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination212": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1112": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination213": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1113": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination214": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1114": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination215": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1115": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination216": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1116": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination217": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1117": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination218": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1118": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination219": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1119": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination220": {
-        "group": [
-          {
-            "id": "SessionAuth"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
-      },
-      "Combination1120": {
-        "group": [
-          {
-            "id": "AccessToken"
-          },
-          {
-            "id": "NewApiUser"
-          }
-        ],
-        "type": "combination"
+        "bearerFormat": "JWT"
       }
     }
   },
-  "servers": [],
+  "servers": [
+    {
+      "url": "https://api.ldx.dev",
+      "description": "API Base URL"
+    }
+  ],
   "security": [
     {
       "BearerAuth": []

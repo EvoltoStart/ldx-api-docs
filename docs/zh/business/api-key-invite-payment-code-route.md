@@ -1,3 +1,8 @@
+---
+title: "API Key、邀请码与支付路由"
+description: "说明 API Key、邀请码和支付相关接口的测试路由与认证约定。"
+---
+
 # API KEY / 邀请码 / 支付 路由说明（Apifox 测试版）
 
 > 适用场景：你使用**自己的 MySQL + Redis**，并且是**前后端分离部署**。

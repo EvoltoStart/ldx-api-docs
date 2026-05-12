@@ -1,3 +1,8 @@
+---
+title: "法语术语表"
+description: "项目关键术语的法语翻译参考。"
+---
+
 # Glossaire Français (French Glossary)
 
 Ce document fournit des traductions standards françaises pour la terminologie clé du projet afin d'assurer la cohérence et la précision des traductions.

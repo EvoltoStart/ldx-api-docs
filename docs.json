@@ -7,7 +7,7 @@
     "light": "/docs/images/ldx-logo.svg",
     "dark": "/docs/images/ldx-logo.svg"
   },
-  "favicon": "/docs/images/ldx-logo.svg",
+  "favicon": "/docs/images/ldx-icon.svg",
   "colors": {
     "primary": "#16A34A"
   },
@@ -102,7 +102,9 @@
               {
                 "group": "Glossary",
                 "pages": [
-                  "docs/en/glossary/translation-glossary"
+                  "docs/en/glossary/translation-glossary",
+                  "docs/en/glossary/translation-glossary.fr",
+                  "docs/en/glossary/translation-glossary.ru"
                 ]
               },
               {

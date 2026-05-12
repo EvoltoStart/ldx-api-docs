@@ -100,7 +100,7 @@
       "get": {
         "summary": "List Models",
         "deprecated": false,
-        "description": "获取当前可用的模型列表。\n\n根据请求头自动识别返回格式：\n- 包含 `x-api-key` 和 `anthropic-version` 头时返回 Anthropic 格式\n- 包含 `x-goog-api-key` 头或 `key` 查询参数时返回 Gemini 格式\n- 其他情况返回 OpenAI 格式\n",
+        "description": "Retrieves the currently available model list. The response format is detected automatically from request headers: - Returns Anthropic format when `x-api-key` and `anthropic-version` headers are present - Returns Gemini format when the `x-goog-api-key` header or `key` query parameter is present - Returns OpenAI format otherwise",
         "operationId": "get_v1_models",
         "tags": [
           "Models"
@@ -109,7 +109,7 @@
           {
             "name": "key",
             "in": "query",
-            "description": "Google API Key (用于 Gemini 格式)",
+            "description": "Google API Key (for Gemini format)",
             "required": false,
             "schema": {
               "type": "string"
@@ -118,7 +118,7 @@
           {
             "name": "x-api-key",
             "in": "header",
-            "description": "Anthropic API Key (用于 Claude 格式)",
+            "description": "Anthropic API Key (for Claude format)",
             "required": false,
             "example": "",
             "schema": {
@@ -128,7 +128,7 @@
           {
             "name": "anthropic-version",
             "in": "header",
-            "description": "Anthropic API 版本",
+            "description": "Anthropic API version",
             "required": false,
             "example": "",
             "schema": {
@@ -139,7 +139,7 @@
           {
             "name": "x-goog-api-key",
             "in": "header",
-            "description": "Google API Key (用于 Gemini 格式)",
+            "description": "Google API Key (for Gemini format)",
             "required": false,
             "example": "",
             "schema": {
@@ -149,7 +149,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取模型列表",
+            "description": "Successfully retrieved model list",
             "content": {
               "application/json": {
                 "schema": {
@@ -160,7 +160,7 @@
             "headers": {}
           },
           "401": {
-            "description": "认证失败",
+            "description": "Authentication failed",
             "content": {
               "application/json": {
                 "schema": {
@@ -182,7 +182,7 @@
       "get": {
         "summary": "Generate Gemini Content",
         "deprecated": false,
-        "description": "以 Gemini API 格式返回可用模型列表",
+        "description": "Returns available models in Gemini API format",
         "operationId": "get_v1beta_models",
         "tags": [
           "Models"
@@ -190,7 +190,7 @@
         "parameters": [],
         "responses": {
           "200": {
-            "description": "成功获取模型列表",
+            "description": "Successfully retrieved model list",
             "content": {
               "application/json": {
                 "schema": {
@@ -212,7 +212,7 @@
       "post": {
         "summary": "Create Chat Completion",
         "deprecated": false,
-        "description": "根据对话历史创建模型响应。支持流式和非流式响应。\n\n兼容 OpenAI Chat Completions API。\n",
+        "description": "Creates a model response from conversation history. Supports streaming and non-streaming responses. Compatible with the OpenAI Chat Completions API.",
         "operationId": "post_v1_chat_completions",
         "tags": [
           "OpenAI Chat"
@@ -230,7 +230,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -241,7 +241,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -252,7 +252,7 @@
             "headers": {}
           },
           "429": {
-            "description": "请求频率限制",
+            "description": "Rate limit exceeded",
             "content": {
               "application/json": {
                 "schema": {
@@ -274,7 +274,7 @@
       "post": {
         "summary": "Create Response",
         "deprecated": false,
-        "description": "OpenAI Responses API，用于创建模型响应。\n支持多轮对话、工具调用、推理等功能。\n",
+        "description": "OpenAI Responses API，Used to create model responses. Supports multi-turn conversations, tool calls, and reasoning.",
         "operationId": "post_v1_responses",
         "tags": [
           "OpenAI Responses"
@@ -292,7 +292,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -314,7 +314,7 @@
       "post": {
         "summary": "Compact Conversation",
         "deprecated": false,
-        "description": "OpenAI Responses API，用于对长对话进行 compaction。",
+        "description": "OpenAI Responses API，Used to compact long conversations.",
         "operationId": "post_v1_responses_compact",
         "tags": [
           "OpenAI Responses"
@@ -332,7 +332,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功压缩对话",
+            "description": "Conversation compacted successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -354,7 +354,7 @@
       "post": {
         "summary": "Generate Qwen Image",
         "deprecated": false,
-        "description": " 百炼qwen-image系列图片生成",
+        "description": "Qwen image generation through Bailian",
         "operationId": "post_v1_images_generations",
         "tags": [
           "Qwen Image Generation"
@@ -430,7 +430,7 @@
                       "role": "user",
                       "content": [
                         {
-                          "text": "一副典雅庄重的对联悬挂于厅堂之中，房间是个安静古典的中式布置，桌子上放着一些青花瓷，对联上左书“义本生知人机同道善思新”，右书“通云赋智乾坤启数高志远”， 横批“智启通义”，字体飘逸，在中间挂着一幅中国风的画作，内容是岳阳楼。"
+                          "text": "Example content"
                         }
                       ]
                     }
@@ -448,7 +448,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功生成图像",
+            "description": "Image generated successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -470,7 +470,7 @@
       "post": {
         "summary": "Edit Qwen Image",
         "deprecated": false,
-        "description": " 百炼qwen-image系列图片生成",
+        "description": "Qwen image generation through Bailian",
         "operationId": "post_v1_images_edits",
         "tags": [
           "Qwen Image Generation"
@@ -544,13 +544,13 @@
                   "input"
                 ]
               },
-              "example": "{\n    \"model\": \"qwen-image-edit-plus\",\n    \"input\": {\n        \"messages\": [\n            {\n                \"role\": \"user\",\n                \"content\": [\n                    {\n                        \"image\": \"https://help-static-aliyun-doc.aliyuncs.com/file-manage-files/zh-CN/20250925/fpakfo/image36.webp\"\n                    },\n                    {\n                        \"text\": \"生成一张符合深度图的图像，遵循以下描述：一辆红色的破旧的自行车停在一条泥泞的小路上，背景是茂密的原始森林\"\n                    }\n                ]\n            }\n        ]\n    },\n    \"parameters\": {\n        \"n\": 2,\n        \"negative_prompt\": \" \",\n        \"prompt_extend\": true,\n        \"watermark\": false\n    }"
+              "example": "Example content"
             }
           }
         },
         "responses": {
           "200": {
-            "description": "成功生成图像",
+            "description": "Image generated successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -572,7 +572,7 @@
       "post": {
         "summary": "Create Video",
         "deprecated": false,
-        "description": "OpenAI 兼容的视频生成接口。\n\n参考文档: https://platform.openai.com/docs/api-reference/videos/create\n",
+        "description": "See endpoint details.",
         "operationId": "post_v1_videos",
         "tags": [
           "Sora-Compatible Video Generation"
@@ -585,24 +585,24 @@
                 "type": "object",
                 "properties": {
                   "model": {
-                    "description": "模型名称",
+                    "description": "Model name",
                     "example": "sora-2",
                     "type": "string"
                   },
                   "prompt": {
-                    "description": "提示词",
+                    "description": "Prompt",
                     "example": "cute cat dance",
                     "type": "string"
                   },
                   "seconds": {
-                    "description": "生成秒数",
+                    "description": "Generation duration in seconds",
                     "example": "8",
                     "type": "string"
                   },
                   "input_reference": {
                     "format": "binary",
                     "type": "string",
-                    "description": "参考图片文件",
+                    "description": "Reference image file",
                     "example": ""
                   }
                 }
@@ -613,7 +613,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建视频任务",
+            "description": "Video task created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -621,50 +621,50 @@
                   "properties": {
                     "id": {
                       "type": "string",
-                      "description": "视频 ID"
+                      "description": "Video ID"
                     },
                     "object": {
                       "type": "string",
-                      "description": "对象类型"
+                      "description": "Object type"
                     },
                     "model": {
                       "type": "string",
-                      "description": "使用的模型"
+                      "description": "Model used"
                     },
                     "status": {
                       "type": "string",
-                      "description": "任务状态"
+                      "description": "Task status"
                     },
                     "progress": {
                       "type": "integer",
-                      "description": "进度百分比"
+                      "description": "Progress percentage"
                     },
                     "created_at": {
                       "type": "integer",
-                      "description": "创建时间戳"
+                      "description": "Creation timestamp"
                     },
                     "seconds": {
                       "type": "string",
-                      "description": "视频时长"
+                      "description": "Video duration"
                     },
                     "completed_at": {
                       "type": "integer",
-                      "description": "完成时间戳"
+                      "description": "Completion timestamp"
                     },
                     "expires_at": {
                       "type": "integer",
-                      "description": "过期时间戳"
+                      "description": "Expiration timestamp"
                     },
                     "size": {
                       "type": "string",
-                      "description": "视频尺寸"
+                      "description": "Video size"
                     },
                     "error": {
                       "$ref": "#/components/schemas/OpenAIVideoError"
                     },
                     "metadata": {
                       "type": "object",
-                      "description": "额外元数据",
+                      "description": "Additional metadata",
                       "additionalProperties": true,
                       "properties": {}
                     }
@@ -693,7 +693,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -715,7 +715,7 @@
       "get": {
         "summary": "Get Video Task Status",
         "deprecated": false,
-        "description": "OpenAI 兼容的视频任务状态查询接口。\n\n返回视频任务的详细状态信息。\n",
+        "description": "OpenAI-compatible video task status endpoint. Returns detailed video task status information.",
         "operationId": "get_v1_videos_task_id",
         "tags": [
           "Sora-Compatible Video Generation"
@@ -724,7 +724,7 @@
           {
             "name": "task_id",
             "in": "path",
-            "description": "视频任务 ID",
+            "description": "Video task ID",
             "required": true,
             "example": "sora-2-123456",
             "schema": {
@@ -734,7 +734,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取视频任务状态",
+            "description": "Video task status retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -786,7 +786,7 @@
             "headers": {}
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -808,7 +808,7 @@
       "get": {
         "summary": "Get Video Content",
         "deprecated": false,
-        "description": "获取已完成视频任务的视频文件内容。\n\n此接口会代理返回视频文件流。\n",
+        "description": "Gets the video file content for a completed video task. This endpoint proxies and returns the video file stream.",
         "operationId": "get_v1_videos_task_id_content",
         "tags": [
           "Sora-Compatible Video Generation"
@@ -817,7 +817,7 @@
           {
             "name": "task_id",
             "in": "path",
-            "description": "视频任务 ID",
+            "description": "Video task ID",
             "required": true,
             "example": "video-abc123",
             "schema": {
@@ -827,7 +827,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取视频内容",
+            "description": "Video content retrieved successfully",
             "content": {
               "video/mp4": {
                 "schema": {
@@ -839,7 +839,7 @@
             "headers": {}
           },
           "404": {
-            "description": "视频不存在或未完成",
+            "description": "Video not found or not completed",
             "content": {
               "application/json": {
                 "schema": {
@@ -861,7 +861,7 @@
       "post": {
         "summary": "Create Kling Text-to-Video Task",
         "deprecated": false,
-        "description": "使用 Kling 模型从文本描述生成视频。\n\n支持的模型：kling-v1, kling-v1-5 等\n",
+        "description": "See endpoint details.",
         "operationId": "post_kling_v1_videos_text2video",
         "tags": [
           "Kling Video Generation"
@@ -875,7 +875,7 @@
               },
               "example": {
                 "model": "kling-v1",
-                "prompt": "宇航员站起身走了",
+                "prompt": "An astronaut stands up and walks away",
                 "duration": 5,
                 "width": 1280,
                 "height": 720,
@@ -886,7 +886,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建视频生成任务",
+            "description": "Video generation task created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -897,7 +897,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -919,7 +919,7 @@
       "get": {
         "summary": "Get Kling Text-to-Video Task Status",
         "deprecated": false,
-        "description": "查询 Kling 文生视频任务的状态和结果。",
+        "description": "Queries the status and result of a Kling text-to-video task.",
         "operationId": "get_kling_v1_videos_text2video_task_id",
         "tags": [
           "Kling Video Generation"
@@ -928,7 +928,7 @@
           {
             "name": "task_id",
             "in": "path",
-            "description": "任务 ID",
+            "description": "Task ID",
             "required": true,
             "example": "task-abc123",
             "schema": {
@@ -938,7 +938,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取任务状态",
+            "description": "Task status retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -949,7 +949,7 @@
             "headers": {}
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -971,7 +971,7 @@
       "post": {
         "summary": "Create Kling Image-to-Video Task",
         "deprecated": false,
-        "description": "使用 Kling 模型从图片生成视频。\n\n支持通过 image 参数传入图片 URL 或 Base64 编码的图片数据。\n",
+        "description": "Generates a video from an image using a Kling model. Supports passing an image URL or Base64-encoded image data through the `image` parameter.",
         "operationId": "post_kling_v1_videos_image2video",
         "tags": [
           "Kling Video Generation"
@@ -985,7 +985,7 @@
               },
               "example": {
                 "model": "kling-v1",
-                "prompt": "人物转身走开",
+                "prompt": "A person turns around and walks away",
                 "image": "https://example.com/image.jpg",
                 "duration": 5,
                 "width": 1280,
@@ -996,7 +996,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建视频生成任务",
+            "description": "Video generation task created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1007,7 +1007,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -1029,7 +1029,7 @@
       "get": {
         "summary": "Get Kling Image-to-Video Task Status",
         "deprecated": false,
-        "description": "查询 Kling 图生视频任务的状态和结果。",
+        "description": "Queries the status and result of a Kling image-to-video task.",
         "operationId": "get_kling_v1_videos_image2video_task_id",
         "tags": [
           "Kling Video Generation"
@@ -1038,7 +1038,7 @@
           {
             "name": "task_id",
             "in": "path",
-            "description": "任务 ID",
+            "description": "Task ID",
             "required": true,
             "example": "task-abc123",
             "schema": {
@@ -1048,7 +1048,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取任务状态",
+            "description": "Task status retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1059,7 +1059,7 @@
             "headers": {}
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1081,7 +1081,7 @@
       "post": {
         "summary": "Create Jimeng Video",
         "deprecated": false,
-        "description": "即梦官方 API 格式的视频生成接口。\n\n支持通过 Action 参数指定操作类型：\n- `CVSync2AsyncSubmitTask`: 提交视频生成任务\n- `CVSync2AsyncGetResult`: 获取任务结果\n\n需要在查询参数中指定 Action 和 Version。\n",
+        "description": "Video generation endpoint using the official Jimeng API format. Use the Action parameter to specify the operation type: - `CVSync2AsyncSubmitTask`: submit a video generation task - `CVSync2AsyncGetResult`: get task result Action and Version must be specified as query parameters.",
         "operationId": "post_jimeng",
         "tags": [
           "Jimeng Video Generation"
@@ -1090,7 +1090,7 @@
           {
             "name": "Action",
             "in": "query",
-            "description": "API 操作类型",
+            "description": "API operation type",
             "required": true,
             "schema": {
               "type": "string",
@@ -1103,7 +1103,7 @@
           {
             "name": "Version",
             "in": "query",
-            "description": "API 版本",
+            "description": "API version",
             "required": true,
             "example": "2022-08-31",
             "schema": {
@@ -1116,35 +1116,35 @@
             "application/json": {
               "schema": {
                 "type": "object",
-                "description": "即梦官方 API 请求格式",
+                "description": "Official Jimeng API request format",
                 "properties": {
                   "req_key": {
                     "type": "string",
-                    "description": "请求类型标识"
+                    "description": "Request type identifier"
                   },
                   "prompt": {
                     "type": "string",
-                    "description": "文本描述"
+                    "description": "Text prompt"
                   },
                   "binary_data_base64": {
                     "type": "array",
                     "items": {
                       "type": "string"
                     },
-                    "description": "Base64 编码的图片数据"
+                    "description": "Base64-encoded image data"
                   }
                 }
               },
               "example": {
                 "req_key": "jimeng_video_generation",
-                "prompt": "一只猫在弹钢琴"
+                "prompt": "A cat is playing the piano"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "成功处理请求",
+            "description": "Request processed successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1152,15 +1152,15 @@
                   "properties": {
                     "code": {
                       "type": "integer",
-                      "description": "响应码"
+                      "description": "Response code"
                     },
                     "message": {
                       "type": "string",
-                      "description": "响应消息"
+                      "description": "Response message"
                     },
                     "data": {
                       "type": "object",
-                      "description": "响应数据",
+                      "description": "Response data",
                       "properties": {}
                     }
                   }
@@ -1170,7 +1170,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -1192,7 +1192,7 @@
       "post": {
         "summary": "Create Video Generation Task",
         "deprecated": false,
-        "description": "提交视频生成任务，支持文生视频和图生视频。\n\n返回任务 ID，可通过 GET 接口查询任务状态。\n",
+        "description": "See endpoint details.",
         "operationId": "post_v1_video_generations",
         "tags": [
           "Video Generation"
@@ -1206,7 +1206,7 @@
               },
               "example": {
                 "model": "kling-v1",
-                "prompt": "宇航员在月球上漫步",
+                "prompt": "An astronaut walks on the moon",
                 "duration": 5,
                 "width": 1280,
                 "height": 720
@@ -1217,7 +1217,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建视频生成任务",
+            "description": "Video generation task created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1228,7 +1228,7 @@
             "headers": {}
           },
           "400": {
-            "description": "请求参数错误",
+            "description": "Invalid request parameters",
             "content": {
               "application/json": {
                 "schema": {
@@ -1250,7 +1250,7 @@
       "get": {
         "summary": "Get Video Generation Task Status",
         "deprecated": false,
-        "description": "查询视频生成任务的状态和结果。\n\n任务状态：\n- `queued`: 排队中\n- `in_progress`: 生成中\n- `completed`: 已完成\n- `failed`: 失败\n",
+        "description": "Queries the status and result of a video generation task. Task status: - `queued`: queued - `in_progress`: in progress - `completed`: completed - `failed`: Failed",
         "operationId": "get_v1_video_generations_task_id",
         "tags": [
           "Video Generation"
@@ -1259,7 +1259,7 @@
           {
             "name": "task_id",
             "in": "path",
-            "description": "任务 ID",
+            "description": "Task ID",
             "required": true,
             "example": "abcd1234efgh",
             "schema": {
@@ -1269,7 +1269,7 @@
         ],
         "responses": {
           "200": {
-            "description": "成功获取任务状态",
+            "description": "Task status retrieved successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1280,7 +1280,7 @@
             "headers": {}
           },
           "404": {
-            "description": "任务不存在",
+            "description": "Task not found",
             "content": {
               "application/json": {
                 "schema": {
@@ -1302,7 +1302,7 @@
       "post": {
         "summary": "Create Claude Message",
         "deprecated": false,
-        "description": "Anthropic Claude Messages API 格式的请求。\n需要在请求头中包含 `anthropic-version`。\n",
+        "description": "See endpoint details.",
         "operationId": "post_v1_messages",
         "tags": [
           "Claude Messages"
@@ -1311,7 +1311,7 @@
           {
             "name": "anthropic-version",
             "in": "header",
-            "description": "Anthropic API 版本",
+            "description": "Anthropic API version",
             "required": true,
             "example": "",
             "schema": {
@@ -1322,7 +1322,7 @@
           {
             "name": "x-api-key",
             "in": "header",
-            "description": "Anthropic API Key (可选，也可使用 Bearer Token)",
+            "description": "See endpoint details.",
             "required": false,
             "example": "",
             "schema": {
@@ -1342,7 +1342,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1364,7 +1364,7 @@
       "post": {
         "summary": "Generate Gemini Image",
         "deprecated": false,
-        "description": "Gemini 图片生成",
+        "description": "See endpoint details.",
         "operationId": "post_v1beta_models_model_generatecontent",
         "tags": [
           "Gemini API"
@@ -1373,7 +1373,7 @@
           {
             "name": "model",
             "in": "path",
-            "description": "模型名称",
+            "description": "Model name",
             "required": true,
             "example": "gemini-3-pro-image-preview",
             "schema": {
@@ -1467,7 +1467,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功",
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
@@ -1489,7 +1489,7 @@
       "post": {
         "summary": "Create Gemini Embeddings",
         "deprecated": false,
-        "description": "使用指定引擎/模型创建嵌入",
+        "description": "See endpoint details.",
         "operationId": "post_v1_engines_model_embeddings",
         "tags": [
           "Gemini API"
@@ -1498,7 +1498,7 @@
           {
             "name": "model",
             "in": "path",
-            "description": "模型/引擎 ID",
+            "description": "See endpoint details.",
             "required": true,
             "example": "",
             "schema": {
@@ -1518,7 +1518,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建嵌入",
+            "description": "Embeddings created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1540,7 +1540,7 @@
       "post": {
         "summary": "Create Embeddings",
         "deprecated": false,
-        "description": "将文本转换为向量嵌入",
+        "description": "See endpoint details.",
         "operationId": "post_v1_embeddings",
         "tags": [
           "OpenAI Embeddings"
@@ -1558,7 +1558,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建嵌入",
+            "description": "Embeddings created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1580,7 +1580,7 @@
       "post": {
         "summary": "Create Completion",
         "deprecated": false,
-        "description": "基于给定提示创建文本补全",
+        "description": "See endpoint details.",
         "operationId": "post_v1_completions",
         "tags": [
           "Text Completions"
@@ -1598,7 +1598,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功创建响应",
+            "description": "Response created successfully",
             "content": {
               "application/json": {
                 "schema": {
@@ -1620,7 +1620,7 @@
       "post": {
         "summary": "Create Audio Transcription",
         "deprecated": false,
-        "description": "将音频转换为文本",
+        "description": "Converts audio to text",
         "operationId": "post_v1_audio_transcriptions",
         "tags": [
           "OpenAI Audio"
@@ -1635,7 +1635,7 @@
                   "file": {
                     "type": "string",
                     "format": "binary",
-                    "description": "音频文件",
+                    "description": "See endpoint details.",
                     "example": ""
                   },
                   "model": {
@@ -1644,7 +1644,7 @@
                   },
                   "language": {
                     "type": "string",
-                    "description": "ISO-639-1 语言代码",
+                    "description": "See endpoint details.",
                     "example": ""
                   },
                   "prompt": {
@@ -1690,7 +1690,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功转录",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1712,7 +1712,7 @@
       "post": {
         "summary": "Create Audio Translation",
         "deprecated": false,
-        "description": "将音频翻译为英文文本",
+        "description": "Translates audio to English text",
         "operationId": "post_v1_audio_translations",
         "tags": [
           "OpenAI Audio"
@@ -1757,7 +1757,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功翻译",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1779,7 +1779,7 @@
       "post": {
         "summary": "Create Speech",
         "deprecated": false,
-        "description": "将文本转换为音频",
+        "description": "Converts text to audio",
         "operationId": "post_v1_audio_speech",
         "tags": [
           "OpenAI Audio"
@@ -1797,7 +1797,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功生成音频",
+            "description": "See endpoint details.",
             "content": {
               "audio/mpeg": {
                 "schema": {
@@ -1820,7 +1820,7 @@
       "post": {
         "summary": "Rerank Documents",
         "deprecated": false,
-        "description": "根据查询对文档列表进行相关性重排序",
+        "description": "Reranks documents by relevance to the query",
         "operationId": "post_v1_rerank",
         "tags": [
           "Rerank"
@@ -1838,7 +1838,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功重排序",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1860,7 +1860,7 @@
       "post": {
         "summary": "Create Moderation",
         "deprecated": false,
-        "description": "检查文本内容是否违反使用政策",
+        "description": "Checks whether text content violates usage policies",
         "operationId": "post_v1_moderations",
         "tags": [
           "Moderations"
@@ -1878,7 +1878,7 @@
         },
         "responses": {
           "200": {
-            "description": "成功审核",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1900,7 +1900,7 @@
       "get": {
         "summary": "Realtime WebSocket Connection",
         "deprecated": false,
-        "description": "建立 WebSocket 连接用于实时对话。\n\n**注意**: 这是一个 WebSocket 端点，需要使用 WebSocket 协议连接。\n\n连接 URL 示例: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n",
+        "description": "See endpoint details.",
         "operationId": "get_v1_realtime",
         "tags": [
           "Realtime"
@@ -1909,7 +1909,7 @@
           {
             "name": "model",
             "in": "query",
-            "description": "要使用的模型",
+            "description": "See endpoint details.",
             "required": false,
             "schema": {
               "type": "string",
@@ -1919,11 +1919,11 @@
         ],
         "responses": {
           "101": {
-            "description": "WebSocket 协议切换",
+            "description": "See endpoint details.",
             "headers": {}
           },
           "400": {
-            "description": "请求错误",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1945,7 +1945,7 @@
       "get": {
         "summary": "List Fine-tune Jobs (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "get_v1_fine_tunes",
         "tags": [
           "Fine-tunes (Not Implemented)"
@@ -1953,7 +1953,7 @@
         "parameters": [],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -1973,7 +1973,7 @@
       "post": {
         "summary": "Create Fine-tune Job (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "post_v1_fine_tunes",
         "tags": [
           "Fine-tunes (Not Implemented)"
@@ -1991,7 +1991,7 @@
         },
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2013,7 +2013,7 @@
       "get": {
         "summary": "Get Fine-tune Job (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "get_v1_fine_tunes_fine_tune_id",
         "tags": [
           "Fine-tunes (Not Implemented)"
@@ -2032,7 +2032,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2054,7 +2054,7 @@
       "post": {
         "summary": "Cancel Fine-tune Job (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "post_v1_fine_tunes_fine_tune_id_cancel",
         "tags": [
           "Fine-tunes (Not Implemented)"
@@ -2073,7 +2073,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2095,7 +2095,7 @@
       "get": {
         "summary": "List Fine-tune Events (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "get_v1_fine_tunes_fine_tune_id_events",
         "tags": [
           "Fine-tunes (Not Implemented)"
@@ -2114,7 +2114,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2136,7 +2136,7 @@
       "get": {
         "summary": "List Files (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "get_v1_files",
         "tags": [
           "Files (Not Implemented)"
@@ -2144,7 +2144,7 @@
         "parameters": [],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2164,7 +2164,7 @@
       "post": {
         "summary": "Upload File (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "post_v1_files",
         "tags": [
           "Files (Not Implemented)"
@@ -2192,7 +2192,7 @@
         },
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2214,7 +2214,7 @@
       "get": {
         "summary": "Get File (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "get_v1_files_file_id",
         "tags": [
           "Files (Not Implemented)"
@@ -2233,7 +2233,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2253,7 +2253,7 @@
       "delete": {
         "summary": "Delete File (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "delete_v1_files_file_id",
         "tags": [
           "Files (Not Implemented)"
@@ -2272,7 +2272,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2294,7 +2294,7 @@
       "get": {
         "summary": "Get File Content (Not Implemented)",
         "deprecated": false,
-        "description": "此接口尚未实现",
+        "description": "This endpoint is not implemented yet",
         "operationId": "get_v1_files_file_id_content",
         "tags": [
           "Files (Not Implemented)"
@@ -2313,7 +2313,7 @@
         ],
         "responses": {
           "501": {
-            "description": "未实现",
+            "description": "See endpoint details.",
             "content": {
               "application/json": {
                 "schema": {
@@ -2342,20 +2342,20 @@
             "properties": {
               "message": {
                 "type": "string",
-                "description": "错误信息"
+                "description": "See endpoint details."
               },
               "type": {
                 "type": "string",
-                "description": "错误类型"
+                "description": "See endpoint details."
               },
               "param": {
                 "type": "string",
-                "description": "相关参数",
+                "description": "See endpoint details.",
                 "nullable": true
               },
               "code": {
                 "type": "string",
-                "description": "错误代码",
+                "description": "See endpoint details.",
                 "nullable": true
               }
             }
@@ -2367,15 +2367,15 @@
         "properties": {
           "prompt_tokens": {
             "type": "integer",
-            "description": "提示词 Token 数"
+            "description": "See endpoint details."
           },
           "completion_tokens": {
             "type": "integer",
-            "description": "补全 Token 数"
+            "description": "See endpoint details."
           },
           "total_tokens": {
             "type": "integer",
-            "description": "总 Token 数"
+            "description": "See endpoint details."
           },
           "prompt_tokens_details": {
             "type": "object",
@@ -2415,21 +2415,21 @@
         "properties": {
           "id": {
             "type": "string",
-            "description": "模型 ID",
+            "description": "Model ID",
             "example": "gpt-4"
           },
           "object": {
             "type": "string",
-            "description": "对象类型",
+            "description": "Object type",
             "example": "model"
           },
           "created": {
             "type": "integer",
-            "description": "创建时间戳"
+            "description": "Creation timestamp"
           },
           "owned_by": {
             "type": "string",
-            "description": "模型所有者",
+            "description": "See endpoint details.",
             "example": "openai"
           }
         }
@@ -2503,7 +2503,7 @@
               "tool",
               "developer"
             ],
-            "description": "消息角色"
+            "description": "See endpoint details."
           },
           "content": {
             "oneOf": [
@@ -2517,11 +2517,11 @@
                 }
               }
             ],
-            "description": "消息内容"
+            "description": "See endpoint details."
           },
           "name": {
             "type": "string",
-            "description": "发送者名称"
+            "description": "See endpoint details."
           },
           "tool_calls": {
             "type": "array",
@@ -2531,11 +2531,11 @@
           },
           "tool_call_id": {
             "type": "string",
-            "description": "工具调用 ID（用于 tool 角色消息）"
+            "description": "See endpoint details."
           },
           "reasoning_content": {
             "type": "string",
-            "description": "推理内容"
+            "description": "See endpoint details."
           }
         }
       },
@@ -2560,7 +2560,7 @@
             "properties": {
               "url": {
                 "type": "string",
-                "description": "图片 URL 或 base64"
+                "description": "See endpoint details."
               },
               "detail": {
                 "type": "string",
@@ -2577,7 +2577,7 @@
             "properties": {
               "data": {
                 "type": "string",
-                "description": "Base64 编码的音频数据"
+                "description": "See endpoint details."
               },
               "format": {
                 "type": "string",
@@ -2653,7 +2653,7 @@
               },
               "parameters": {
                 "type": "object",
-                "description": "JSON Schema 格式的参数定义",
+                "description": "See endpoint details.",
                 "properties": {}
               }
             }
@@ -2673,7 +2673,7 @@
           },
           "json_schema": {
             "type": "object",
-            "description": "JSON Schema 定义",
+            "description": "See endpoint details.",
             "properties": {}
           }
         }
@@ -2687,7 +2687,7 @@
         "properties": {
           "model": {
             "type": "string",
-            "description": "模型 ID",
+            "description": "Model ID",
             "example": "gpt-4"
           },
           "messages": {
@@ -2695,32 +2695,32 @@
             "items": {
               "$ref": "#/components/schemas/Message"
             },
-            "description": "对话消息列表"
+            "description": "See endpoint details."
           },
           "temperature": {
             "type": "number",
             "minimum": 0,
             "maximum": 2,
             "default": 1,
-            "description": "采样温度"
+            "description": "See endpoint details."
           },
           "top_p": {
             "type": "number",
             "minimum": 0,
             "maximum": 1,
             "default": 1,
-            "description": "核采样参数"
+            "description": "See endpoint details."
           },
           "n": {
             "type": "integer",
             "minimum": 1,
             "default": 1,
-            "description": "生成数量"
+            "description": "See endpoint details."
           },
           "stream": {
             "type": "boolean",
             "default": false,
-            "description": "是否流式响应"
+            "description": "See endpoint details."
           },
           "stream_options": {
             "type": "object",
@@ -2742,15 +2742,15 @@
                 }
               }
             ],
-            "description": "停止序列"
+            "description": "See endpoint details."
           },
           "max_tokens": {
             "type": "integer",
-            "description": "最大生成 Token 数"
+            "description": "See endpoint details."
           },
           "max_completion_tokens": {
             "type": "integer",
-            "description": "最大补全 Token 数"
+            "description": "See endpoint details."
           },
           "presence_penalty": {
             "type": "number",
@@ -2821,7 +2821,7 @@
               "medium",
               "high"
             ],
-            "description": "推理强度 (用于支持推理的模型)"
+            "description": "See endpoint details."
           },
           "modalities": {
             "type": "array",
@@ -3056,7 +3056,7 @@
             "type": "string"
           },
           "input": {
-            "description": "输入内容，可以是字符串或消息数组",
+            "description": "See endpoint details.",
             "oneOf": [
               {
                 "type": "string"
@@ -3234,7 +3234,7 @@
             "type": "string"
           },
           "input": {
-            "description": "输入内容，可以是字符串或消息数组",
+            "description": "See endpoint details.",
             "oneOf": [
               {
                 "type": "string"
@@ -3555,7 +3555,7 @@
                 }
               }
             ],
-            "description": "要嵌入的文本"
+            "description": "See endpoint details."
           },
           "encoding_format": {
             "type": "string",
@@ -3567,7 +3567,7 @@
           },
           "dimensions": {
             "type": "integer",
-            "description": "输出向量维度"
+            "description": "See endpoint details."
           }
         }
       },
@@ -3627,7 +3627,7 @@
           },
           "prompt": {
             "type": "string",
-            "description": "图像描述"
+            "description": "See endpoint details."
           },
           "n": {
             "type": "integer",
@@ -3742,7 +3742,7 @@
           "file": {
             "type": "string",
             "format": "binary",
-            "description": "音频文件"
+            "description": "See endpoint details."
           },
           "model": {
             "type": "string",
@@ -3750,7 +3750,7 @@
           },
           "language": {
             "type": "string",
-            "description": "ISO-639-1 语言代码"
+            "description": "See endpoint details."
           },
           "prompt": {
             "type": "string"
@@ -3828,7 +3828,7 @@
           },
           "input": {
             "type": "string",
-            "description": "要转换的文本",
+            "description": "See endpoint details.",
             "maxLength": 4096
           },
           "voice": {
@@ -3876,7 +3876,7 @@
           },
           "query": {
             "type": "string",
-            "description": "查询文本"
+            "description": "See endpoint details."
           },
           "documents": {
             "type": "array",
@@ -3891,11 +3891,11 @@
                 }
               ]
             },
-            "description": "要重排序的文档列表"
+            "description": "See endpoint details."
           },
           "top_n": {
             "type": "integer",
-            "description": "返回前 N 个结果"
+            "description": "See endpoint details."
           },
           "return_documents": {
             "type": "boolean",
@@ -4140,66 +4140,66 @@
       },
       "VideoRequest": {
         "type": "object",
-        "description": "视频生成请求",
+        "description": "See endpoint details.",
         "properties": {
           "model": {
             "type": "string",
-            "description": "模型/风格 ID",
+            "description": "See endpoint details.",
             "example": "kling-v1"
           },
           "prompt": {
             "type": "string",
-            "description": "文本描述提示词",
-            "example": "宇航员站起身走了"
+            "description": "Text promptPrompt",
+            "example": "An astronaut stands up and walks away"
           },
           "image": {
             "type": "string",
-            "description": "图片输入 (URL 或 Base64)",
+            "description": "See endpoint details.",
             "example": "https://example.com/image.jpg"
           },
           "duration": {
             "type": "number",
-            "description": "视频时长（秒）",
+            "description": "See endpoint details.",
             "example": 5
           },
           "width": {
             "type": "integer",
-            "description": "视频宽度",
+            "description": "See endpoint details.",
             "example": 1280
           },
           "height": {
             "type": "integer",
-            "description": "视频高度",
+            "description": "See endpoint details.",
             "example": 720
           },
           "fps": {
             "type": "integer",
-            "description": "视频帧率",
+            "description": "See endpoint details.",
             "example": 30
           },
           "seed": {
             "type": "integer",
-            "description": "随机种子",
+            "description": "See endpoint details.",
             "example": 20231234
           },
           "n": {
             "type": "integer",
-            "description": "生成视频数量",
+            "description": "See endpoint details.",
             "example": 1
           },
           "response_format": {
             "type": "string",
-            "description": "响应格式",
+            "description": "See endpoint details.",
             "example": "url"
           },
           "user": {
             "type": "string",
-            "description": "用户标识",
+            "description": "See endpoint details.",
             "example": "user-1234"
           },
           "metadata": {
             "type": "object",
-            "description": "扩展参数 (如 negative_prompt, style, quality_level 等)",
+            "description": "See endpoint details.",
             "additionalProperties": true,
             "properties": {}
           }
@@ -4207,32 +4207,32 @@
       },
       "VideoResponse": {
         "type": "object",
-        "description": "视频生成任务提交响应",
+        "description": "See endpoint details.",
         "properties": {
           "task_id": {
             "type": "string",
-            "description": "任务 ID",
+            "description": "Task ID",
             "example": "abcd1234efgh"
           },
           "status": {
             "type": "string",
-            "description": "任务状态",
+            "description": "Task status",
             "example": "queued"
           }
         }
       },
       "VideoTaskResponse": {
         "type": "object",
-        "description": "视频任务状态查询响应",
+        "description": "See endpoint details.",
         "properties": {
           "task_id": {
             "type": "string",
-            "description": "任务 ID",
+            "description": "Task ID",
             "example": "abcd1234efgh"
           },
           "status": {
             "type": "string",
-            "description": "任务状态",
+            "description": "Task status",
             "enum": [
               "queued",
               "in_progress",
@@ -4243,12 +4243,12 @@
           },
           "url": {
             "type": "string",
-            "description": "视频资源 URL（成功时）",
+            "description": "See endpoint details.",
             "example": "https://example.com/video.mp4"
           },
           "format": {
             "type": "string",
-            "description": "视频格式",
+            "description": "See endpoint details.",
             "example": "mp4"
           },
           "metadata": {
@@ -4261,76 +4261,76 @@
       },
       "VideoTaskMetadata": {
         "type": "object",
-        "description": "视频任务元数据",
+        "description": "See endpoint details.",
         "properties": {
           "duration": {
             "type": "number",
-            "description": "实际生成的视频时长",
+            "description": "See endpoint details.",
             "example": 5
           },
           "fps": {
             "type": "integer",
-            "description": "实际帧率",
+            "description": "See endpoint details.",
             "example": 30
           },
           "width": {
             "type": "integer",
-            "description": "实际宽度",
+            "description": "See endpoint details.",
             "example": 1280
           },
           "height": {
             "type": "integer",
-            "description": "实际高度",
+            "description": "See endpoint details.",
             "example": 720
           },
           "seed": {
             "type": "integer",
-            "description": "使用的随机种子",
+            "description": "See endpoint details.",
             "example": 20231234
           }
         }
       },
       "VideoTaskError": {
         "type": "object",
-        "description": "视频任务错误信息",
+        "description": "See endpoint details.",
         "properties": {
           "code": {
             "type": "integer",
-            "description": "错误码"
+            "description": "See endpoint details."
           },
           "message": {
             "type": "string",
-            "description": "错误信息"
+            "description": "See endpoint details."
           }
         }
       },
       "OpenAIVideo": {
         "type": "object",
-        "description": "OpenAI 兼容的视频对象",
+        "description": "See endpoint details.",
         "properties": {
           "id": {
             "type": "string",
-            "description": "视频 ID",
+            "description": "Video ID",
             "example": "video-abc123"
           },
           "task_id": {
             "type": "string",
-            "description": "任务 ID (兼容旧接口)",
+            "description": "See endpoint details.",
             "deprecated": true
           },
           "object": {
             "type": "string",
-            "description": "对象类型",
+            "description": "Object type",
             "example": "video"
           },
           "model": {
             "type": "string",
-            "description": "使用的模型",
+            "description": "Model used",
             "example": "sora"
           },
           "status": {
             "type": "string",
-            "description": "任务状态",
+            "description": "Task status",
             "enum": [
               "queued",
               "in_progress",
@@ -4341,39 +4341,39 @@
           },
           "progress": {
             "type": "integer",
-            "description": "进度百分比",
+            "description": "Progress percentage",
             "example": 100
           },
           "created_at": {
             "type": "integer",
-            "description": "创建时间戳"
+            "description": "Creation timestamp"
           },
           "completed_at": {
             "type": "integer",
-            "description": "完成时间戳"
+            "description": "Completion timestamp"
           },
           "expires_at": {
             "type": "integer",
-            "description": "过期时间戳"
+            "description": "Expiration timestamp"
           },
           "seconds": {
             "type": "string",
-            "description": "视频时长"
+            "description": "Video duration"
           },
           "size": {
             "type": "string",
-            "description": "视频尺寸"
+            "description": "Video size"
           },
           "remixed_from_video_id": {
             "type": "string",
-            "description": "源视频 ID（如果是基于其他视频生成）"
+            "description": "See endpoint details."
           },
           "error": {
             "$ref": "#/components/schemas/OpenAIVideoError"
           },
           "metadata": {
             "type": "object",
-            "description": "额外元数据",
+            "description": "Additional metadata",
             "additionalProperties": true,
             "properties": {}
           }
@@ -4381,15 +4381,15 @@
       },
       "OpenAIVideoError": {
         "type": "object",
-        "description": "OpenAI 视频错误信息",
+        "description": "See endpoint details.",
         "properties": {
           "message": {
             "type": "string",
-            "description": "错误信息"
+            "description": "See endpoint details."
           },
           "code": {
             "type": "string",
-            "description": "错误码"
+            "description": "See endpoint details."
           }
         }
       },
