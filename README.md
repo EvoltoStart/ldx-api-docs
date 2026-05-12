@@ -43,6 +43,3 @@ node docs/zh/openapi/generate-mintlify-openapi.js
 npx -y @redocly/cli lint docs/zh/openapi/api.mintlify.json docs/zh/openapi/relay.mintlify.json docs/en/openapi/api.mintlify.json docs/en/openapi/relay.mintlify.json --max-problems 10
 ```
 
-## 注意事项
-
-如果 GitHub 仓库首页没有显示说明，请确认同步后的仓库根目录存在 `README.md`。当前 CI 会把内网项目的 `mintlify-maintenance.md` 同步为 GitHub 发布仓库根目录的 `README.md`。

@@ -11,68 +11,68 @@
   },
   "tags": [
     {
-      "name": "获取模型列表",
-      "description": "获取模型列表"
+      "name": "Models",
+      "description": "Models endpoints"
     },
     {
-      "name": "OpenAI格式(Chat)",
-      "description": "OpenAI格式(Chat)"
+      "name": "OpenAI Chat",
+      "description": "OpenAI Chat endpoints"
     },
     {
-      "name": "OpenAI格式(Responses)",
-      "description": "OpenAI格式(Responses)"
+      "name": "OpenAI Responses",
+      "description": "OpenAI Responses endpoints"
     },
     {
-      "name": "图片生成",
-      "description": "图片生成"
+      "name": "Image Generation",
+      "description": "Image Generation endpoints"
     },
     {
-      "name": "图片生成/OpenAI兼容格式",
-      "description": "图片生成/OpenAI兼容格式"
+      "name": "OpenAI-Compatible Image Generation",
+      "description": "OpenAI-Compatible Image Generation endpoints"
     },
     {
-      "name": "图片生成/Qwen千问",
-      "description": "图片生成/Qwen千问"
+      "name": "Qwen Image Generation",
+      "description": "Qwen Image Generation endpoints"
     },
     {
-      "name": "视频生成",
-      "description": "视频生成"
+      "name": "Video Generation",
+      "description": "Video Generation endpoints"
     },
     {
-      "name": "视频生成/Sora兼容格式",
-      "description": "视频生成/Sora兼容格式"
+      "name": "Sora-Compatible Video Generation",
+      "description": "Sora-Compatible Video Generation endpoints"
     },
     {
-      "name": "视频生成/Kling格式",
-      "description": "视频生成/Kling格式"
+      "name": "Kling Video Generation",
+      "description": "Kling Video Generation endpoints"
     },
     {
-      "name": "视频生成/即梦格式",
-      "description": "视频生成/即梦格式"
+      "name": "Jimeng Video Generation",
+      "description": "Jimeng Video Generation endpoints"
     },
     {
-      "name": "Claude格式(Messages)",
-      "description": "Claude格式(Messages)"
+      "name": "Claude Messages",
+      "description": "Claude Messages endpoints"
     },
     {
-      "name": "Gemini格式",
-      "description": "Gemini格式"
+      "name": "Gemini API",
+      "description": "Gemini API endpoints"
     },
     {
-      "name": "OpenAI格式(Embeddings)",
-      "description": "OpenAI格式(Embeddings)"
+      "name": "OpenAI Embeddings",
+      "description": "OpenAI Embeddings endpoints"
     },
     {
-      "name": "文本补全(Completions)",
-      "description": "文本补全(Completions)"
+      "name": "Text Completions",
+      "description": "Text Completions endpoints"
     },
     {
-      "name": "OpenAI音频(Audio)",
-      "description": "OpenAI音频(Audio)"
+      "name": "OpenAI Audio",
+      "description": "OpenAI Audio endpoints"
     },
     {
-      "name": "重排序(Rerank)",
-      "description": "重排序(Rerank)"
+      "name": "Rerank",
+      "description": "Rerank endpoints"
     },
     {
       "name": "Moderations",
@@ -83,27 +83,27 @@
       "description": "Realtime"
     },
     {
-      "name": "未实现",
-      "description": "未实现"
+      "name": "Not Implemented",
+      "description": "Not Implemented endpoints"
     },
     {
-      "name": "未实现/Fine-tunes",
-      "description": "未实现/Fine-tunes"
+      "name": "Fine-tunes (Not Implemented)",
+      "description": "Fine-tunes (Not Implemented) endpoints"
     },
     {
-      "name": "未实现/Files",
-      "description": "未实现/Files"
+      "name": "Files (Not Implemented)",
+      "description": "Files (Not Implemented) endpoints"
     }
   ],
   "paths": {
     "/v1/models": {
       "get": {
-        "summary": "获取模型列表",
+        "summary": "List Models",
         "deprecated": false,
         "description": "获取当前可用的模型列表。\n\n根据请求头自动识别返回格式：\n- 包含 `x-api-key` 和 `anthropic-version` 头时返回 Anthropic 格式\n- 包含 `x-goog-api-key` 头或 `key` 查询参数时返回 Gemini 格式\n- 其他情况返回 OpenAI 格式\n",
         "operationId": "get_v1_models",
         "tags": [
-          "获取模型列表"
+          "Models"
         ],
         "parameters": [
           {
@@ -180,12 +180,12 @@
     },
     "/v1beta/models": {
       "get": {
-        "summary": "Gemini 格式获取",
+        "summary": "Generate Gemini Content",
         "deprecated": false,
         "description": "以 Gemini API 格式返回可用模型列表",
         "operationId": "get_v1beta_models",
         "tags": [
-          "获取模型列表"
+          "Models"
         ],
         "parameters": [],
         "responses": {
@@ -210,12 +210,12 @@
     },
     "/v1/chat/completions": {
       "post": {
-        "summary": "创建聊天对话",
+        "summary": "Create Chat Completion",
         "deprecated": false,
         "description": "根据对话历史创建模型响应。支持流式和非流式响应。\n\n兼容 OpenAI Chat Completions API。\n",
         "operationId": "post_v1_chat_completions",
         "tags": [
-          "OpenAI格式(Chat)"
+          "OpenAI Chat"
         ],
         "parameters": [],
         "requestBody": {
@@ -272,12 +272,12 @@
     },
     "/v1/responses": {
       "post": {
-        "summary": "创建响应 (OpenAI Responses API)",
+        "summary": "Create Response",
         "deprecated": false,
         "description": "OpenAI Responses API，用于创建模型响应。\n支持多轮对话、工具调用、推理等功能。\n",
         "operationId": "post_v1_responses",
         "tags": [
-          "OpenAI格式(Responses)"
+          "OpenAI Responses"
         ],
         "parameters": [],
         "requestBody": {
@@ -312,12 +312,12 @@
     },
     "/v1/responses/compact": {
       "post": {
-        "summary": "压缩对话 (OpenAI Responses API)",
+        "summary": "Compact Conversation",
         "deprecated": false,
         "description": "OpenAI Responses API，用于对长对话进行 compaction。",
         "operationId": "post_v1_responses_compact",
         "tags": [
-          "OpenAI格式(Responses)"
+          "OpenAI Responses"
         ],
         "parameters": [],
         "requestBody": {
@@ -352,12 +352,12 @@
     },
     "/v1/images/generations": {
       "post": {
-        "summary": "生成图像(qwen-image)",
+        "summary": "Generate Qwen Image",
         "deprecated": false,
         "description": " 百炼qwen-image系列图片生成",
         "operationId": "post_v1_images_generations",
         "tags": [
-          "图片生成/Qwen千问"
+          "Qwen Image Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -468,12 +468,12 @@
     },
     "/v1/images/edits": {
       "post": {
-        "summary": "编辑图像(qwen-image-edit)",
+        "summary": "Edit Qwen Image",
         "deprecated": false,
         "description": " 百炼qwen-image系列图片生成",
         "operationId": "post_v1_images_edits",
         "tags": [
-          "图片生成/Qwen千问"
+          "Qwen Image Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -570,12 +570,12 @@
     },
     "/v1/videos": {
       "post": {
-        "summary": "创建视频 ",
+        "summary": "Create Video",
         "deprecated": false,
         "description": "OpenAI 兼容的视频生成接口。\n\n参考文档: https://platform.openai.com/docs/api-reference/videos/create\n",
         "operationId": "post_v1_videos",
         "tags": [
-          "视频生成/Sora兼容格式"
+          "Sora-Compatible Video Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -713,12 +713,12 @@
     },
     "/v1/videos/{task_id}": {
       "get": {
-        "summary": "获取视频任务状态 ",
+        "summary": "Get Video Task Status",
         "deprecated": false,
         "description": "OpenAI 兼容的视频任务状态查询接口。\n\n返回视频任务的详细状态信息。\n",
         "operationId": "get_v1_videos_task_id",
         "tags": [
-          "视频生成/Sora兼容格式"
+          "Sora-Compatible Video Generation"
         ],
         "parameters": [
           {
@@ -806,12 +806,12 @@
     },
     "/v1/videos/{task_id}/content": {
       "get": {
-        "summary": "获取视频内容",
+        "summary": "Get Video Content",
         "deprecated": false,
         "description": "获取已完成视频任务的视频文件内容。\n\n此接口会代理返回视频文件流。\n",
         "operationId": "get_v1_videos_task_id_content",
         "tags": [
-          "视频生成/Sora兼容格式"
+          "Sora-Compatible Video Generation"
         ],
         "parameters": [
           {
@@ -859,12 +859,12 @@
     },
     "/kling/v1/videos/text2video": {
       "post": {
-        "summary": "Kling 文生视频",
+        "summary": "Create Kling Text-to-Video Task",
         "deprecated": false,
         "description": "使用 Kling 模型从文本描述生成视频。\n\n支持的模型：kling-v1, kling-v1-5 等\n",
         "operationId": "post_kling_v1_videos_text2video",
         "tags": [
-          "视频生成/Kling格式"
+          "Kling Video Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -917,12 +917,12 @@
     },
     "/kling/v1/videos/text2video/{task_id}": {
       "get": {
-        "summary": "获取 Kling 文生视频任务状态",
+        "summary": "Get Kling Text-to-Video Task Status",
         "deprecated": false,
         "description": "查询 Kling 文生视频任务的状态和结果。",
         "operationId": "get_kling_v1_videos_text2video_task_id",
         "tags": [
-          "视频生成/Kling格式"
+          "Kling Video Generation"
         ],
         "parameters": [
           {
@@ -969,12 +969,12 @@
     },
     "/kling/v1/videos/image2video": {
       "post": {
-        "summary": "Kling 图生视频",
+        "summary": "Create Kling Image-to-Video Task",
         "deprecated": false,
         "description": "使用 Kling 模型从图片生成视频。\n\n支持通过 image 参数传入图片 URL 或 Base64 编码的图片数据。\n",
         "operationId": "post_kling_v1_videos_image2video",
         "tags": [
-          "视频生成/Kling格式"
+          "Kling Video Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -1027,12 +1027,12 @@
     },
     "/kling/v1/videos/image2video/{task_id}": {
       "get": {
-        "summary": "获取 Kling 图生视频任务状态",
+        "summary": "Get Kling Image-to-Video Task Status",
         "deprecated": false,
         "description": "查询 Kling 图生视频任务的状态和结果。",
         "operationId": "get_kling_v1_videos_image2video_task_id",
         "tags": [
-          "视频生成/Kling格式"
+          "Kling Video Generation"
         ],
         "parameters": [
           {
@@ -1079,12 +1079,12 @@
     },
     "/jimeng": {
       "post": {
-        "summary": "即梦视频生成",
+        "summary": "Create Jimeng Video",
         "deprecated": false,
         "description": "即梦官方 API 格式的视频生成接口。\n\n支持通过 Action 参数指定操作类型：\n- `CVSync2AsyncSubmitTask`: 提交视频生成任务\n- `CVSync2AsyncGetResult`: 获取任务结果\n\n需要在查询参数中指定 Action 和 Version。\n",
         "operationId": "post_jimeng",
         "tags": [
-          "视频生成/即梦格式"
+          "Jimeng Video Generation"
         ],
         "parameters": [
           {
@@ -1190,12 +1190,12 @@
     },
     "/v1/video/generations": {
       "post": {
-        "summary": "创建视频生成任务",
+        "summary": "Create Video Generation Task",
         "deprecated": false,
         "description": "提交视频生成任务，支持文生视频和图生视频。\n\n返回任务 ID，可通过 GET 接口查询任务状态。\n",
         "operationId": "post_v1_video_generations",
         "tags": [
-          "视频生成"
+          "Video Generation"
         ],
         "parameters": [],
         "requestBody": {
@@ -1248,12 +1248,12 @@
     },
     "/v1/video/generations/{task_id}": {
       "get": {
-        "summary": "获取视频生成任务状态",
+        "summary": "Get Video Generation Task Status",
         "deprecated": false,
         "description": "查询视频生成任务的状态和结果。\n\n任务状态：\n- `queued`: 排队中\n- `in_progress`: 生成中\n- `completed`: 已完成\n- `failed`: 失败\n",
         "operationId": "get_v1_video_generations_task_id",
         "tags": [
-          "视频生成"
+          "Video Generation"
         ],
         "parameters": [
           {
@@ -1300,12 +1300,12 @@
     },
     "/v1/messages": {
       "post": {
-        "summary": "Claude 聊天",
+        "summary": "Create Claude Message",
         "deprecated": false,
         "description": "Anthropic Claude Messages API 格式的请求。\n需要在请求头中包含 `anthropic-version`。\n",
         "operationId": "post_v1_messages",
         "tags": [
-          "Claude格式(Messages)"
+          "Claude Messages"
         ],
         "parameters": [
           {
@@ -1362,12 +1362,12 @@
     },
     "/v1beta/models/{model}:generateContent": {
       "post": {
-        "summary": "Gemini 图片(Nano Banana)",
+        "summary": "Generate Gemini Image",
         "deprecated": false,
         "description": "Gemini 图片生成",
         "operationId": "post_v1beta_models_model_generatecontent",
         "tags": [
-          "Gemini格式"
+          "Gemini API"
         ],
         "parameters": [
           {
@@ -1487,12 +1487,12 @@
     },
     "/v1/engines/{model}/embeddings": {
       "post": {
-        "summary": "Gemini 嵌入(Embeddings)",
+        "summary": "Create Gemini Embeddings",
         "deprecated": false,
         "description": "使用指定引擎/模型创建嵌入",
         "operationId": "post_v1_engines_model_embeddings",
         "tags": [
-          "Gemini格式"
+          "Gemini API"
         ],
         "parameters": [
           {
@@ -1538,12 +1538,12 @@
     },
     "/v1/embeddings": {
       "post": {
-        "summary": "创建文本嵌入",
+        "summary": "Create Embeddings",
         "deprecated": false,
         "description": "将文本转换为向量嵌入",
         "operationId": "post_v1_embeddings",
         "tags": [
-          "OpenAI格式(Embeddings)"
+          "OpenAI Embeddings"
         ],
         "parameters": [],
         "requestBody": {
@@ -1578,12 +1578,12 @@
     },
     "/v1/completions": {
       "post": {
-        "summary": "创建文本补全",
+        "summary": "Create Completion",
         "deprecated": false,
         "description": "基于给定提示创建文本补全",
         "operationId": "post_v1_completions",
         "tags": [
-          "文本补全(Completions)"
+          "Text Completions"
         ],
         "parameters": [],
         "requestBody": {
@@ -1618,12 +1618,12 @@
     },
     "/v1/audio/transcriptions": {
       "post": {
-        "summary": "音频转录",
+        "summary": "Create Audio Transcription",
         "deprecated": false,
         "description": "将音频转换为文本",
         "operationId": "post_v1_audio_transcriptions",
         "tags": [
-          "OpenAI音频(Audio)"
+          "OpenAI Audio"
         ],
         "parameters": [],
         "requestBody": {
@@ -1710,12 +1710,12 @@
     },
     "/v1/audio/translations": {
       "post": {
-        "summary": "音频翻译",
+        "summary": "Create Audio Translation",
         "deprecated": false,
         "description": "将音频翻译为英文文本",
         "operationId": "post_v1_audio_translations",
         "tags": [
-          "OpenAI音频(Audio)"
+          "OpenAI Audio"
         ],
         "parameters": [],
         "requestBody": {
@@ -1777,12 +1777,12 @@
     },
     "/v1/audio/speech": {
       "post": {
-        "summary": "文本转语音",
+        "summary": "Create Speech",
         "deprecated": false,
         "description": "将文本转换为音频",
         "operationId": "post_v1_audio_speech",
         "tags": [
-          "OpenAI音频(Audio)"
+          "OpenAI Audio"
         ],
         "parameters": [],
         "requestBody": {
@@ -1818,12 +1818,12 @@
     },
     "/v1/rerank": {
       "post": {
-        "summary": "文档重排序",
+        "summary": "Rerank Documents",
         "deprecated": false,
         "description": "根据查询对文档列表进行相关性重排序",
         "operationId": "post_v1_rerank",
         "tags": [
-          "重排序(Rerank)"
+          "Rerank"
         ],
         "parameters": [],
         "requestBody": {
@@ -1858,7 +1858,7 @@
     },
     "/v1/moderations": {
       "post": {
-        "summary": "内容审核",
+        "summary": "Create Moderation",
         "deprecated": false,
         "description": "检查文本内容是否违反使用政策",
         "operationId": "post_v1_moderations",
@@ -1898,7 +1898,7 @@
     },
     "/v1/realtime": {
       "get": {
-        "summary": "实时 WebSocket 连接",
+        "summary": "Realtime WebSocket Connection",
         "deprecated": false,
         "description": "建立 WebSocket 连接用于实时对话。\n\n**注意**: 这是一个 WebSocket 端点，需要使用 WebSocket 协议连接。\n\n连接 URL 示例: `wss://api.example.com/v1/realtime?model=gpt-4o-realtime`\n",
         "operationId": "get_v1_realtime",
@@ -1943,12 +1943,12 @@
     },
     "/v1/fine-tunes": {
       "get": {
-        "summary": "列出微调任务 (未实现)",
+        "summary": "List Fine-tune Jobs (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "get_v1_fine_tunes",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [],
         "responses": {
@@ -1971,12 +1971,12 @@
         ]
       },
       "post": {
-        "summary": "创建微调任务 (未实现)",
+        "summary": "Create Fine-tune Job (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "post_v1_fine_tunes",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [],
         "requestBody": {
@@ -2011,12 +2011,12 @@
     },
     "/v1/fine-tunes/{fine_tune_id}": {
       "get": {
-        "summary": "获取微调任务详情 (未实现)",
+        "summary": "Get Fine-tune Job (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "get_v1_fine_tunes_fine_tune_id",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2052,12 +2052,12 @@
     },
     "/v1/fine-tunes/{fine_tune_id}/cancel": {
       "post": {
-        "summary": "取消微调任务 (未实现)",
+        "summary": "Cancel Fine-tune Job (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "post_v1_fine_tunes_fine_tune_id_cancel",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2093,12 +2093,12 @@
     },
     "/v1/fine-tunes/{fine_tune_id}/events": {
       "get": {
-        "summary": "获取微调任务事件 (未实现)",
+        "summary": "List Fine-tune Events (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "get_v1_fine_tunes_fine_tune_id_events",
         "tags": [
-          "未实现/Fine-tunes"
+          "Fine-tunes (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2134,12 +2134,12 @@
     },
     "/v1/files": {
       "get": {
-        "summary": "列出文件 (未实现)",
+        "summary": "List Files (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "get_v1_files",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [],
         "responses": {
@@ -2162,12 +2162,12 @@
         ]
       },
       "post": {
-        "summary": "上传文件 (未实现)",
+        "summary": "Upload File (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "post_v1_files",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [],
         "requestBody": {
@@ -2212,12 +2212,12 @@
     },
     "/v1/files/{file_id}": {
       "get": {
-        "summary": "获取文件信息 (未实现)",
+        "summary": "Get File (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "get_v1_files_file_id",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2251,12 +2251,12 @@
         ]
       },
       "delete": {
-        "summary": "删除文件 (未实现)",
+        "summary": "Delete File (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "delete_v1_files_file_id",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [
           {
@@ -2292,12 +2292,12 @@
     },
     "/v1/files/{file_id}/content": {
       "get": {
-        "summary": "获取文件内容 (未实现)",
+        "summary": "Get File Content (Not Implemented)",
         "deprecated": false,
         "description": "此接口尚未实现",
         "operationId": "get_v1_files_file_id_content",
         "tags": [
-          "未实现/Files"
+          "Files (Not Implemented)"
         ],
         "parameters": [
           {

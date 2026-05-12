@@ -11,82 +11,82 @@
   },
   "tags": [
     {
-      "name": "系统",
-      "description": "系统"
+      "name": "System",
+      "description": "System endpoints"
     },
     {
-      "name": "用户登陆注册",
-      "description": "用户登陆注册"
+      "name": "User Authentication",
+      "description": "User Authentication endpoints"
     },
     {
       "name": "OAuth",
       "description": "OAuth"
     },
     {
-      "name": "用户管理",
-      "description": "用户管理"
+      "name": "User Management",
+      "description": "User Management endpoints"
     },
     {
-      "name": "充值",
-      "description": "充值"
+      "name": "Top-ups",
+      "description": "Top-ups endpoints"
     },
     {
-      "name": "两步验证",
-      "description": "两步验证"
+      "name": "Two-Factor Authentication",
+      "description": "Two-Factor Authentication endpoints"
     },
     {
-      "name": "安全验证",
-      "description": "安全验证"
+      "name": "Security Verification",
+      "description": "Security Verification endpoints"
     },
     {
-      "name": "渠道管理",
-      "description": "渠道管理"
+      "name": "Channel Management",
+      "description": "Channel Management endpoints"
     },
     {
-      "name": "令牌管理",
-      "description": "令牌管理"
+      "name": "Token Management",
+      "description": "Token Management endpoints"
     },
     {
-      "name": "兑换码",
-      "description": "兑换码"
+      "name": "Redemption Codes",
+      "description": "Redemption Codes endpoints"
     },
     {
-      "name": "日志",
-      "description": "日志"
+      "name": "Logs",
+      "description": "Logs endpoints"
     },
     {
-      "name": "数据统计",
-      "description": "数据统计"
+      "name": "Analytics",
+      "description": "Analytics endpoints"
     },
     {
-      "name": "分组",
-      "description": "分组"
+      "name": "Groups",
+      "description": "Groups endpoints"
     },
     {
-      "name": "任务",
-      "description": "任务"
+      "name": "Tasks",
+      "description": "Tasks endpoints"
     },
     {
-      "name": "供应商",
-      "description": "供应商"
+      "name": "Providers",
+      "description": "Providers endpoints"
     },
     {
-      "name": "模型管理",
-      "description": "模型管理"
+      "name": "Model Management",
+      "description": "Model Management endpoints"
     },
     {
-      "name": "系统设置",
-      "description": "系统设置"
+      "name": "System Settings",
+      "description": "System Settings endpoints"
     }
   ],
   "paths": {
     "/api/setup": {
       "get": {
-        "summary": "获取初始化状态",
+        "summary": "Get Initialization Status",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -103,11 +103,11 @@
         "operationId": "get_api_setup"
       },
       "post": {
-        "summary": "初始化系统",
+        "summary": "Initialize System",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "requestBody": {
@@ -143,11 +143,11 @@
     },
     "/api/status": {
       "get": {
-        "summary": "获取系统状态",
+        "summary": "Get System Status",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -166,11 +166,11 @@
     },
     "/api/status/test": {
       "get": {
-        "summary": "测试系统状态",
+        "summary": "Test System Status",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -189,11 +189,11 @@
     },
     "/api/uptime/status": {
       "get": {
-        "summary": "获取Uptime Kuma状态",
+        "summary": "Get Uptime Kuma Status",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -212,11 +212,11 @@
     },
     "/api/notice": {
       "get": {
-        "summary": "获取公告",
+        "summary": "Get Notice",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -235,11 +235,11 @@
     },
     "/api/user-agreement": {
       "get": {
-        "summary": "获取用户协议",
+        "summary": "Get User Agreement",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -258,11 +258,11 @@
     },
     "/api/privacy-policy": {
       "get": {
-        "summary": "获取隐私政策",
+        "summary": "Get Privacy Policy",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -281,11 +281,11 @@
     },
     "/api/about": {
       "get": {
-        "summary": "获取关于信息",
+        "summary": "Get About Information",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -304,11 +304,11 @@
     },
     "/api/home_page_content": {
       "get": {
-        "summary": "获取首页内容",
+        "summary": "Get Home Page Content",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -327,11 +327,11 @@
     },
     "/api/pricing": {
       "get": {
-        "summary": "获取定价信息",
+        "summary": "Get Pricing",
         "deprecated": false,
         "description": "🔓 无需鉴权（可选登录）",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -350,11 +350,11 @@
     },
     "/api/models": {
       "get": {
-        "summary": "获取模型列表",
+        "summary": "List Models",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -373,11 +373,11 @@
     },
     "/api/ratio_config": {
       "get": {
-        "summary": "获取倍率配置",
+        "summary": "Get Ratio Configuration",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "系统"
+          "System"
         ],
         "parameters": [],
         "responses": {
@@ -396,11 +396,11 @@
     },
     "/api/verification": {
       "get": {
-        "summary": "发送邮箱验证码",
+        "summary": "Send Email Verification Code",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [
           {
@@ -429,11 +429,11 @@
     },
     "/api/reset_password": {
       "get": {
-        "summary": "发送密码重置邮件",
+        "summary": "Send Password Reset Email",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [
           {
@@ -462,11 +462,11 @@
     },
     "/api/user/reset": {
       "post": {
-        "summary": "重置密码",
+        "summary": "Reset Password",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [],
         "requestBody": {
@@ -505,11 +505,11 @@
     },
     "/api/user/register": {
       "post": {
-        "summary": "用户注册",
+        "summary": "User Registration",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [],
         "requestBody": {
@@ -554,11 +554,11 @@
     },
     "/api/user/login": {
       "post": {
-        "summary": "用户登录",
+        "summary": "User Login",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [],
         "requestBody": {
@@ -594,11 +594,11 @@
     },
     "/api/user/login/2fa": {
       "post": {
-        "summary": "两步验证登录",
+        "summary": "Two-Factor Authentication Login",
         "deprecated": false,
         "description": "🔓 无需鉴权（登录流程）",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [],
         "requestBody": {
@@ -631,11 +631,11 @@
     },
     "/api/user/logout": {
       "get": {
-        "summary": "用户登出",
+        "summary": "User Logout",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [],
         "responses": {
@@ -654,11 +654,11 @@
     },
     "/api/user/groups": {
       "get": {
-        "summary": "获取用户分组列表",
+        "summary": "Get User Groups",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [],
         "responses": {
@@ -677,11 +677,11 @@
     },
     "/api/user/passkey/login/begin": {
       "post": {
-        "summary": "开始Passkey登录",
+        "summary": "Begin Passkey Login",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [],
         "responses": {
@@ -700,11 +700,11 @@
     },
     "/api/user/passkey/login/finish": {
       "post": {
-        "summary": "完成Passkey登录",
+        "summary": "Finish Passkey Login",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
-          "用户登陆注册"
+          "User Authentication"
         ],
         "parameters": [],
         "responses": {
@@ -723,7 +723,7 @@
     },
     "/api/oauth/github": {
       "get": {
-        "summary": "GitHub OAuth登录",
+        "summary": "GitHub OAuth Login",
         "deprecated": false,
         "description": "🔓 无需鉴权（OAuth回调）",
         "tags": [
@@ -756,7 +756,7 @@
     },
     "/api/oauth/discord": {
       "get": {
-        "summary": "Discord OAuth登录",
+        "summary": "Discord OAuth Login",
         "deprecated": false,
         "description": "🔓 无需鉴权（OAuth回调）",
         "tags": [
@@ -789,7 +789,7 @@
     },
     "/api/oauth/oidc": {
       "get": {
-        "summary": "OIDC登录",
+        "summary": "OIDC Login",
         "deprecated": false,
         "description": "🔓 无需鉴权（OAuth回调）",
         "tags": [
@@ -812,7 +812,7 @@
     },
     "/api/oauth/linuxdo": {
       "get": {
-        "summary": "LinuxDO OAuth登录",
+        "summary": "LinuxDO OAuth Login",
         "deprecated": false,
         "description": "🔓 无需鉴权（OAuth回调）",
         "tags": [
@@ -835,7 +835,7 @@
     },
     "/api/oauth/state": {
       "get": {
-        "summary": "生成OAuth State",
+        "summary": "Generate OAuth State",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
@@ -858,7 +858,7 @@
     },
     "/api/oauth/wechat": {
       "get": {
-        "summary": "微信OAuth登录",
+        "summary": "WeChat OAuth Login",
         "deprecated": false,
         "description": "🔓 无需鉴权（OAuth回调）",
         "tags": [
@@ -881,7 +881,7 @@
     },
     "/api/oauth/wechat/bind": {
       "get": {
-        "summary": "绑定微信",
+        "summary": "Bind WeChat",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
@@ -904,7 +904,7 @@
     },
     "/api/oauth/email/bind": {
       "get": {
-        "summary": "绑定邮箱",
+        "summary": "Bind Email",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
@@ -946,7 +946,7 @@
     },
     "/api/oauth/telegram/login": {
       "get": {
-        "summary": "Telegram登录",
+        "summary": "Telegram Login",
         "deprecated": false,
         "description": "🔓 无需鉴权（OAuth回调）",
         "tags": [
@@ -969,7 +969,7 @@
     },
     "/api/oauth/telegram/bind": {
       "get": {
-        "summary": "绑定Telegram",
+        "summary": "Bind Telegram",
         "deprecated": false,
         "description": "🔓 无需鉴权",
         "tags": [
@@ -992,11 +992,11 @@
     },
     "/api/user/self/groups": {
       "get": {
-        "summary": "获取当前用户分组",
+        "summary": "Get Current User Group",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1015,11 +1015,11 @@
     },
     "/api/user/self": {
       "get": {
-        "summary": "获取当前用户信息",
+        "summary": "Get Current User Profile",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1036,11 +1036,11 @@
         "operationId": "get_api_user_self"
       },
       "put": {
-        "summary": "更新当前用户信息",
+        "summary": "Update Current User Profile",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -1080,11 +1080,11 @@
         "operationId": "put_api_user_self"
       },
       "delete": {
-        "summary": "注销当前用户",
+        "summary": "Log Out Current User",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1103,11 +1103,11 @@
     },
     "/api/user/models": {
       "get": {
-        "summary": "获取用户可用模型",
+        "summary": "Get User Available Model",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1126,11 +1126,11 @@
     },
     "/api/user/token": {
       "get": {
-        "summary": "生成访问令牌",
+        "summary": "Generate Access Token",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1149,11 +1149,11 @@
     },
     "/api/user/passkey": {
       "get": {
-        "summary": "获取Passkey状态",
+        "summary": "Get Passkey Status",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1170,11 +1170,11 @@
         "operationId": "get_api_user_passkey"
       },
       "delete": {
-        "summary": "删除Passkey",
+        "summary": "Delete Passkey",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1193,11 +1193,11 @@
     },
     "/api/user/passkey/register/begin": {
       "post": {
-        "summary": "开始注册Passkey",
+        "summary": "Begin Register Passkey",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1216,11 +1216,11 @@
     },
     "/api/user/passkey/register/finish": {
       "post": {
-        "summary": "完成注册Passkey",
+        "summary": "Finish Register Passkey",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1239,11 +1239,11 @@
     },
     "/api/user/passkey/verify/begin": {
       "post": {
-        "summary": "开始验证Passkey",
+        "summary": "Begin Verification Passkey",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1262,11 +1262,11 @@
     },
     "/api/user/passkey/verify/finish": {
       "post": {
-        "summary": "完成验证Passkey",
+        "summary": "Finish Verification Passkey",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1285,11 +1285,11 @@
     },
     "/api/user/aff": {
       "get": {
-        "summary": "获取邀请码",
+        "summary": "Get Invite Code",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1308,11 +1308,11 @@
     },
     "/api/user/aff_transfer": {
       "post": {
-        "summary": "转换邀请额度",
+        "summary": "Convert Invite Quota",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -1345,11 +1345,11 @@
     },
     "/api/user/setting": {
       "put": {
-        "summary": "更新用户设置",
+        "summary": "Update User Settings",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -1391,11 +1391,11 @@
     },
     "/api/user/topup": {
       "get": {
-        "summary": "获取所有充值记录",
+        "summary": "List All Top-up Records",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1414,11 +1414,11 @@
     },
     "/api/user": {
       "get": {
-        "summary": "获取所有用户",
+        "summary": "List All User",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [
           {
@@ -1454,11 +1454,11 @@
         "operationId": "get_api_user"
       },
       "post": {
-        "summary": "创建用户",
+        "summary": "Create User",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -1484,11 +1484,11 @@
         "operationId": "post_api_user"
       },
       "put": {
-        "summary": "更新用户",
+        "summary": "Update User",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -1516,11 +1516,11 @@
     },
     "/api/user/topup/complete": {
       "post": {
-        "summary": "管理员完成充值",
+        "summary": "Admin Complete Top-up",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "responses": {
@@ -1539,11 +1539,11 @@
     },
     "/api/user/search": {
       "get": {
-        "summary": "搜索用户",
+        "summary": "Search User",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [
           {
@@ -1581,11 +1581,11 @@
     },
     "/api/user/{id}": {
       "get": {
-        "summary": "获取指定用户",
+        "summary": "Get Specific User",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [
           {
@@ -1613,11 +1613,11 @@
         "operationId": "get_api_user_id"
       },
       "delete": {
-        "summary": "删除用户",
+        "summary": "Delete User",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [
           {
@@ -1647,11 +1647,11 @@
     },
     "/api/user/{id}/reset_passkey": {
       "delete": {
-        "summary": "管理员重置用户Passkey",
+        "summary": "Admin Reset User Passkey",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [
           {
@@ -1681,11 +1681,11 @@
     },
     "/api/user/{id}/2fa": {
       "delete": {
-        "summary": "管理员禁用用户2FA",
+        "summary": "Admin Disable User 2FA",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [
           {
@@ -1715,11 +1715,11 @@
     },
     "/api/user/manage": {
       "post": {
-        "summary": "管理用户状态",
+        "summary": "Manage User Status",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "用户管理"
+          "User Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -1762,11 +1762,11 @@
     },
     "/api/user/topup/info": {
       "get": {
-        "summary": "获取充值信息",
+        "summary": "Get Top-up Profile",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1785,11 +1785,11 @@
     },
     "/api/user/topup/self": {
       "get": {
-        "summary": "获取用户充值记录",
+        "summary": "Get User Top-up Records",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1808,11 +1808,11 @@
     },
     "/api/user/pay": {
       "post": {
-        "summary": "发起易支付",
+        "summary": "Create EPay Payment",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1831,11 +1831,11 @@
     },
     "/api/user/amount": {
       "post": {
-        "summary": "获取支付金额",
+        "summary": "Get Payment Amount",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1854,11 +1854,11 @@
     },
     "/api/user/stripe/pay": {
       "post": {
-        "summary": "发起Stripe支付",
+        "summary": "Create Stripe Payment",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1877,11 +1877,11 @@
     },
     "/api/user/stripe/amount": {
       "post": {
-        "summary": "获取Stripe支付金额",
+        "summary": "Get Stripe Payment Amount",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1900,11 +1900,11 @@
     },
     "/api/user/creem/pay": {
       "post": {
-        "summary": "发起Creem支付",
+        "summary": "Create Creem Payment",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1923,11 +1923,11 @@
     },
     "/api/user/epay/notify": {
       "get": {
-        "summary": "易支付回调",
+        "summary": "EPay Callback",
         "deprecated": false,
         "description": "🔓 无需鉴权（支付回调）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1950,7 +1950,7 @@
         "deprecated": false,
         "description": "🔓 无需鉴权（Webhook回调）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1973,7 +1973,7 @@
         "deprecated": false,
         "description": "🔓 无需鉴权（Webhook回调）",
         "tags": [
-          "充值"
+          "Top-ups"
         ],
         "parameters": [],
         "responses": {
@@ -1992,11 +1992,11 @@
     },
     "/api/user/2fa/status": {
       "get": {
-        "summary": "获取2FA状态",
+        "summary": "Get 2FA Status",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "两步验证"
+          "Two-Factor Authentication"
         ],
         "parameters": [],
         "responses": {
@@ -2015,11 +2015,11 @@
     },
     "/api/user/2fa/setup": {
       "post": {
-        "summary": "设置2FA",
+        "summary": "Set Up 2FA",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "两步验证"
+          "Two-Factor Authentication"
         ],
         "parameters": [],
         "responses": {
@@ -2038,11 +2038,11 @@
     },
     "/api/user/2fa/enable": {
       "post": {
-        "summary": "启用2FA",
+        "summary": "Enable 2FA",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "两步验证"
+          "Two-Factor Authentication"
         ],
         "parameters": [],
         "requestBody": {
@@ -2075,11 +2075,11 @@
     },
     "/api/user/2fa/disable": {
       "post": {
-        "summary": "禁用2FA",
+        "summary": "Disable 2FA",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "两步验证"
+          "Two-Factor Authentication"
         ],
         "parameters": [],
         "requestBody": {
@@ -2112,11 +2112,11 @@
     },
     "/api/user/2fa/backup_codes": {
       "post": {
-        "summary": "重新生成备用码",
+        "summary": "Regenerate Backup Codes",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "两步验证"
+          "Two-Factor Authentication"
         ],
         "parameters": [],
         "responses": {
@@ -2135,11 +2135,11 @@
     },
     "/api/user/2fa/stats": {
       "get": {
-        "summary": "获取2FA统计",
+        "summary": "Get 2FA Statistics",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "两步验证"
+          "Two-Factor Authentication"
         ],
         "parameters": [],
         "responses": {
@@ -2158,11 +2158,11 @@
     },
     "/api/verify": {
       "post": {
-        "summary": "通用安全验证",
+        "summary": "General Security Verification",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "安全验证"
+          "Security Verification"
         ],
         "parameters": [],
         "responses": {
@@ -2181,11 +2181,11 @@
     },
     "/api/verify/status": {
       "get": {
-        "summary": "获取验证状态",
+        "summary": "Get Verification Status",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "安全验证"
+          "Security Verification"
         ],
         "parameters": [],
         "responses": {
@@ -2204,11 +2204,11 @@
     },
     "/api/channel": {
       "get": {
-        "summary": "获取所有渠道",
+        "summary": "List All Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2280,11 +2280,11 @@
         "operationId": "get_api_channel"
       },
       "post": {
-        "summary": "添加渠道",
+        "summary": "Add Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -2323,11 +2323,11 @@
         "operationId": "post_api_channel"
       },
       "put": {
-        "summary": "更新渠道",
+        "summary": "Update Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -2355,11 +2355,11 @@
     },
     "/api/channel/search": {
       "get": {
-        "summary": "搜索渠道",
+        "summary": "Search Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2406,11 +2406,11 @@
     },
     "/api/channel/models": {
       "get": {
-        "summary": "获取渠道模型列表",
+        "summary": "Get Channel Model List",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "responses": {
@@ -2429,11 +2429,11 @@
     },
     "/api/channel/models_enabled": {
       "get": {
-        "summary": "获取已启用模型列表",
+        "summary": "Get Enabled Model List",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "responses": {
@@ -2452,11 +2452,11 @@
     },
     "/api/channel/{id}": {
       "get": {
-        "summary": "获取指定渠道",
+        "summary": "Get Specific Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2484,11 +2484,11 @@
         "operationId": "get_api_channel_id"
       },
       "delete": {
-        "summary": "删除渠道",
+        "summary": "Delete Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2518,11 +2518,11 @@
     },
     "/api/channel/{id}/key": {
       "post": {
-        "summary": "获取渠道密钥",
+        "summary": "Get Channel Key",
         "deprecated": false,
         "description": "👑 需要超级管理员权限（Root）+ 安全验证",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2552,11 +2552,11 @@
     },
     "/api/channel/test": {
       "get": {
-        "summary": "测试所有渠道",
+        "summary": "Test All Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "responses": {
@@ -2575,11 +2575,11 @@
     },
     "/api/channel/test/{id}": {
       "get": {
-        "summary": "测试指定渠道",
+        "summary": "Test Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2609,11 +2609,11 @@
     },
     "/api/channel/update_balance": {
       "get": {
-        "summary": "更新所有渠道余额",
+        "summary": "Update All Channel Balance",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "responses": {
@@ -2632,11 +2632,11 @@
     },
     "/api/channel/update_balance/{id}": {
       "get": {
-        "summary": "更新指定渠道余额",
+        "summary": "Update Channel Balance",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2666,11 +2666,11 @@
     },
     "/api/channel/disabled": {
       "delete": {
-        "summary": "删除已禁用渠道",
+        "summary": "Delete Disabled Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "responses": {
@@ -2689,11 +2689,11 @@
     },
     "/api/channel/batch": {
       "post": {
-        "summary": "批量删除渠道",
+        "summary": "Bulk Delete Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -2729,11 +2729,11 @@
     },
     "/api/channel/fix": {
       "post": {
-        "summary": "修复渠道能力",
+        "summary": "Repair Channel Capabilities",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "responses": {
@@ -2752,11 +2752,11 @@
     },
     "/api/channel/fetch_models/{id}": {
       "get": {
-        "summary": "获取上游模型列表",
+        "summary": "Get Upstream Model List",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2786,11 +2786,11 @@
     },
     "/api/channel/fetch_models": {
       "post": {
-        "summary": "获取模型列表",
+        "summary": "List Models",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -2829,11 +2829,11 @@
     },
     "/api/channel/batch/tag": {
       "post": {
-        "summary": "批量设置渠道标签",
+        "summary": "Bulk Set Channel Tags",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -2872,11 +2872,11 @@
     },
     "/api/channel/tag/models": {
       "get": {
-        "summary": "获取标签模型",
+        "summary": "Get Tagged Models",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -2905,11 +2905,11 @@
     },
     "/api/channel/tag/disabled": {
       "post": {
-        "summary": "禁用标签渠道",
+        "summary": "Disable Tagged Channels",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -2942,11 +2942,11 @@
     },
     "/api/channel/tag/enabled": {
       "post": {
-        "summary": "启用标签渠道",
+        "summary": "Enable Tagged Channels",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -2979,11 +2979,11 @@
     },
     "/api/channel/tag": {
       "put": {
-        "summary": "编辑标签渠道",
+        "summary": "Edit Tagged Channels",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -3025,11 +3025,11 @@
     },
     "/api/channel/copy/{id}": {
       "post": {
-        "summary": "复制渠道",
+        "summary": "Copy Channel",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [
           {
@@ -3077,11 +3077,11 @@
     },
     "/api/channel/multi_key/manage": {
       "post": {
-        "summary": "管理多密钥",
+        "summary": "Manage Multiple Keys",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "渠道管理"
+          "Channel Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -3129,11 +3129,11 @@
     },
     "/api/token": {
       "get": {
-        "summary": "获取所有令牌",
+        "summary": "List All Token",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "令牌管理"
+          "Token Management"
         ],
         "parameters": [
           {
@@ -3169,11 +3169,11 @@
         "operationId": "get_api_token"
       },
       "post": {
-        "summary": "创建令牌",
+        "summary": "Create Token",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "令牌管理"
+          "Token Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -3199,11 +3199,11 @@
         "operationId": "post_api_token"
       },
       "put": {
-        "summary": "更新令牌",
+        "summary": "Update Token",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "令牌管理"
+          "Token Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -3231,11 +3231,11 @@
     },
     "/api/token/search": {
       "get": {
-        "summary": "搜索令牌",
+        "summary": "Search Token",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "令牌管理"
+          "Token Management"
         ],
         "parameters": [
           {
@@ -3264,11 +3264,11 @@
     },
     "/api/token/{id}": {
       "get": {
-        "summary": "获取指定令牌",
+        "summary": "Get Specific Token",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "令牌管理"
+          "Token Management"
         ],
         "parameters": [
           {
@@ -3296,11 +3296,11 @@
         "operationId": "get_api_token_id"
       },
       "delete": {
-        "summary": "删除令牌",
+        "summary": "Delete Token",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "令牌管理"
+          "Token Management"
         ],
         "parameters": [
           {
@@ -3330,11 +3330,11 @@
     },
     "/api/token/batch": {
       "post": {
-        "summary": "批量删除令牌",
+        "summary": "Bulk Delete Token",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "令牌管理"
+          "Token Management"
         ],
         "parameters": [],
         "requestBody": {
@@ -3370,11 +3370,11 @@
     },
     "/api/usage/token": {
       "get": {
-        "summary": "获取令牌使用情况",
+        "summary": "Get Token Usage",
         "deprecated": false,
         "description": "🔑 需要令牌认证（TokenAuth）",
         "tags": [
-          "令牌管理"
+          "Token Management"
         ],
         "parameters": [
           {
@@ -3404,11 +3404,11 @@
     },
     "/api/redemption": {
       "get": {
-        "summary": "获取所有兑换码",
+        "summary": "List All Redemption Code",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "兑换码"
+          "Redemption Codes"
         ],
         "parameters": [
           {
@@ -3444,11 +3444,11 @@
         "operationId": "get_api_redemption"
       },
       "post": {
-        "summary": "创建兑换码",
+        "summary": "Create Redemption Code",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "兑换码"
+          "Redemption Codes"
         ],
         "parameters": [],
         "requestBody": {
@@ -3474,11 +3474,11 @@
         "operationId": "post_api_redemption"
       },
       "put": {
-        "summary": "更新兑换码",
+        "summary": "Update Redemption Code",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "兑换码"
+          "Redemption Codes"
         ],
         "parameters": [],
         "requestBody": {
@@ -3506,11 +3506,11 @@
     },
     "/api/redemption/search": {
       "get": {
-        "summary": "搜索兑换码",
+        "summary": "Search Redemption Code",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "兑换码"
+          "Redemption Codes"
         ],
         "parameters": [
           {
@@ -3539,11 +3539,11 @@
     },
     "/api/redemption/{id}": {
       "get": {
-        "summary": "获取指定兑换码",
+        "summary": "Get Specific Redemption Code",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "兑换码"
+          "Redemption Codes"
         ],
         "parameters": [
           {
@@ -3571,11 +3571,11 @@
         "operationId": "get_api_redemption_id"
       },
       "delete": {
-        "summary": "删除兑换码",
+        "summary": "Delete Redemption Code",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "兑换码"
+          "Redemption Codes"
         ],
         "parameters": [
           {
@@ -3605,11 +3605,11 @@
     },
     "/api/redemption/invalid": {
       "delete": {
-        "summary": "删除无效兑换码",
+        "summary": "Delete Invalid Redemption Code",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "兑换码"
+          "Redemption Codes"
         ],
         "parameters": [],
         "responses": {
@@ -3628,11 +3628,11 @@
     },
     "/api/log": {
       "get": {
-        "summary": "获取所有日志",
+        "summary": "List All Logs",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "日志"
+          "Logs"
         ],
         "parameters": [
           {
@@ -3668,11 +3668,11 @@
         "operationId": "get_api_log"
       },
       "delete": {
-        "summary": "删除历史日志",
+        "summary": "Delete Historical Logs",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "日志"
+          "Logs"
         ],
         "parameters": [],
         "responses": {
@@ -3691,11 +3691,11 @@
     },
     "/api/log/stat": {
       "get": {
-        "summary": "获取日志统计",
+        "summary": "Get Log Statistics",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "日志"
+          "Logs"
         ],
         "parameters": [],
         "responses": {
@@ -3714,11 +3714,11 @@
     },
     "/api/log/self/stat": {
       "get": {
-        "summary": "获取个人日志统计",
+        "summary": "Get Personal Log Statistics",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "日志"
+          "Logs"
         ],
         "parameters": [],
         "responses": {
@@ -3737,11 +3737,11 @@
     },
     "/api/log/search": {
       "get": {
-        "summary": "搜索日志",
+        "summary": "Search Logs",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "日志"
+          "Logs"
         ],
         "parameters": [
           {
@@ -3770,11 +3770,11 @@
     },
     "/api/log/self": {
       "get": {
-        "summary": "获取个人日志",
+        "summary": "Get Personal Logs",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "日志"
+          "Logs"
         ],
         "parameters": [],
         "responses": {
@@ -3793,11 +3793,11 @@
     },
     "/api/log/self/search": {
       "get": {
-        "summary": "搜索个人日志",
+        "summary": "Search Personal Logs",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "日志"
+          "Logs"
         ],
         "parameters": [
           {
@@ -3826,11 +3826,11 @@
     },
     "/api/log/token": {
       "get": {
-        "summary": "通过令牌获取日志",
+        "summary": "Get by Token Get Logs",
         "deprecated": false,
         "description": "🔓 无需鉴权（通过令牌查询）",
         "tags": [
-          "日志"
+          "Logs"
         ],
         "parameters": [
           {
@@ -3859,11 +3859,11 @@
     },
     "/api/data": {
       "get": {
-        "summary": "获取所有额度数据",
+        "summary": "List All Quota Data",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "数据统计"
+          "Analytics"
         ],
         "parameters": [],
         "responses": {
@@ -3882,11 +3882,11 @@
     },
     "/api/data/self": {
       "get": {
-        "summary": "获取个人额度数据",
+        "summary": "Get Personal Quota Data",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "数据统计"
+          "Analytics"
         ],
         "parameters": [],
         "responses": {
@@ -3905,11 +3905,11 @@
     },
     "/api/group": {
       "get": {
-        "summary": "获取所有分组",
+        "summary": "List All Group",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "分组"
+          "Groups"
         ],
         "parameters": [],
         "responses": {
@@ -3928,11 +3928,11 @@
     },
     "/api/prefill_group": {
       "get": {
-        "summary": "获取预填分组",
+        "summary": "Get Preset Group",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "分组"
+          "Groups"
         ],
         "parameters": [],
         "responses": {
@@ -3949,11 +3949,11 @@
         "operationId": "get_api_prefill_group"
       },
       "post": {
-        "summary": "创建预填分组",
+        "summary": "Create Preset Group",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "分组"
+          "Groups"
         ],
         "parameters": [],
         "responses": {
@@ -3970,11 +3970,11 @@
         "operationId": "post_api_prefill_group"
       },
       "put": {
-        "summary": "更新预填分组",
+        "summary": "Update Preset Group",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "分组"
+          "Groups"
         ],
         "parameters": [],
         "responses": {
@@ -3993,11 +3993,11 @@
     },
     "/api/prefill_group/{id}": {
       "delete": {
-        "summary": "删除预填分组",
+        "summary": "Delete Preset Group",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "分组"
+          "Groups"
         ],
         "parameters": [
           {
@@ -4027,11 +4027,11 @@
     },
     "/api/mj": {
       "get": {
-        "summary": "获取所有Midjourney任务",
+        "summary": "List All Midjourney Tasks",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "任务"
+          "Tasks"
         ],
         "parameters": [],
         "responses": {
@@ -4050,11 +4050,11 @@
     },
     "/api/mj/self": {
       "get": {
-        "summary": "获取个人Midjourney任务",
+        "summary": "Get Personal Midjourney Tasks",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "任务"
+          "Tasks"
         ],
         "parameters": [],
         "responses": {
@@ -4073,11 +4073,11 @@
     },
     "/api/task": {
       "get": {
-        "summary": "获取所有任务",
+        "summary": "List All Tasks",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "任务"
+          "Tasks"
         ],
         "parameters": [],
         "responses": {
@@ -4096,11 +4096,11 @@
     },
     "/api/task/self": {
       "get": {
-        "summary": "获取个人任务",
+        "summary": "Get Personal Tasks",
         "deprecated": false,
         "description": "🔐 需要登录（User权限）",
         "tags": [
-          "任务"
+          "Tasks"
         ],
         "parameters": [],
         "responses": {
@@ -4119,11 +4119,11 @@
     },
     "/api/vendors": {
       "get": {
-        "summary": "获取所有供应商",
+        "summary": "List All Provider",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "供应商"
+          "Providers"
         ],
         "parameters": [],
         "responses": {
@@ -4140,11 +4140,11 @@
         "operationId": "get_api_vendors"
       },
       "post": {
-        "summary": "创建供应商",
+        "summary": "Create Provider",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "供应商"
+          "Providers"
         ],
         "parameters": [],
         "responses": {
@@ -4161,11 +4161,11 @@
         "operationId": "post_api_vendors"
       },
       "put": {
-        "summary": "更新供应商",
+        "summary": "Update Provider",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "供应商"
+          "Providers"
         ],
         "parameters": [],
         "responses": {
@@ -4184,11 +4184,11 @@
     },
     "/api/vendors/search": {
       "get": {
-        "summary": "搜索供应商",
+        "summary": "Search Provider",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "供应商"
+          "Providers"
         ],
         "parameters": [
           {
@@ -4217,11 +4217,11 @@
     },
     "/api/vendors/{id}": {
       "get": {
-        "summary": "获取指定供应商",
+        "summary": "Get Specific Provider",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "供应商"
+          "Providers"
         ],
         "parameters": [
           {
@@ -4249,11 +4249,11 @@
         "operationId": "get_api_vendors_id"
       },
       "delete": {
-        "summary": "删除供应商",
+        "summary": "Delete Provider",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "供应商"
+          "Providers"
         ],
         "parameters": [
           {
@@ -4283,11 +4283,11 @@
     },
     "/api/models/search": {
       "get": {
-        "summary": "搜索模型",
+        "summary": "Search Model",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "模型管理"
+          "Model Management"
         ],
         "parameters": [
           {
@@ -4316,11 +4316,11 @@
     },
     "/api/models/{id}": {
       "get": {
-        "summary": "获取指定模型",
+        "summary": "Get Specific Model",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "模型管理"
+          "Model Management"
         ],
         "parameters": [
           {
@@ -4348,11 +4348,11 @@
         "operationId": "get_api_models_id"
       },
       "delete": {
-        "summary": "删除模型",
+        "summary": "Delete Model",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "模型管理"
+          "Model Management"
         ],
         "parameters": [
           {
@@ -4382,11 +4382,11 @@
     },
     "/api/models/sync_upstream/preview": {
       "get": {
-        "summary": "预览上游模型同步",
+        "summary": "Preview Upstream Model Sync",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "模型管理"
+          "Model Management"
         ],
         "parameters": [],
         "responses": {
@@ -4405,11 +4405,11 @@
     },
     "/api/models/sync_upstream": {
       "post": {
-        "summary": "同步上游模型",
+        "summary": "Sync Upstream Model",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "模型管理"
+          "Model Management"
         ],
         "parameters": [],
         "responses": {
@@ -4428,11 +4428,11 @@
     },
     "/api/models/missing": {
       "get": {
-        "summary": "获取缺失模型",
+        "summary": "Get Missing Models",
         "deprecated": false,
         "description": "👨‍💼 需要管理员权限（Admin）",
         "tags": [
-          "模型管理"
+          "Model Management"
         ],
         "parameters": [],
         "responses": {
@@ -4451,11 +4451,11 @@
     },
     "/api/option": {
       "get": {
-        "summary": "获取系统选项",
+        "summary": "Get System Options",
         "deprecated": false,
         "description": "👑 需要超级管理员权限（Root）",
         "tags": [
-          "系统设置"
+          "System Settings"
         ],
         "parameters": [],
         "responses": {
@@ -4472,11 +4472,11 @@
         "operationId": "get_api_option"
       },
       "put": {
-        "summary": "更新系统选项",
+        "summary": "Update System Options",
         "deprecated": false,
         "description": "👑 需要超级管理员权限（Root）",
         "tags": [
-          "系统设置"
+          "System Settings"
         ],
         "parameters": [],
         "responses": {
@@ -4495,11 +4495,11 @@
     },
     "/api/option/rest_model_ratio": {
       "post": {
-        "summary": "重置模型倍率",
+        "summary": "Reset Model Ratio",
         "deprecated": false,
         "description": "👑 需要超级管理员权限（Root）",
         "tags": [
-          "系统设置"
+          "System Settings"
         ],
         "parameters": [],
         "responses": {
@@ -4518,11 +4518,11 @@
     },
     "/api/option/migrate_console_setting": {
       "post": {
-        "summary": "迁移控制台设置",
+        "summary": "Migrate Console Settings",
         "deprecated": false,
         "description": "👑 需要超级管理员权限（Root）",
         "tags": [
-          "系统设置"
+          "System Settings"
         ],
         "parameters": [],
         "responses": {
@@ -4541,11 +4541,11 @@
     },
     "/api/ratio_sync/channels": {
       "get": {
-        "summary": "获取可同步渠道",
+        "summary": "Get Available Sync Channel",
         "deprecated": false,
         "description": "👑 需要超级管理员权限（Root）",
         "tags": [
-          "系统设置"
+          "System Settings"
         ],
         "parameters": [],
         "responses": {
@@ -4564,11 +4564,11 @@
     },
     "/api/ratio_sync/fetch": {
       "post": {
-        "summary": "获取上游倍率",
+        "summary": "Get Upstream Ratio",
         "deprecated": false,
         "description": "👑 需要超级管理员权限（Root）",
         "tags": [
-          "系统设置"
+          "System Settings"
         ],
         "parameters": [],
         "responses": {
