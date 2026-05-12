@@ -42,11 +42,11 @@
         "groups": [
           {
             "group": "Backend API",
-            "openapi": "/docs/openapi/api.json"
+            "openapi": "/docs/openapi/api.mintlify.json"
           },
           {
             "group": "Relay API",
-            "openapi": "/docs/openapi/relay.json"
+            "openapi": "/docs/openapi/relay.mintlify.json"
           }
         ]
       }
