@@ -1,52 +1,109 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "maple",
+  "theme": "mint",
   "name": "LDX API 文档",
   "description": "LDX 后端接口、模型中转接口与文档部署说明。",
+  "logo": {
+    "light": "/docs/images/ldx-logo.svg",
+    "dark": "/docs/images/ldx-logo.svg"
+  },
+  "favicon": "/docs/images/ldx-logo.svg",
   "colors": {
-    "primary": "#2563EB"
+    "primary": "#16A34A",
+    "light": "#16A34A",
+    "dark": "#22C55E"
+  },
+  "appearance": {
+    "default": "light",
+    "strict": false
+  },
+  "icons": {
+    "library": "lucide"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Support",
+        "href": "mailto:support@example.com"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Dashboard",
+      "href": "/docs/zh/project/installation/BT"
+    }
   },
   "navigation": {
     "tabs": [
       {
-        "tab": "项目文档",
+        "tab": "中文",
         "groups": [
           {
-            "group": "部署与配置",
+            "group": "项目文档",
             "pages": [
-              "docs/installation/BT",
-              "docs/channel/other_setting"
+              "docs/zh/project/installation/BT",
+              "docs/zh/project/channel/other_setting"
             ]
           },
           {
-            "group": "术语与多语种",
+            "group": "术语表",
             "pages": [
-              "docs/translation-glossary",
-              "docs/translation-glossary.fr",
-              "docs/translation-glossary.ru"
+              "docs/zh/glossary/translation-glossary",
+              "docs/zh/glossary/translation-glossary.fr",
+              "docs/zh/glossary/translation-glossary.ru"
             ]
           },
           {
-            "group": "业务接口说明",
+            "group": "业务接口",
             "pages": [
-              "docs/api-key-invite-payment-code-route",
-              "docs/api-key-invite-payment-code-map",
-              "docs/subscription-redemption-order-routes",
-              "docs/ionet-client"
+              "docs/zh/business/api-key-invite-payment-code-route",
+              "docs/zh/business/api-key-invite-payment-code-map",
+              "docs/zh/business/subscription-redemption-order-routes",
+              "docs/zh/business/ionet-client"
             ]
+          },
+          {
+            "group": "后台 API",
+            "openapi": "/docs/zh/openapi/api.mintlify.json"
+          },
+          {
+            "group": "模型中转 API",
+            "openapi": "/docs/zh/openapi/relay.mintlify.json"
           }
         ]
       },
       {
-        "tab": "API Reference",
+        "tab": "English",
         "groups": [
           {
+            "group": "Project Docs",
+            "pages": [
+              "docs/en/project/installation/BT",
+              "docs/en/project/channel/other_setting"
+            ]
+          },
+          {
+            "group": "Glossary",
+            "pages": [
+              "docs/en/glossary/translation-glossary"
+            ]
+          },
+          {
+            "group": "Business APIs",
+            "pages": [
+              "docs/en/business/api-key-invite-payment-code-route",
+              "docs/en/business/api-key-invite-payment-code-map",
+              "docs/en/business/subscription-redemption-order-routes",
+              "docs/en/business/ionet-client"
+            ]
+          },
+          {
             "group": "Backend API",
-            "openapi": "/docs/openapi/api.mintlify.json"
+            "openapi": "/docs/en/openapi/api.mintlify.json"
           },
           {
             "group": "Relay API",
-            "openapi": "/docs/openapi/relay.mintlify.json"
+            "openapi": "/docs/en/openapi/relay.mintlify.json"
           }
         ]
       }
