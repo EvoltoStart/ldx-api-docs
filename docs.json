@@ -4,10 +4,10 @@
   "name": "LDX API Docs",
   "description": "LDX backend API, relay API, and deployment documentation.",
   "logo": {
-    "light": "/docs/images/ldx-logo.svg",
-    "dark": "/docs/images/ldx-logo.svg"
+    "light": "/images/ldx-logo.svg",
+    "dark": "/images/ldx-logo.svg"
   },
-  "favicon": "/docs/images/ldx-icon.svg",
+  "favicon": "/images/ldx-icon.svg",
   "colors": {
     "primary": "#16A34A"
   },
@@ -22,24 +22,24 @@
               {
                 "group": "项目文档",
                 "pages": [
-                  "docs/zh/project/channel/other_setting"
+                  "zh/project/channel/other_setting"
                 ]
               },
               {
                 "group": "术语表",
                 "pages": [
-                  "docs/zh/glossary/translation-glossary",
-                  "docs/zh/glossary/translation-glossary.fr",
-                  "docs/zh/glossary/translation-glossary.ru"
+                  "zh/glossary/translation-glossary",
+                  "zh/glossary/translation-glossary.fr",
+                  "zh/glossary/translation-glossary.ru"
                 ]
               },
               {
                 "group": "业务接口",
                 "pages": [
-                  "docs/zh/business/api-key-invite-payment-code-route",
-                  "docs/zh/business/api-key-invite-payment-code-map",
-                  "docs/zh/business/subscription-redemption-order-routes",
-                  "docs/zh/business/ionet-client"
+                  "zh/business/api-key-invite-payment-code-route",
+                  "zh/business/api-key-invite-payment-code-map",
+                  "zh/business/subscription-redemption-order-routes",
+                  "zh/business/ionet-client"
                 ]
               }
             ]
@@ -49,11 +49,11 @@
             "groups": [
               {
                 "group": "后台 API",
-                "openapi": "/docs/zh/openapi/api.mintlify.json"
+                "openapi": "/zh/openapi/api.mintlify.json"
               },
               {
                 "group": "模型中转 API",
-                "openapi": "/docs/zh/openapi/relay.mintlify.json"
+                "openapi": "/zh/openapi/relay.mintlify.json"
               }
             ]
           }
@@ -68,24 +68,24 @@
               {
                 "group": "Project Docs",
                 "pages": [
-                  "docs/en/project/channel/other_setting"
+                  "en/project/channel/other_setting"
                 ]
               },
               {
                 "group": "Glossary",
                 "pages": [
-                  "docs/en/glossary/translation-glossary",
-                  "docs/en/glossary/translation-glossary.fr",
-                  "docs/en/glossary/translation-glossary.ru"
+                  "en/glossary/translation-glossary",
+                  "en/glossary/translation-glossary.fr",
+                  "en/glossary/translation-glossary.ru"
                 ]
               },
               {
                 "group": "Business APIs",
                 "pages": [
-                  "docs/en/business/api-key-invite-payment-code-route",
-                  "docs/en/business/api-key-invite-payment-code-map",
-                  "docs/en/business/subscription-redemption-order-routes",
-                  "docs/en/business/ionet-client"
+                  "en/business/api-key-invite-payment-code-route",
+                  "en/business/api-key-invite-payment-code-map",
+                  "en/business/subscription-redemption-order-routes",
+                  "en/business/ionet-client"
                 ]
               }
             ]
@@ -95,11 +95,11 @@
             "groups": [
               {
                 "group": "Backend API",
-                "openapi": "/docs/en/openapi/api.mintlify.json"
+                "openapi": "/en/openapi/api.mintlify.json"
               },
               {
                 "group": "Relay API",
-                "openapi": "/docs/en/openapi/relay.mintlify.json"
+                "openapi": "/en/openapi/relay.mintlify.json"
               }
             ]
           }
