@@ -52,10 +52,6 @@
                 "openapi": "/zh/openapi/public-api.mintlify.json"
               },
               {
-                "group": "后台 API",
-                "openapi": "/zh/openapi/api.mintlify.json"
-              },
-              {
                 "group": "开发者 API",
                 "openapi": "/zh/openapi/relay.mintlify.json"
               }
