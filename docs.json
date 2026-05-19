@@ -48,11 +48,15 @@
             "tab": "API Reference",
             "groups": [
               {
+                "group": "平台 API",
+                "openapi": "/zh/openapi/public-api.mintlify.json"
+              },
+              {
                 "group": "后台 API",
                 "openapi": "/zh/openapi/api.mintlify.json"
               },
               {
-                "group": "模型中转 API",
+                "group": "开发者 API",
                 "openapi": "/zh/openapi/relay.mintlify.json"
               }
             ]
@@ -94,11 +98,15 @@
             "tab": "API Reference",
             "groups": [
               {
+                "group": "Platform API",
+                "openapi": "/en/openapi/public-api.mintlify.json"
+              },
+              {
                 "group": "Backend API",
                 "openapi": "/en/openapi/api.mintlify.json"
               },
               {
-                "group": "Relay API",
+                "group": "Developer API",
                 "openapi": "/en/openapi/relay.mintlify.json"
               }
             ]

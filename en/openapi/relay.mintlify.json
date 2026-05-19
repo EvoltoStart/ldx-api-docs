@@ -2330,6 +2330,297 @@
           }
         ]
       }
+    },
+    "/v1/models/{model}": {
+      "get": {
+        "summary": "Get Models",
+        "deprecated": false,
+        "description": "Get model details by model ID in OpenAI-compatible format.",
+        "operationId": "get_v1_models_model",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "path",
+            "description": "Model ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model detail retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Model not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/images/generations/{task_id}": {
+      "get": {
+        "summary": "Get Images Generations",
+        "deprecated": false,
+        "description": "Query the status of an asynchronous image generation task.",
+        "operationId": "get_v1_images_generations_task_id",
+        "tags": [
+          "OpenAI-Compatible Image Generation"
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "Task ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task status retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/edits": {
+      "post": {
+        "summary": "Create Edits",
+        "deprecated": false,
+        "description": "Compatibility endpoint for image editing. Behavior is the same as /v1/images/edits.",
+        "operationId": "post_v1_edits",
+        "tags": [
+          "OpenAI-Compatible Image Generation"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Request accepted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid request parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/videos/{task_id}/remix": {
+      "post": {
+        "summary": "Create Videos Remix",
+        "deprecated": false,
+        "description": "Create a remix task based on an existing video task.",
+        "operationId": "post_v1_videos_task_id_remix",
+        "tags": [
+          "Sora-Compatible Video Generation"
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "Video task ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Video task created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1beta/openai/models": {
+      "get": {
+        "summary": "List Openai Models",
+        "deprecated": false,
+        "description": "Return model list in OpenAI-compatible format under the v1beta prefix.",
+        "operationId": "get_v1beta_openai_models",
+        "tags": [
+          "Models"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Model list retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelsResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/images/variations": {
+      "post": {
+        "summary": "Create Images Variations",
+        "deprecated": false,
+        "description": "This endpoint is currently not implemented.",
+        "operationId": "post_v1_images_variations",
+        "tags": [
+          "Not Implemented"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "501": {
+            "description": "Endpoint not implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
     }
   },
   "components": {

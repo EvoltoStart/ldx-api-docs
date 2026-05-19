@@ -285,26 +285,26 @@
         ]
       }
     },
-	    "/v1/responses/compact": {
-	      "post": {
-	        "summary": "压缩对话 (OpenAI Responses API)",
-	        "deprecated": false,
-	        "description": "OpenAI Responses API，用于对长对话进行 compaction。",
-	        "operationId": "compactResponse",
+    "/v1/responses/compact": {
+      "post": {
+        "summary": "压缩对话 (OpenAI Responses API)",
+        "deprecated": false,
+        "description": "OpenAI Responses API，用于对长对话进行 compaction。",
+        "operationId": "compactResponse",
         "tags": [
           "OpenAI格式(Responses)"
         ],
         "parameters": [],
-	        "requestBody": {
-	          "content": {
-	            "application/json": {
-	              "schema": {
-	                "$ref": "#/components/schemas/ResponsesCompactionRequest"
-	              }
-	            }
-	          },
-	          "required": true
-	        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResponsesCompactionRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "200": {
             "description": "成功压缩对话",
@@ -1052,7 +1052,7 @@
         ]
       }
     },
-    "/jimeng/": {
+    "/jimeng": {
       "post": {
         "summary": "即梦视频生成",
         "deprecated": false,
@@ -2305,6 +2305,297 @@
           }
         ]
       }
+    },
+    "/v1/models/{model}": {
+      "get": {
+        "summary": "Get model detail",
+        "deprecated": false,
+        "description": "Get model details by model ID in OpenAI-compatible format.",
+        "operationId": "retrieveModel",
+        "tags": [
+          "\u83b7\u53d6\u6a21\u578b\u5217\u8868"
+        ],
+        "parameters": [
+          {
+            "name": "model",
+            "in": "path",
+            "description": "Model ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Model detail retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Model not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/images/generations/{task_id}": {
+      "get": {
+        "summary": "Get image generation task status",
+        "deprecated": false,
+        "description": "Query the status of an asynchronous image generation task.",
+        "operationId": "getImageGenerationTaskStatus",
+        "tags": [
+          "\u56fe\u7247\u751f\u6210/OpenAI\u517c\u5bb9\u683c\u5f0f"
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "Task ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Task status retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/edits": {
+      "post": {
+        "summary": "Edit image (compat endpoint)",
+        "deprecated": false,
+        "description": "Compatibility endpoint for image editing. Behavior is the same as /v1/images/edits.",
+        "operationId": "editImageCompat",
+        "tags": [
+          "\u56fe\u7247\u751f\u6210/OpenAI\u517c\u5bb9\u683c\u5f0f"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Request accepted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "400": {
+            "description": "Invalid request parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/videos/{task_id}/remix": {
+      "post": {
+        "summary": "Remix video",
+        "deprecated": false,
+        "description": "Create a remix task based on an existing video task.",
+        "operationId": "remixVideo",
+        "tags": [
+          "\u89c6\u9891\u751f\u6210/Sora\u517c\u5bb9\u683c\u5f0f"
+        ],
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "description": "Video task ID",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Video task created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            },
+            "headers": {}
+          },
+          "404": {
+            "description": "Task not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1beta/openai/models": {
+      "get": {
+        "summary": "List models (OpenAI-compatible in v1beta)",
+        "deprecated": false,
+        "description": "Return model list in OpenAI-compatible format under the v1beta prefix.",
+        "operationId": "listModelsOpenAICompatV1beta",
+        "tags": [
+          "\u83b7\u53d6\u6a21\u578b\u5217\u8868"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Model list retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ModelsResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/images/variations": {
+      "post": {
+        "summary": "Image variations (not implemented)",
+        "deprecated": false,
+        "description": "This endpoint is currently not implemented.",
+        "operationId": "createImageVariationNotImplemented",
+        "tags": [
+          "\u672a\u5b9e\u73b0"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {}
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "501": {
+            "description": "Endpoint not implemented",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            },
+            "headers": {}
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ]
+      }
     }
   },
   "components": {
@@ -3170,9 +3461,9 @@
           }
         }
       },
-	      "ResponsesCompactionResponse": {
-	        "type": "object",
-	        "properties": {
+      "ResponsesCompactionResponse": {
+        "type": "object",
+        "properties": {
           "id": {
             "type": "string"
           },
@@ -3197,44 +3488,44 @@
             "type": "object",
             "properties": {}
           }
-	        }
-	      },
-	      "ResponsesCompactionRequest": {
-	        "type": "object",
-	        "required": [
-	          "model"
-	        ],
-	        "properties": {
-	          "model": {
-	            "type": "string"
-	          },
-	          "input": {
-	            "description": "输入内容，可以是字符串或消息数组",
-	            "oneOf": [
-	              {
-	                "type": "string"
-	              },
-	              {
-	                "type": "array",
-	                "items": {
-	                  "type": "object",
-	                  "properties": {}
-	                }
-	              }
-	            ]
-	          },
-	          "instructions": {
-	            "type": "string"
-	          },
-	          "previous_response_id": {
-	            "type": "string"
-	          }
-	        }
-	      },
-	      "ResponsesStreamResponse": {
-	        "type": "object",
-	        "properties": {
-	          "type": {
+        }
+      },
+      "ResponsesCompactionRequest": {
+        "type": "object",
+        "required": [
+          "model"
+        ],
+        "properties": {
+          "model": {
+            "type": "string"
+          },
+          "input": {
+            "description": "输入内容，可以是字符串或消息数组",
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            ]
+          },
+          "instructions": {
+            "type": "string"
+          },
+          "previous_response_id": {
+            "type": "string"
+          }
+        }
+      },
+      "ResponsesStreamResponse": {
+        "type": "object",
+        "properties": {
+          "type": {
             "type": "string"
           },
           "response": {
@@ -7233,7 +7524,12 @@
       }
     }
   },
-  "servers": [],
+  "servers": [
+    {
+      "url": "https://api.ldx.dev",
+      "description": "API Base URL"
+    }
+  ],
   "security": [
     {
       "BearerAuth": []

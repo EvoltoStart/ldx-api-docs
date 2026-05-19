@@ -18,6 +18,7 @@
 - 不建议直接在 GitHub 仓库长期手动修改文档。
 - 新增页面需要同时更新内网项目里的 `docs.json` 和 `.gitlab-ci.yml` 同步白名单。
 - OpenAPI 页面使用 `docs/zh/openapi/*.mintlify.json` 和 `docs/en/openapi/*.mintlify.json`。
+- `api.json` 保留为全量内部总集；`public-api.json` 用于平台接口；`relay.json` 用于开发者调用接口。
 
 ## 目录说明
 
@@ -40,6 +41,5 @@ docs/
 ```bash
 node -e "JSON.parse(require('fs').readFileSync('docs.json','utf8')); console.log('docs.json ok')"
 node docs/zh/openapi/generate-mintlify-openapi.js
-npx -y @redocly/cli lint docs/zh/openapi/api.mintlify.json docs/zh/openapi/relay.mintlify.json docs/en/openapi/api.mintlify.json docs/en/openapi/relay.mintlify.json --max-problems 10
+npx -y @redocly/cli lint docs/zh/openapi/api.mintlify.json docs/zh/openapi/public-api.mintlify.json docs/zh/openapi/relay.mintlify.json docs/en/openapi/api.mintlify.json docs/en/openapi/public-api.mintlify.json docs/en/openapi/relay.mintlify.json --max-problems 10
 ```
-
