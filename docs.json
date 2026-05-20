@@ -20,6 +20,15 @@
             "tab": "指南",
             "groups": [
               {
+                "group": "Quickstart",
+                "pages": [
+                  "zh/getting-started/overview",
+                  "zh/getting-started/authentication",
+                  "zh/getting-started/first-request",
+                  "zh/getting-started/compatibility"
+                ]
+              },
+              {
                 "group": "项目文档",
                 "pages": [
                   "zh/project/channel/other_setting"
@@ -48,12 +57,12 @@
             "tab": "API Reference",
             "groups": [
               {
-                "group": "平台 API",
-                "openapi": "/zh/openapi/public-api.mintlify.json"
+                "group": "核心 API",
+                "openapi": "/zh/openapi/core-api.mintlify.json"
               },
               {
-                "group": "开发者 API",
-                "openapi": "/zh/openapi/relay.mintlify.json"
+                "group": "兼容 API",
+                "openapi": "/zh/openapi/compatibility-api.mintlify.json"
               }
             ]
           }
@@ -65,6 +74,15 @@
           {
             "tab": "Guides",
             "groups": [
+              {
+                "group": "Getting Started",
+                "pages": [
+                  "en/getting-started/overview",
+                  "en/getting-started/authentication",
+                  "en/getting-started/first-request",
+                  "en/getting-started/compatibility"
+                ]
+              },
               {
                 "group": "Project Docs",
                 "pages": [
@@ -94,16 +112,12 @@
             "tab": "API Reference",
             "groups": [
               {
-                "group": "Platform API",
-                "openapi": "/en/openapi/public-api.mintlify.json"
+                "group": "Core API",
+                "openapi": "/en/openapi/core-api.mintlify.json"
               },
               {
-                "group": "Backend API",
-                "openapi": "/en/openapi/api.mintlify.json"
-              },
-              {
-                "group": "Developer API",
-                "openapi": "/en/openapi/relay.mintlify.json"
+                "group": "Compatibility API",
+                "openapi": "/en/openapi/compatibility-api.mintlify.json"
               }
             ]
           }
