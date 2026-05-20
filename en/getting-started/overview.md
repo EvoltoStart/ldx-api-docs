@@ -1,9 +1,9 @@
 ---
-title: "Quickstart"
-description: "Get started with the real LDX inference APIs."
+title: "API Overview"
+description: "API Reference entry guide: core capabilities, compatibility, and integration path."
 ---
 
-# Quickstart
+# API Overview
 
 If you are here to integrate model calls, start with these sections:
 
@@ -18,6 +18,11 @@ If you are here to integrate model calls, start with these sections:
 ## Base URLs
 
 - Inference and compatibility APIs: `https://api.liandanxia.io`
+
+## OpenAPI entry points
+
+- Core API: `/en/openapi/core-api.mintlify.json`
+- Compatibility API: `/en/openapi/compatibility-api.mintlify.json`
 
 ## Recommended path
 
