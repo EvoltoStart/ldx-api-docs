@@ -31,11 +31,7 @@
                   "zh/guides/agent-integrations",
                   "zh/guides/agent-integrations-claude-code",
                   "zh/guides/agent-integrations-opencode",
-                  "zh/guides/agent-integrations-openclaw",
-                  "zh/guides/agent-integrations-kilo-code",
-                  "zh/guides/agent-integrations-github-copilot",
-                  "zh/guides/agent-integrations-github-copilot-cli",
-                  "zh/guides/agent-integrations-workbuddy-codebuddy"
+                  "zh/guides/agent-integrations-openclaw"
                 ]
               },
               {
@@ -58,7 +54,7 @@
             ]
           },
           {
-            "tab": "API 参考",
+            "tab": "API Reference",
             "groups": [
               {
                 "group": "入口说明",
@@ -99,11 +95,7 @@
                   "en/guides/agent-integrations",
                   "en/guides/agent-integrations-claude-code",
                   "en/guides/agent-integrations-opencode",
-                  "en/guides/agent-integrations-openclaw",
-                  "en/guides/agent-integrations-kilo-code",
-                  "en/guides/agent-integrations-github-copilot",
-                  "en/guides/agent-integrations-github-copilot-cli",
-                  "en/guides/agent-integrations-workbuddy-codebuddy"
+                  "en/guides/agent-integrations-openclaw"
                 ]
               },
               {

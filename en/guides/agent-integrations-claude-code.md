@@ -1,68 +1,115 @@
 ---
 title: "Integrate Claude Code"
-description: "Migrate Claude Code setup to LDX API using the real compatibility endpoints."
+description: "Practical Claude Code integration guide for LDX API: install, configure, verify, and troubleshoot."
 ---
 
-# Integrate Claude Code
+This guide is for users who work in terminal-first development workflows and want to route Claude Code traffic through the LDX gateway.
 
-Claude Code can connect to this project through Anthropic-compatible settings.
+## When to choose Claude Code
 
-## Migrate Existing Claude Code Setup
+- You mostly work from CLI and local repositories
+- You prefer Anthropic-style message APIs
+- You want minimal migration effort to LDX gateway routing
 
-If Claude Code is already installed, set these environment variables.
+## Prerequisites
 
-Linux / macOS:
+- A valid API key: `sk-...`
+- Network access to `https://token.liandanxia.com`
+- Node.js installed (18+ recommended)
+- `curl` installed
+
+## Step 1: Install Claude Code
+
+Recommended:
 
 ```bash
-export ANTHROPIC_BASE_URL=https://api.liandanxia.io
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+Alternative:
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+Verify:
+
+```bash
+claude --version
+```
+
+## Step 2: Configure LDX routing
+
+### Linux / macOS
+
+```bash
+export ANTHROPIC_BASE_URL=https://token.liandanxia.com
 export ANTHROPIC_AUTH_TOKEN=<your LDX API Key>
 export ANTHROPIC_MODEL=<model from /v1/models>
-export ANTHROPIC_DEFAULT_OPUS_MODEL=<model from /v1/models>
-export ANTHROPIC_DEFAULT_SONNET_MODEL=<model from /v1/models>
-export ANTHROPIC_DEFAULT_HAIKU_MODEL=<model from /v1/models>
 ```
 
-Windows PowerShell:
+### Windows PowerShell
 
 ```powershell
-$env:ANTHROPIC_BASE_URL="https://api.liandanxia.io"
+$env:ANTHROPIC_BASE_URL="https://token.liandanxia.com"
 $env:ANTHROPIC_AUTH_TOKEN="<your LDX API Key>"
 $env:ANTHROPIC_MODEL="<model from /v1/models>"
-$env:ANTHROPIC_DEFAULT_OPUS_MODEL="<model from /v1/models>"
-$env:ANTHROPIC_DEFAULT_SONNET_MODEL="<model from /v1/models>"
-$env:ANTHROPIC_DEFAULT_HAIKU_MODEL="<model from /v1/models>"
 ```
 
-> Note: This project supports `POST /v1/messages` with Anthropic-compatible headers.
+Tip: verify with temporary session variables first, then persist in shell startup files.
 
-## Fresh Setup
+## Step 3: Verify end-to-end
 
-1. Prepare API key (`sk-...`)
-2. Verify model visibility:
+Check model discovery:
 
 ```bash
-curl https://api.liandanxia.io/v1/models \
+curl https://token.liandanxia.com/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
-3. Apply environment variables and start Claude Code.
-
-## Minimal Compatibility Check
+Check Anthropic-compatible messages:
 
 ```bash
-curl https://api.liandanxia.io/v1/messages \
+curl https://token.liandanxia.com/v1/messages \
   -H "x-api-key: sk-your_api_key" \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
   -d '{
-    "model": "claude-sonnet-4-20250514",
-    "max_tokens": 512,
-    "messages": [{"role":"user","content":"hello"}]
+    "model":"claude-sonnet-4-20250514",
+    "max_tokens":256,
+    "messages":[{"role":"user","content":"hello"}]
   }'
 ```
 
-## Common Issues
+Run Claude Code:
 
-- `401`: invalid `ANTHROPIC_AUTH_TOKEN`
+```bash
+claude
+```
+
+### Success criteria
+
+- `/v1/models` returns model list
+- `/v1/messages` returns a valid response
+- First prompt in `claude` completes successfully
+
+## Troubleshooting
+
+- `401`: invalid or expired key
+- `404`: incorrect `ANTHROPIC_BASE_URL`
 - `400`: invalid model or payload fields
-- `429`: request rate too high
+- `429`: rate limit exceeded
+
+Recommended check order: URL -> key -> model name -> request payload.
+
+## Security and best practices
+
+- Never commit real keys to repository files
+- Inject secrets via environment or secret managers
+- Use separate default models for speed vs quality workflows
+
+## Sources
+
+- Claude Code Getting Started: https://docs.anthropic.com/en/docs/claude-code/getting-started
+- Claude Code Env Vars: https://code.claude.com/docs/en/env-vars
+- Anthropic Messages API: https://docs.anthropic.com/en/api/messages

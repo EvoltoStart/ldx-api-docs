@@ -1,84 +1,116 @@
 ---
 title: "Integrate OpenCode"
-description: "Configure OpenCode to use LDX API through OpenAI-compatible endpoints."
+description: "Practical OpenCode integration guide for LDX API: install, provider config, verification, and troubleshooting."
 ---
 
-# Integrate OpenCode
+This guide is for users who prefer project-level model configuration via `opencode.json` and OpenAI-compatible routing through LDX.
 
-OpenCode can connect through the OpenAI-compatible API surface.
+## When to choose OpenCode
 
-## 1) Required Values
+- You want model config tracked per project
+- You need different defaults across repositories
+- You want a stable OpenAI-compatible integration path
 
-- Base URL: `https://api.liandanxia.io/v1`
-- API Key: `sk-your_api_key`
-- Model: from `GET /v1/models`
+## Prerequisites
 
-## 2) Environment Variables
+- A valid API key: `sk-...`
+- Network access to `https://token.liandanxia.com`
+- Node.js installed (18+ recommended)
+- `curl` installed
 
-Linux / macOS:
+## Step 1: Install OpenCode
 
-```bash
-export OPENAI_BASE_URL=https://api.liandanxia.io/v1
-export OPENAI_API_KEY=<your LDX API Key>
-export OPENAI_MODEL=<model from /v1/models>
-```
-
-Windows PowerShell:
-
-```powershell
-$env:OPENAI_BASE_URL="https://api.liandanxia.io/v1"
-$env:OPENAI_API_KEY="<your LDX API Key>"
-$env:OPENAI_MODEL="<model from /v1/models>"
-```
-
-## 3) Config File Mode (if supported)
-
-Set provider values as:
-
-- `base_url`: `https://api.liandanxia.io/v1`
-- `api_key`: `sk-...`
-- `model`: from `/v1/models`
-
-## 4) Minimal Check
+Official installer:
 
 ```bash
-curl https://api.liandanxia.io/v1/chat/completions \
-  -H "Authorization: Bearer sk-your_api_key" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-4o-mini",
-    "messages": [{"role":"user","content":"hello"}]
-  }'
+curl -fsSL https://opencode.ai/install | bash
 ```
 
-## 5) Tool Calling Example
+Alternative:
 
 ```bash
-curl https://api.liandanxia.io/v1/chat/completions \
-  -H "Authorization: Bearer sk-your_api_key" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "model": "gpt-4o-mini",
-    "messages": [{"role":"user","content":"Check Shanghai weather"}],
-    "tools": [
-      {
-        "type":"function",
-        "function":{
-          "name":"get_weather",
-          "description":"Query weather",
-          "parameters":{
-            "type":"object",
-            "properties":{"city":{"type":"string"}},
-            "required":["city"]
-          }
-        }
+npm i -g opencode-ai@latest
+```
+
+Verify:
+
+```bash
+opencode --version
+```
+
+## Step 2: Configure provider in project
+
+Create `opencode.json` in project root:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ldx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LDX",
+      "models": {
+        "gpt-4o-mini": {}
+      },
+      "options": {
+        "baseURL": "https://token.liandanxia.com/v1",
+        "apiKey": "sk-your_api_key"
       }
-    ]
+    }
+  },
+  "model": "ldx/gpt-4o-mini"
+}
+```
+
+Key checks:
+
+- `baseURL` must include `/v1`
+- `model` must match provider model mapping
+- Provider alias (`ldx`) must be consistent across config
+
+## Step 3: Verify end-to-end
+
+API verification:
+
+```bash
+curl https://token.liandanxia.com/v1/chat/completions \
+  -H "Authorization: Bearer sk-your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model":"gpt-4o-mini",
+    "messages":[{"role":"user","content":"hello"}]
   }'
 ```
 
-## 6) Common Issues
+Run OpenCode:
 
-- `401`: wrong key or missing Bearer header
-- `404`: wrong base URL composition by tool
-- `429`: rate limit; add backoff and lower concurrency
+```bash
+opencode
+```
+
+### Success criteria
+
+- `chat/completions` returns valid JSON
+- OpenCode resolves `ldx/...` model successfully
+- First interactive request completes
+
+## Troubleshooting
+
+- `401`: invalid API key
+- `404`: wrong `baseURL` (often missing `/v1`)
+- `400`: invalid model or request schema
+- `429`: rate limit exceeded
+
+Recommended check order: JSON syntax -> baseURL -> model mapping -> key/permissions.
+
+## Security and best practices
+
+- Keep config shape in repo, keep real key out of repo
+- Inject production secrets from environment/secret manager
+- Use separate provider aliases for different environments if needed
+
+## Sources
+
+- OpenCode docs: https://opencode.ai/docs
+- OpenCode Providers: https://opencode.ai/docs/providers/
+- OpenCode Config: https://opencode.ai/docs/config/
