@@ -1,5 +1,5 @@
 ---
-title: "Agent 工具接入"
+title: "Agent 接入总览"
 description: "Claude Code、OpenCode、OpenClaw 的 LDX API 接入入口页。"
 ---
 
