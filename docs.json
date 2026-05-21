@@ -26,7 +26,7 @@
                 ]
               },
               {
-                "group": "Agent 工具接入",
+                "group": "Agent 接入指南",
                 "pages": [
                   "zh/guides/agent-integrations",
                   "zh/guides/agent-integrations-claude-code",
@@ -90,7 +90,7 @@
                 ]
               },
               {
-                "group": "Agent Integrations",
+                "group": "Agent Integration Guides",
                 "pages": [
                   "en/guides/agent-integrations",
                   "en/guides/agent-integrations-claude-code",
