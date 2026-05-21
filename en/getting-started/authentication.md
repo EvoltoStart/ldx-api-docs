@@ -3,8 +3,6 @@ title: "Authentication"
 description: "API Reference entry guide: auth patterns for public endpoints."
 ---
 
-# Authentication
-
 This page only covers authentication used by the public API Reference.
 
 ## 1. Standard auth (Core API)
@@ -43,5 +41,4 @@ Use headers based on request format:
 - `403`: key exists but lacks permission for the target capability
 - `429`: request rate is limited
 
-Next: [First Request](/docs/en/getting-started/first-request).
-
+Next: [First Request](/en/getting-started/first-request).

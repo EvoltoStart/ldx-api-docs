@@ -3,8 +3,6 @@ title: "认证"
 description: "API Reference 入口说明：对外调用认证方式与兼容请求头。"
 ---
 
-# 认证
-
 本页只说明对外 API Reference 的认证方式。
 
 ## 1. 标准认证（核心 API）
@@ -42,4 +40,4 @@ Authorization: Bearer sk-你的_api_key
 - `403`：Key 有效，但无权限访问目标能力
 - `429`：请求频率超限
 
-下一步看 [首个请求](/docs/zh/getting-started/first-request)。
+下一步看 [首个请求](/zh/getting-started/first-request)。

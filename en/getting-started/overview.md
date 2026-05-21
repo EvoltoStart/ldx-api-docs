@@ -3,8 +3,6 @@ title: "API Overview"
 description: "API Reference entry guide: core capabilities, compatibility, and integration path."
 ---
 
-# API Overview
-
 If you are here to integrate model calls, start with these sections:
 
 1. `Core API`
@@ -45,4 +43,4 @@ curl https://api.liandanxia.io/v1/chat/completions \
   }'
 ```
 
-Next, read [Authentication](/docs/en/getting-started/authentication) and [First Request](/docs/en/getting-started/first-request).
+Next, read [Authentication](/en/getting-started/authentication) and [First Request](/en/getting-started/first-request).

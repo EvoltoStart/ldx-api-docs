@@ -3,8 +3,6 @@ title: "Compatibility Formats"
 description: "Use the real Claude, Gemini, and provider-specific compatibility endpoints."
 ---
 
-# Compatibility Formats
-
 Besides the unified `/v1/*` surface, the project keeps a set of real compatibility endpoints.
 
 ## Claude compatibility
@@ -58,4 +56,3 @@ These are best when you already have an existing provider-specific request forma
 
 - New integrations: start with `Core API`
 - Existing Claude or Gemini SDKs: use `Compatibility API`
-- Account, usage, top-up, and invoice console flows: use internal account routes (not in public API reference)

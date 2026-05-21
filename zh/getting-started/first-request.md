@@ -3,8 +3,6 @@ title: "首个请求"
 description: "用真实接口完成模型列表查询和第一条 chat/completions 请求。"
 ---
 
-# 首个请求
-
 ## 1. 查询模型
 
 ```bash
@@ -74,4 +72,4 @@ curl https://token.liandanxia.com/v1/responses \
 - `400`
   - 请求体结构不符合接口要求
 
-如果你已有 Claude / Gemini 的现成 SDK，下一步看 [兼容格式](/docs/zh/getting-started/compatibility)。
+如果你已有 Claude / Gemini 的现成 SDK，下一步看 [兼容格式](/zh/getting-started/compatibility)。

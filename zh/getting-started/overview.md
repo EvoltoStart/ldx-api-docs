@@ -3,8 +3,6 @@ title: "API 概览"
 description: "API Reference 入口说明：核心能力、兼容能力与接入顺序。"
 ---
 
-# API 概览
-
 如果你是来接入模型调用，建议先看这几部分：
 
 1. `核心 API`
@@ -45,4 +43,4 @@ curl https://token.liandanxia.com/v1/chat/completions \
   }'
 ```
 
-下一步建议先看 [认证](/docs/zh/getting-started/authentication) 和 [首个请求](/docs/zh/getting-started/first-request)。
+下一步建议先看 [认证](/zh/getting-started/authentication) 和 [首个请求](/zh/getting-started/first-request)。

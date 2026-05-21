@@ -14,7 +14,7 @@ This guide is for users who prefer project-level model configuration via `openco
 ## Prerequisites
 
 - A valid API key: `sk-...`
-- Network access to `https://token.liandanxia.com`
+- Network access to `https://api.liandanxia.io`
 - Node.js installed (18+ recommended)
 - `curl` installed
 
@@ -53,7 +53,7 @@ Create `opencode.json` in project root:
         "gpt-4o-mini": {}
       },
       "options": {
-        "baseURL": "https://token.liandanxia.com/v1",
+        "baseURL": "https://api.liandanxia.io/v1",
         "apiKey": "sk-your_api_key"
       }
     }
@@ -73,7 +73,7 @@ Key checks:
 API verification:
 
 ```bash
-curl https://token.liandanxia.com/v1/chat/completions \
+curl https://api.liandanxia.io/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{

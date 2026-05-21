@@ -14,7 +14,7 @@ This guide is for users who work in terminal-first development workflows and wan
 ## Prerequisites
 
 - A valid API key: `sk-...`
-- Network access to `https://token.liandanxia.com`
+- Network access to `https://api.liandanxia.io`
 - Node.js installed (18+ recommended)
 - `curl` installed
 
@@ -43,7 +43,7 @@ claude --version
 ### Linux / macOS
 
 ```bash
-export ANTHROPIC_BASE_URL=https://token.liandanxia.com
+export ANTHROPIC_BASE_URL=https://api.liandanxia.io
 export ANTHROPIC_AUTH_TOKEN=<your LDX API Key>
 export ANTHROPIC_MODEL=<model from /v1/models>
 ```
@@ -51,7 +51,7 @@ export ANTHROPIC_MODEL=<model from /v1/models>
 ### Windows PowerShell
 
 ```powershell
-$env:ANTHROPIC_BASE_URL="https://token.liandanxia.com"
+$env:ANTHROPIC_BASE_URL="https://api.liandanxia.io"
 $env:ANTHROPIC_AUTH_TOKEN="<your LDX API Key>"
 $env:ANTHROPIC_MODEL="<model from /v1/models>"
 ```
@@ -63,14 +63,14 @@ Tip: verify with temporary session variables first, then persist in shell startu
 Check model discovery:
 
 ```bash
-curl https://token.liandanxia.com/v1/models \
+curl https://api.liandanxia.io/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
 Check Anthropic-compatible messages:
 
 ```bash
-curl https://token.liandanxia.com/v1/messages \
+curl https://api.liandanxia.io/v1/messages \
   -H "x-api-key: sk-your_api_key" \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \

@@ -14,7 +14,7 @@ This guide is for users who manage multiple providers via OpenClaw and want a cl
 ## Prerequisites
 
 - A valid API key: `sk-...`
-- Network access to `https://token.liandanxia.com`
+- Network access to `https://api.liandanxia.io`
 - Node.js installed (18+ recommended)
 - `curl` installed
 
@@ -42,7 +42,7 @@ openclaw --version
 
 ```bash
 openclaw config set models.providers.ldx.api "openai-completions"
-openclaw config set models.providers.ldx.baseUrl "https://token.liandanxia.com/v1"
+openclaw config set models.providers.ldx.baseUrl "https://api.liandanxia.io/v1"
 openclaw config set models.providers.ldx.apiKey "sk-your_api_key"
 openclaw config set models.providers.ldx.models '[{"id":"gpt-4o-mini"}]'
 openclaw config set agents.defaults.model.primary "ldx/gpt-4o-mini"

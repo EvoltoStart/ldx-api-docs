@@ -3,8 +3,6 @@ title: "First Request"
 description: "Use the real endpoints to list models and send your first chat request."
 ---
 
-# First Request
-
 ## 1. List models
 
 ```bash
@@ -76,4 +74,4 @@ curl https://api.liandanxia.io/v1/responses \
 - `400`
   - Request shape does not match the endpoint contract
 
-If you already have Claude or Gemini SDKs, continue with [Compatibility Formats](/docs/en/getting-started/compatibility).
+If you already have Claude or Gemini SDKs, continue with [Compatibility Formats](/en/getting-started/compatibility).

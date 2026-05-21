@@ -3,8 +3,6 @@ title: "兼容格式"
 description: "基于真实接口说明 Claude、Gemini 与其他兼容调用方式。"
 ---
 
-# 兼容格式
-
 当前项目除了统一 `/v1/*` 调用面，还保留了真实可用的兼容接口。
 
 ## Claude 兼容
@@ -55,4 +53,4 @@ GET /v1/models?key=sk-你的_api_key
 
 - 新接入项目：优先使用核心 API
 - 已有 Claude / Gemini SDK：优先使用兼容 API
-- 账户、用量、充值、发票等控制台能力：走内部系统接口，不对外展示
+
