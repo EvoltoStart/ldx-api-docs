@@ -2722,7 +2722,7 @@
   },
   "servers": [
     {
-      "url": "https://token.liandanxia.com",
+      "url": "https://api.liandanxia.com",
       "description": "API Base URL"
     }
   ],

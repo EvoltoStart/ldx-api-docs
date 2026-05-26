@@ -10,64 +10,75 @@ This guide is for users who work in terminal-first development workflows and wan
 - You mostly work from CLI and local repositories
 - You prefer Anthropic-style message APIs
 - You want minimal migration effort to LDX gateway routing
+- You need MCP (Model Context Protocol) integration and AI Agent capabilities
 
 ## Prerequisites
 
+- Claude Code installed (refer to [Claude Code Official Installation Guide](https://code.claude.com/docs/en/overview))
 - A valid API key: `sk-...`
 - Network access to `https://api.liandanxia.io`
-- Node.js installed (18+ recommended)
-- `curl` installed
+- `curl` installed for connectivity verification
 
-## Step 1: Install Claude Code
+## Configure LDX Gateway
 
-Recommended:
+Claude Code supports configuration via environment variables or settings files.
 
-```bash
-curl -fsSL https://claude.ai/install.sh | bash
-```
+### Method 1: Environment Variables (recommended for testing)
 
-Alternative:
-
-```bash
-npm install -g @anthropic-ai/claude-code
-```
-
-Verify:
-
-```bash
-claude --version
-```
-
-## Step 2: Configure LDX routing
-
-### Linux / macOS
+#### Linux / macOS / WSL
 
 ```bash
 export ANTHROPIC_BASE_URL=https://api.liandanxia.io
-export ANTHROPIC_AUTH_TOKEN=<your LDX API Key>
-export ANTHROPIC_MODEL=<model from /v1/models>
+export ANTHROPIC_AUTH_TOKEN=sk-your_api_key
+export ANTHROPIC_MODEL=gpt-4o-mini
 ```
 
-### Windows PowerShell
+#### Windows PowerShell
 
 ```powershell
 $env:ANTHROPIC_BASE_URL="https://api.liandanxia.io"
-$env:ANTHROPIC_AUTH_TOKEN="<your LDX API Key>"
-$env:ANTHROPIC_MODEL="<model from /v1/models>"
+$env:ANTHROPIC_AUTH_TOKEN="sk-your_api_key"
+$env:ANTHROPIC_MODEL="gpt-4o-mini"
 ```
 
-Tip: verify with temporary session variables first, then persist in shell startup files.
+### Method 2: Settings File (recommended for persistence)
 
-## Step 3: Verify end-to-end
+Create or edit `~/.claude/settings.json`:
 
-Check model discovery:
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.liandanxia.io",
+    "ANTHROPIC_AUTH_TOKEN": "sk-your_api_key",
+    "ANTHROPIC_MODEL": "gpt-4o-mini"
+  }
+}
+```
+
+**Settings file precedence**:
+- `~/.claude/settings.json` — Global config, applies to all projects
+- `.claude/settings.json` — Project config, can be committed to version control
+- `.claude/settings.local.json` — Project-local config, not committed
+
+### Important configuration notes
+
+| Environment Variable | Description | Required |
+|---------------------|-------------|----------|
+| `ANTHROPIC_BASE_URL` | LDX gateway address, **do not** add `/v1` suffix | Yes |
+| `ANTHROPIC_AUTH_TOKEN` | Your API Key, sent as `Authorization: Bearer` | Yes |
+| `ANTHROPIC_MODEL` | Default model name from `/v1/models` | Recommended |
+| `ANTHROPIC_API_KEY` | Alternative to `AUTH_TOKEN`, sent as `x-api-key` | Optional |
+
+## Verify Gateway Connectivity
+
+### 1. Verify model list
 
 ```bash
 curl https://api.liandanxia.io/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
-Check Anthropic-compatible messages:
+### 2. Verify Anthropic-compatible endpoint
 
 ```bash
 curl https://api.liandanxia.io/v1/messages \
@@ -75,41 +86,238 @@ curl https://api.liandanxia.io/v1/messages \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
   -d '{
-    "model":"claude-sonnet-4-20250514",
+    "model":"gpt-4o-mini",
     "max_tokens":256,
     "messages":[{"role":"user","content":"hello"}]
   }'
 ```
 
-Run Claude Code:
+### 3. Launch Claude Code
 
 ```bash
 claude
 ```
 
+Test with a prompt in the interactive interface:
+
+```
+Hello, please introduce yourself
+```
+
 ### Success criteria
 
-- `/v1/models` returns model list
-- `/v1/messages` returns a valid response
-- First prompt in `claude` completes successfully
+- ✅ `/v1/models` returns model list
+- ✅ `/v1/messages` returns valid JSON response
+- ✅ `claude` interactive interface works normally
+
+## Advanced Configuration
+
+### Enable gateway model discovery
+
+If your LDX gateway supports the `/v1/models` endpoint, enable automatic model discovery:
+
+```bash
+export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
+```
+
+Or in `settings.json`:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.liandanxia.io",
+    "ANTHROPIC_AUTH_TOKEN": "sk-your_api_key",
+    "CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY": "1"
+  }
+}
+```
+
+### Custom request headers
+
+Add custom headers (e.g., for internal gateway authentication):
+
+```bash
+export ANTHROPIC_CUSTOM_HEADERS="X-Custom-Auth: token123
+X-Team-ID: engineering"
+```
+
+### Configure timeout and retries
+
+```json
+{
+  "env": {
+    "API_TIMEOUT_MS": "1200000",
+    "CLAUDE_CODE_MAX_RETRIES": "5"
+  }
+}
+```
 
 ## Troubleshooting
 
-- `401`: invalid or expired key
-- `404`: incorrect `ANTHROPIC_BASE_URL`
-- `400`: invalid model or payload fields
-- `429`: rate limit exceeded
+### 1. Authentication failure (401 Unauthorized)
 
-Recommended check order: URL -> key -> model name -> request payload.
+**Causes**:
+- Invalid or expired API Key
+- Extra spaces in the key
+- Wrong authentication header
 
-## Security and best practices
+**Solution**:
+```bash
+# Check if key is correct
+echo $ANTHROPIC_AUTH_TOKEN
 
-- Never commit real keys to repository files
-- Inject secrets via environment or secret managers
-- Use separate default models for speed vs quality workflows
+# Reset (remove spaces)
+export ANTHROPIC_AUTH_TOKEN="sk-your_api_key"
+```
 
-## Sources
+### 2. Endpoint not found (404 Not Found)
 
-- Claude Code Getting Started: https://docs.anthropic.com/en/docs/claude-code/getting-started
-- Claude Code Env Vars: https://code.claude.com/docs/en/env-vars
-- Anthropic Messages API: https://docs.anthropic.com/en/api/messages
+**Causes**:
+- Incorrect `ANTHROPIC_BASE_URL`
+- Incorrectly added `/v1` suffix
+
+**Solution**:
+```bash
+# Correct configuration (no /v1)
+export ANTHROPIC_BASE_URL=https://api.liandanxia.io
+
+# Wrong configuration
+# export ANTHROPIC_BASE_URL=https://api.liandanxia.io/v1  ❌
+```
+
+### 3. Model unavailable (400 Bad Request)
+
+**Causes**:
+- Model name not in available list
+- Request parameters don't match interface requirements
+
+**Solution**:
+```bash
+# Query available models first
+curl https://api.liandanxia.io/v1/models \
+  -H "Authorization: Bearer sk-your_api_key"
+
+# Use model name from returned list
+export ANTHROPIC_MODEL=gpt-4o-mini
+```
+
+### 4. Rate limit error (429 Too Many Requests)
+
+**Causes**:
+- Request frequency exceeds limit
+- Too many concurrent requests
+
+**Solution**:
+- Reduce request frequency
+- Implement exponential backoff retry strategy
+- Contact admin to increase quota
+
+### 5. Windows installation issues
+
+**Problem**: Claude Code doesn't support native Windows
+
+**Solution**:
+1. Install WSL2:
+   ```powershell
+   wsl --install
+   ```
+2. Or install Git Bash and configure:
+   ```bash
+   export CLAUDE_CODE_GIT_BASH_PATH="/c/Program Files/Git/bin/bash.exe"
+   ```
+
+### 6. Gateway-specific issues
+
+If your gateway doesn't support certain Anthropic features, disable them:
+
+```bash
+# Disable experimental beta features
+export CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS=1
+
+# Disable tool search (if gateway doesn't support tool_reference)
+export ENABLE_TOOL_SEARCH=false
+```
+
+## Recommended troubleshooting order
+
+1. **Verify network connectivity** → Test Base URL with `curl`
+2. **Verify API Key** → Check key format and permissions
+3. **Verify model name** → Confirm model is in available list
+4. **Check request format** → Compare with official API docs
+5. **View debug logs** → Enable `--debug` mode
+
+```bash
+# Enable debug mode
+claude --debug
+
+# Or set environment variable
+export DEBUG=1
+```
+
+## Security and Best Practices
+
+### Key management
+
+❌ **Don't do this**:
+```bash
+# Don't hardcode keys in scripts
+export ANTHROPIC_AUTH_TOKEN=sk-real-key-here
+```
+
+✅ **Recommended approach**:
+```bash
+# Use secret management tools
+export ANTHROPIC_AUTH_TOKEN=$(vault kv get -field=api_key secret/ldx/claude-code)
+
+# Or use apiKeyHelper
+```
+
+Configure dynamic key retrieval in `settings.json`:
+
+```json
+{
+  "apiKeyHelper": "~/bin/get-ldx-key.sh",
+  "env": {
+    "CLAUDE_CODE_API_KEY_HELPER_TTL_MS": "3600000"
+  }
+}
+```
+
+### Model selection strategy
+
+```json
+{
+  "env": {
+    "ANTHROPIC_MODEL": "gpt-4o-mini",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "gpt-4o-mini",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "gpt-4o",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-20250514"
+  }
+}
+```
+
+### Project-level configuration
+
+Create `.claude/settings.json` in project root:
+
+```json
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.liandanxia.io",
+    "ANTHROPIC_MODEL": "gpt-4o-mini"
+  },
+  "contextPaths": [
+    ".github/copilot-instructions.md",
+    "CLAUDE.md"
+  ]
+}
+```
+
+**Note**: Don't commit configuration files containing real API Keys to version control.
+
+## Reference Resources
+
+- [Claude Code Official Docs](https://code.claude.com/docs/en/overview)
+- [Environment Variables Reference](https://claude-code.mintlify.app/en/env-vars)
+- [LLM Gateway Configuration](https://code.claude.com/docs/en/llm-gateway)
+- [Anthropic Messages API](https://docs.anthropic.com/en/api/messages)
