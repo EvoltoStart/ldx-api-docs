@@ -47,8 +47,7 @@
                 "pages": [
                   "zh/business/api-key-invite-payment-code-route",
                   "zh/business/api-key-invite-payment-code-map",
-                  "zh/business/subscription-redemption-order-routes",
-                  "zh/business/ionet-client"
+                  "zh/business/subscription-redemption-order-routes"
                 ]
               }
             ]
@@ -111,8 +110,7 @@
                 "pages": [
                   "en/business/api-key-invite-payment-code-route",
                   "en/business/api-key-invite-payment-code-map",
-                  "en/business/subscription-redemption-order-routes",
-                  "en/business/ionet-client"
+                  "en/business/subscription-redemption-order-routes"
                 ]
               }
             ]
