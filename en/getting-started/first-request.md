@@ -68,10 +68,10 @@ curl https://api.liandanxia.io/v1/responses \
 ## 5. What to check first on errors
 
 - `401`
-  - Invalid API key or malformed auth header
+    - Invalid API key or malformed auth header
 - `429`
-  - Rate-limited request
+    - Rate-limited request
 - `400`
-  - Request shape does not match the endpoint contract
+    - Request shape does not match the endpoint contract
 
 If you already have Claude or Gemini SDKs, continue with [Compatibility Formats](/en/getting-started/compatibility).

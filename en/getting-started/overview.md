@@ -6,12 +6,12 @@ description: "API Reference entry guide: core capabilities, compatibility, and i
 If you are here to integrate model calls, start with these sections:
 
 1. `Core API`
-   - The unified inference surface.
-   - Includes `/v1/models`, `/v1/chat/completions`, `/v1/responses`, `/v1/embeddings`, `/v1/images/generations`, `/v1/audio/*`, and `/v1/videos*`.
+    - The unified inference surface.
+    - Includes `/v1/models`, `/v1/chat/completions`, `/v1/responses`, `/v1/embeddings`, `/v1/images/generations`, `/v1/audio/*`, and `/v1/videos*`.
 
 2. `Compatibility API`
-   - For Claude, Gemini, Kling, Jimeng, and other provider-specific or compatibility formats.
-   - Includes `/v1/messages`, `/v1beta/models/{model}:generateContent`, `/kling/*`, and `/jimeng`.
+    - For Claude, Gemini, Kling, Jimeng, and other provider-specific or compatibility formats.
+    - Includes `/v1/messages`, `/v1beta/models/{model}:generateContent`, `/kling/*`, and `/jimeng`.
 
 ## Base URLs
 

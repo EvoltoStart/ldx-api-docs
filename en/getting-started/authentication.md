@@ -28,12 +28,12 @@ Authorization: Bearer sk-your_api_key
 Use headers based on request format:
 
 - Claude-compatible:
-  - `x-api-key: sk-your_api_key`
-  - `anthropic-version: 2023-06-01`
+    - `x-api-key: sk-your_api_key`
+    - `anthropic-version: 2023-06-01`
 - Gemini-compatible:
-  - `x-goog-api-key: sk-your_api_key`
+    - `x-goog-api-key: sk-your_api_key`
 - Gemini query-string form (model list):
-  - `GET /v1/models?key=sk-your_api_key`
+    - `GET /v1/models?key=sk-your_api_key`
 
 ## 3. Common auth errors
 

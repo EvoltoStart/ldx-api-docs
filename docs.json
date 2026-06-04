@@ -20,7 +20,7 @@
             "tab": "指南",
             "groups": [
               {
-                "group": "项目文档",
+                "group": "快速开始",
                 "pages": [
                   "zh/project/channel/other_setting"
                 ]
@@ -34,24 +34,7 @@
                   "zh/guides/agent-integrations-openclaw"
                 ]
               },
-              {
-                "group": "术语表",
-                "pages": [
-                  "zh/glossary/translation-glossary",
-                  "zh/glossary/translation-glossary.fr",
-                  "zh/glossary/translation-glossary.ru"
-                ]
-              },
-              {
-                "group": "业务接口",
-                "pages": [
-                  "zh/business/api-key-invite-payment-code-route",
-                  "zh/business/api-key-invite-payment-code-map",
-                  "zh/business/subscription-redemption-order-routes"
-                ]
-              }
-            ]
-          },
+
           {
             "tab": "API 参考",
             "groups": [
