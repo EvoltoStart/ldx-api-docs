@@ -1,9 +1,13 @@
 ---
-title: "API Overview"
-description: "API Reference entry guide: core capabilities, compatibility, and integration path."
+title: "Quick Start"
+description: "Recommended integration path from preparing an API key to making the first model call."
 ---
 
-If you are here to integrate model calls, start with these sections:
+If this is your first model integration, follow this page to set up authentication, list models, and send your first request.
+
+## Integration Path
+
+Start with these sections:
 
 1. `Core API`
     - The unified inference surface.
@@ -17,17 +21,12 @@ If you are here to integrate model calls, start with these sections:
 
 - Inference and compatibility APIs: `https://api.liandanxia.io`
 
-## OpenAPI entry points
-
-- Core API: `/en/openapi/core-api.mintlify.json`
-- Compatibility API: `/en/openapi/compatibility-api.mintlify.json`
-
 ## Recommended path
 
 1. Prepare your API key (`sk-...`)
 2. Call `GET /v1/models`
 3. Send your first `POST /v1/chat/completions`
-4. If you already use Claude or Gemini SDKs, move on to `Compatibility API`
+4. If you already use Claude or Gemini SDKs, continue with [Compatibility Formats](/en/getting-started/compatibility)
 
 ## Smallest working request
 
@@ -43,4 +42,4 @@ curl https://api.liandanxia.io/v1/chat/completions \
   }'
 ```
 
-Next, read [Authentication](/en/getting-started/authentication) and [First Request](/en/getting-started/first-request).
+Next, read [Authentication](/en/getting-started/authentication), then complete [First Request](/en/getting-started/first-request).

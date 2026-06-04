@@ -25,15 +25,14 @@
 ```text
 docs/
   zh/
-    project/    中文项目文档
-    business/   中文业务接口说明
-    glossary/   中文术语表
-    openapi/    中文 OpenAPI 文件
+    getting-started/    中文 API 入门说明
+    guides/             中文 Agent 接入指南
+    openapi/            中文 OpenAPI 文件
   en/
-    project/    英文项目文档
-    business/   英文业务接口说明
-    glossary/   英文术语表
-    openapi/    英文 OpenAPI 文件
+    getting-started/    英文 API 入门说明
+    guides/             英文 Agent 接入指南
+    openapi/            英文 OpenAPI 文件
+  images/                Mintlify 发布使用的 logo 与 favicon
 ```
 
 ## 本地校验
@@ -41,6 +40,5 @@ docs/
 ```bash
 node -e "JSON.parse(require('fs').readFileSync('docs.json','utf8')); console.log('docs.json ok')"
 node docs/zh/openapi/generate-mintlify-openapi.js
-npx -y @redocly/cli lint docs/zh/openapi/api.mintlify.json docs/zh/openapi/core-api.mintlify.json docs/zh/openapi/compatibility-api.mintlify.json docs/zh/openapi/public-api.mintlify.json docs/zh/openapi/relay.mintlify.json docs/en/openapi/api.mintlify.json docs/en/openapi/core-api.mintlify.json docs/en/openapi/compatibility-api.mintlify.json docs/en/openapi/public-api.mintlify.json docs/en/openapi/relay.mintlify.json --max-problems 30
 npx -y @redocly/cli lint docs/zh/openapi/core-api.mintlify.json docs/zh/openapi/compatibility-api.mintlify.json docs/en/openapi/core-api.mintlify.json docs/en/openapi/compatibility-api.mintlify.json --max-problems 30
 ```

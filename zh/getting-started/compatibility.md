@@ -32,11 +32,13 @@ anthropic-version: 2023-06-01
 x-goog-api-key: sk-你的_api_key
 ```
 
-另外 `GET /v1/models` 还支持查询参数形式：
+部分 Gemini 风格路径也支持查询参数形式：
 
 ```http
-GET /v1/models?key=sk-你的_api_key
+GET /v1beta/models?key=sk-你的_api_key
 ```
+
+`GET /v1/models` 建议使用标准 `Authorization: Bearer ...`；不要把 `GET /v1/models?key=...` 作为通用模型列表认证方式。
 
 ## 图像 / 视频兼容接口
 
@@ -53,4 +55,3 @@ GET /v1/models?key=sk-你的_api_key
 
 - 新接入项目：优先使用核心 API
 - 已有 Claude / Gemini SDK：优先使用兼容 API
-

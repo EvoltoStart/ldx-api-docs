@@ -34,11 +34,13 @@ Compatible header:
 x-goog-api-key: sk-your_api_key
 ```
 
-`GET /v1/models` also accepts the query-string form:
+Some Gemini-style paths also support the query-string key form:
 
 ```http
-GET /v1/models?key=sk-your_api_key
+GET /v1beta/models?key=sk-your_api_key
 ```
+
+Use standard `Authorization: Bearer ...` for `GET /v1/models`; do not treat `GET /v1/models?key=...` as the general model-list authentication pattern.
 
 ## Image and video compatibility endpoints
 

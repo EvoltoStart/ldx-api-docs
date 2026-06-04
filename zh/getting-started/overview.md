@@ -1,9 +1,13 @@
 ---
-title: "API 概览"
-description: "API Reference 入口说明：核心能力、兼容能力与接入顺序。"
+title: "快速开始"
+description: "从准备 API Key 到完成第一条模型调用的推荐接入顺序。"
 ---
 
-如果你是来接入模型调用，建议先看这几部分：
+如果你是第一次接入模型调用，按本页顺序完成认证、模型查询和第一条请求即可。
+
+## 接入路径
+
+建议先看这几部分：
 
 1. `核心 API`
    - 统一调用入口
@@ -15,19 +19,14 @@ description: "API Reference 入口说明：核心能力、兼容能力与接入�
 
 ## Base URL
 
-- 中文站（国内）：`https://token.liandanxia.com`
-
-## OpenAPI 入口
-
-- 核心 API：`/zh/openapi/core-api.mintlify.json`
-- 兼容 API：`/zh/openapi/compatibility-api.mintlify.json`
-
+- 中文站（国内）：`https://api.liandanxia.com`
+- 
 ## 推荐接入顺序
 
 1. 准备 API Key（`sk-...`）
 2. 调用 `GET /v1/models` 确认可用模型
 3. 调用 `POST /v1/chat/completions` 发出第一条请求
-4. 如果你使用的是 Claude / Gemini 现成 SDK，再看兼容 API
+4. 如果你使用的是 Claude / Gemini 现成 SDK，再看 [兼容格式](/zh/getting-started/compatibility)
 
 ## 最小可用请求
 
@@ -43,4 +42,4 @@ curl https://token.liandanxia.com/v1/chat/completions \
   }'
 ```
 
-下一步建议先看 [认证](/zh/getting-started/authentication) 和 [首个请求](/zh/getting-started/first-request)。
+下一步建议先看 [认证](/zh/getting-started/authentication)，然后按 [首个请求](/zh/getting-started/first-request) 完成调用。
