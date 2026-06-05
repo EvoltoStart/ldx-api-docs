@@ -97,4 +97,4 @@ Authorization: Bearer sk-你的_api_key
 | `403` | 用户被禁用、API 访问被禁用、分组无权限、IP 不在白名单 | 检查账号状态、Key 权限、分组和 IP 限制 |
 | `429` | 请求频率超限 | 降低并发或稍后重试 |
 
-下一步看 [首个请求](/zh/getting-started/first-request)。
+下一步看 [首个请求示例](/zh/getting-started/first-request)。

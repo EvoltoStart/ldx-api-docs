@@ -97,4 +97,4 @@ The server validates:
 | `403` | User disabled, API access disabled, group denied, or IP outside allowlist | Check account status, key permissions, group access, and IP restrictions |
 | `429` | Rate limit exceeded | Reduce concurrency or retry later |
 
-Next: [First Request](/en/getting-started/first-request).
+Next: [First Request Example](/en/getting-started/first-request).

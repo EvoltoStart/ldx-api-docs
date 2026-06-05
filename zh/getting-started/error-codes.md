@@ -136,4 +136,4 @@ description: "API 调用失败时的响应格式、HTTP 状态码、平台错误
 4. `insufficient_user_quota` 需要充值或降低模型成本后再请求。
 5. 如果 `message` 中包含请求 ID，请在反馈问题时一并提供，便于定位日志。
 
-下一步可以查看 [认证](/zh/getting-started/authentication) 修正鉴权问题，或查看 [首个请求](/zh/getting-started/first-request) 对照最小可用请求格式。
+下一步可以查看 [认证](/zh/getting-started/authentication) 修正鉴权问题，或查看 [首个请求示例](/zh/getting-started/first-request) 对照最小可用请求格式。

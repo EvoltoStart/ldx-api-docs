@@ -79,4 +79,4 @@ description: "API 聚合平台的五类计费规则：按量、按次、按时�
 5. 语音模型优先确认按字符、按秒还是按分钟计费。
 6. 免费额度、折扣和缓存规则可能改变最终费用，估算时应单独计算。
 
-下一步可以查看 [模型与价格](/zh/getting-started/pricing) 选择具体模型，或查看 [首个请求](/zh/getting-started/first-request) 完成实际调用。
+下一步可以查看 [模型与价格](/zh/getting-started/pricing) 选择具体模型，或查看 [首个请求示例](/zh/getting-started/first-request) 完成实际调用。

@@ -79,4 +79,4 @@ Estimate by first finding the tier your request falls into, then using the input
 5. For audio models, check whether the unit is character, second, or minute.
 6. Free quotas, discounts, and cache rules can change the final cost, so calculate them separately.
 
-Next, see [Models and Pricing](/en/getting-started/pricing) to choose a concrete model, or [First Request](/en/getting-started/first-request) to make an API call.
+Next, see [Models and Pricing](/en/getting-started/pricing) to choose a concrete model, or [First Request Example](/en/getting-started/first-request) to make an API call.

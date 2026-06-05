@@ -42,4 +42,4 @@ curl https://api.liandanxia.io/v1/chat/completions \
   }'
 ```
 
-Next, read [Authentication](/en/getting-started/authentication), then complete [First Request](/en/getting-started/first-request).
+Next, read [Authentication](/en/getting-started/authentication), then complete [First Request Example](/en/getting-started/first-request).

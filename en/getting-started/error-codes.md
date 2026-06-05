@@ -136,4 +136,4 @@ Some compatible endpoints do not return `error.code` and only mark the error cat
 4. `insufficient_user_quota` requires topping up or reducing model cost before sending another request.
 5. If `message` includes a request ID, include it when reporting the issue so logs can be located quickly.
 
-Next, see [Authentication](/en/getting-started/authentication) for auth failures, or [First Request](/en/getting-started/first-request) for the minimal request format.
+Next, see [Authentication](/en/getting-started/authentication) for auth failures, or [First Request Example](/en/getting-started/first-request) for the minimal request format.

@@ -284,4 +284,4 @@ Prices are in USD / million tokens.
 4. For realtime and audio models, check whether the unit is per million tokens, per second, per minute, or per 10k characters.
 5. Free quotas, discounts, and converted prices are provider-specific and should be treated as estimates unless confirmed in the current provider console.
 
-Next, read [Authentication](/en/getting-started/authentication) and [First Request](/en/getting-started/first-request) to make your first call.
+Next, read [Authentication](/en/getting-started/authentication) and [First Request Example](/en/getting-started/first-request) to make your first call.

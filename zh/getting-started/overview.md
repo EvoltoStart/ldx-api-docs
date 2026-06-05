@@ -42,4 +42,4 @@ curl https://token.liandanxia.com/v1/chat/completions \
   }'
 ```
 
-下一步建议先看 [认证](/zh/getting-started/authentication)，然后按 [首个请求](/zh/getting-started/first-request) 完成调用。
+下一步建议先看 [认证](/zh/getting-started/authentication)，然后按 [首个请求示例](/zh/getting-started/first-request) 完成调用。
