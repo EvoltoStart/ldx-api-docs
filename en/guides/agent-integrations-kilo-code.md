@@ -1,32 +1,102 @@
 ---
 title: "Integrate Kilo Code"
-description: "Connect Kilo custom models to LDX API using OpenAI-compatible endpoints."
+description: "Use Kilo Code OpenAI-compatible or custom provider settings with LDX API."
 ---
 
-# Integrate Kilo Code
+Kilo Code can connect external models through interactive provider configuration. LDX provides an OpenAI-compatible Chat Completions endpoint, so use an `OpenAI Compatible` or `Custom OpenAI` provider type.
 
-Kilo supports custom model providers and can connect in OpenAI-compatible mode.
+## When To Use This
 
-## Required Values
+- You want to use LDX models in Kilo Code.
+- You want to switch providers from the model picker.
+- You need an OpenAI-compatible API path without changing request format.
 
-- Base URL: `https://api.liandanxia.io/v1`
-- API Key: `sk-your_api_key`
-- Model: from `GET /v1/models`
+## Prerequisites
 
-## Setup
+- Kilo Code CLI or editor extension is installed according to the official Kilo Code docs.
+- You have an LDX API key: `sk-...`.
+- Your machine can reach `https://api.liandanxia.io`.
+- The example model `qwen3.5-flash` appears in the current pricing docs. Use `/v1/models` as the source of truth.
 
-In Kilo `Custom Models` or `/connect` flow:
+## Start Kilo Code
 
-- Provider Type: OpenAI-compatible
-- API Base URL: `https://api.liandanxia.io/v1`
-- API Key: `sk-...`
-- Model: available model (for example `gpt-4o-mini`)
+Start Kilo Code from your project directory:
 
-## Verify
+```bash
+kilo
+```
+
+## Connect LDX Provider
+
+Open the provider setup flow in Kilo Code:
+
+```text
+/connect
+```
+
+Choose `OpenAI Compatible`, `Custom OpenAI`, or another provider type that allows a custom Base URL, then enter:
+
+| Setting | Recommended Value |
+| --- | --- |
+| Provider Name | `LDX` |
+| Provider Type | `OpenAI Compatible` |
+| Base URL | `https://api.liandanxia.io/v1` |
+| API Key | `sk-your_api_key` |
+| Default Model | `qwen3.5-flash` |
+
+<Warning>
+Do not choose a fixed DeepSeek provider unless it lets you edit the Base URL. If the Base URL cannot be changed, requests will not go through LDX.
+</Warning>
+
+## Select Model
+
+Open the model picker:
+
+```text
+/models
+```
+
+Select the LDX model, for example:
+
+```text
+LDX / qwen3.5-flash
+```
+
+To choose another model, query:
+
+```bash
+curl https://api.liandanxia.io/v1/models \
+  -H "Authorization: Bearer sk-your_api_key"
+```
+
+## Verify Endpoint
 
 ```bash
 curl https://api.liandanxia.io/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
-  -d '{"model":"gpt-4o-mini","messages":[{"role":"user","content":"hello"}]}'
+  -d '{
+    "model": "qwen3.5-flash",
+    "messages": [{"role": "user", "content": "hello"}],
+    "stream": false
+  }'
 ```
+
+## Troubleshooting
+
+| Problem | Likely Cause | Fix |
+| --- | --- | --- |
+| LDX model does not appear | Provider was not saved or model list was not refreshed | Run `/connect` again, then open `/models`. |
+| `401` | API key is wrong or has extra spaces | Paste `sk-...` again, then verify with curl. |
+| `404` | Base URL or model name is wrong | Use a `/v1` Base URL and a model returned by `/v1/models`. |
+| Requests go to DeepSeek directly | A fixed DeepSeek provider was selected | Use OpenAI Compatible / Custom Provider. |
+
+Next: [Error Codes](/en/getting-started/error-codes).
+
+## References
+
+- [Kilo CLI docs](https://kilo.ai/docs/cli)
+- [Kilo Code getting started](https://kilo.ai/docs/getting-started)
+- [First Request Example](/en/getting-started/first-request)
+- [Models and Pricing](/en/getting-started/pricing)
+- [Error Codes](/en/getting-started/error-codes)

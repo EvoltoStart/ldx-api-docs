@@ -1,44 +1,107 @@
 ---
 title: "Integrate GitHub Copilot"
-description: "Connect VS Code Copilot Chat to LDX API through a compatible extension workflow."
+description: "How to use LDX API in GitHub Copilot workflows, including limitations, BYOK-style setup, validation, and troubleshooting."
 ---
 
-# Integrate GitHub Copilot
+This guide is for users who already work in VS Code with GitHub Copilot Chat and want to route part of their model traffic through LDX API.
 
-Copilot Chat does not expose a direct arbitrary OpenAI endpoint field. A practical path is using a compatible extension workflow.
+<Note>
+The official GitHub Copilot Chat client does not always expose a general field for arbitrary OpenAI-compatible Base URLs. To use LDX in a Copilot Chat model picker, use a Copilot extension or BYOK workflow that supports custom providers. For a more predictable terminal setup, see [GitHub Copilot CLI](/en/guides/agent-integrations-github-copilot-cli).
+</Note>
 
-## 1) Install
+## When To Use GitHub Copilot
 
-- VS Code (recommended 1.116+)
-- Extension: `DeepSeek V4 for Copilot Chat` (`Vizards.deepseek-v4-for-copilot`)
+- You mainly work in VS Code.
+- You already use GitHub Copilot.
+- You want to keep Copilot Chat, agent mode, tool use, and MCP workflows.
+- Your Copilot extension supports custom API keys, Base URLs, and model names.
 
-## 2) Set API Key
+## Prerequisites
 
-Run command:
+- VS Code installed.
+- GitHub Copilot installed and signed in.
+- A valid API key: `sk-...`.
+- Network access to `https://api.liandanxia.io`.
+- At least one available model from `GET /v1/models`.
 
-- `DeepSeek: Set API Key`
+## Validate LDX First
 
-Use your LDX API key (`sk-...`).
+Before configuring Copilot, confirm that your API key and model work.
 
-## 3) Switch to Your API Base
-
-In `settings.json`:
-
-```json
-{
-  "deepseek-copilot.baseUrl": "https://api.liandanxia.io/v1"
-}
+```bash
+curl https://api.liandanxia.io/v1/models \
+  -H "Authorization: Bearer sk-your_api_key"
 ```
 
-## 4) Optional Model Mapping
+Then test Chat Completions:
 
-```json
-{
-  "deepseek-copilot.modelIdOverrides": {
-    "deepseek-v4-flash": "gpt-4o-mini",
-    "deepseek-v4-pro": "gpt-4o"
-  }
-}
+```bash
+curl https://api.liandanxia.io/v1/chat/completions \
+  -H "Authorization: Bearer sk-your_api_key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "qwen3.5-flash",
+    "messages": [
+      {
+        "role": "user",
+        "content": "hello"
+      }
+    ],
+    "stream": false
+  }'
 ```
 
-Use model names available from `GET /v1/models`.
+## Configuration Values
+
+If your Copilot extension supports custom models or OpenAI-compatible providers, use these values:
+
+| Setting | Recommended value | Notes |
+| --- | --- | --- |
+| Provider type | `openai-compatible` or `openai` | The exact name depends on the extension. |
+| Base URL | `https://api.liandanxia.io/v1` | If the extension requires a full endpoint, use `https://api.liandanxia.io/v1/chat/completions`. |
+| API Key | `sk-your_api_key` | Do not paste the Base URL into the API key field. |
+| Model | `qwen3.5-flash` | Example only. Use `/v1/models` as the source of truth. |
+| Streaming | Enabled | Copilot Chat usually benefits from streaming output. |
+
+Common flow:
+
+1. Open the VS Code command palette.
+2. Open the extension's Provider, Model, or BYOK configuration screen.
+3. Add an OpenAI-compatible provider named `LDX`.
+4. Fill in Base URL, API key, and model name.
+5. Return to Copilot Chat and select the LDX model.
+
+## Model Strategy
+
+| Scenario | Recommendation |
+| --- | --- |
+| Daily Q&A and lightweight code explanations | Use a fast, low-cost model. |
+| Multi-file edits and deeper reasoning | Use a stronger model with a larger context window. |
+| Team-wide setup | Fix the provider name and default model in workspace or extension settings. |
+
+For actual model availability and pricing, see [Models and Pricing](/en/getting-started/pricing).
+
+## Validation
+
+- The LDX model appears in the Copilot model picker.
+- A `hello` prompt returns a valid response.
+- Errors expose LDX or upstream HTTP status information.
+
+## Troubleshooting
+
+| Problem | Likely cause | Fix |
+| --- | --- | --- |
+| No Base URL field in native Copilot settings | The current client may not support arbitrary custom providers | Use a BYOK/custom-provider extension or switch to Copilot CLI. |
+| `401` | Missing or invalid API key | Confirm that `sk-...` is in the API key field. |
+| `404` or model unavailable | The model name is not available to your account | Call `/v1/models` and copy the returned model ID. |
+| Slow response | Large model, long context, or network latency | Reduce context, use a faster model, and keep streaming enabled. |
+
+Next: [GitHub Copilot CLI](/en/guides/agent-integrations-github-copilot-cli).
+
+## References
+
+- [GitHub Copilot docs](https://docs.github.com/en/copilot)
+- [GitHub Copilot CLI BYOK](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/use-byok-models)
+- [GitHub Copilot CLI product page](https://github.com/features/copilot/cli)
+- [First Request Example](/en/getting-started/first-request)
+- [Models and Pricing](/en/getting-started/pricing)

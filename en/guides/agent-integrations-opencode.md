@@ -1,472 +1,126 @@
 ---
 title: "Integrate OpenCode"
-description: "Practical OpenCode integration guide for LDX API: install, provider config, verification, and troubleshooting."
+description: "Configure OpenCode with an LDX OpenAI-compatible provider."
 ---
 
-This guide is for users who prefer project-level model configuration via `.opencode.json` and OpenAI-compatible routing through LDX.
+Use this guide to route OpenCode model calls through LDX API. The LDX OpenAI-compatible Base URL is `https://api.liandanxia.io/v1`.
 
-## When to choose OpenCode
+## When To Use This
 
-- You want model config tracked per project
-- You need different defaults across repositories
-- You want a stable OpenAI-compatible integration path
-- You need unified access to 75+ AI providers
+- You want project-level model configuration.
+- You want to use LDX through an OpenAI-compatible endpoint.
+- You want different repositories to use different models or API keys.
 
 ## Prerequisites
 
-- OpenCode installed (refer to [OpenCode Official Installation Guide](https://opencode.ai/docs))
-- A valid API key: `sk-...`
-- Network access to `https://api.liandanxia.io`
-- `curl` installed
+- OpenCode is installed.
+- You have an LDX API key: `sk-...`.
+- Your machine can reach `https://api.liandanxia.io`.
+- The example model `qwen3.5-flash` appears in the current pricing docs. Use `GET /v1/models` as the source of truth for your account.
 
-## Configure Provider
+## Verify LDX First
 
-OpenCode uses JSON configuration files to manage AI providers. Configuration file locations:
-
-- **Global config**: `~/.opencode.json` (applies to all projects)
-- **Project config**: `.opencode.json` in project root (current project only)
-
-### Create project configuration file
-
-Create `.opencode.json` in project root:
-
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "providers": {
-    "ldx": {
-      "apiKey": "sk-your_api_key",
-      "disabled": false
-    }
-  },
-  "agents": {
-    "coder": {
-      "model": "ldx/gpt-4o-mini",
-      "maxTokens": 50000
-    },
-    "task": {
-      "model": "ldx/gpt-4o-mini",
-      "maxTokens": 5000
-    }
-  }
-}
+```bash
+curl https://api.liandanxia.io/v1/models \
+  -H "Authorization: Bearer sk-your_api_key"
 ```
-
-### Configuration details
-
-#### 1. Provider configuration
-
-OpenCode has built-in support for multiple AI providers:
-
-- `anthropic` - Anthropic API (Claude models)
-- `openai` - OpenAI API (GPT models)
-- `gemini` - Google Gemini API
-- `groq` - Groq API
-- `azure` - Azure OpenAI Service
-- `bedrock` - AWS Bedrock
-- `vertexai` - Google Cloud Vertex AI
-- `openrouter` - OpenRouter (multi-provider proxy)
-
-**LDX as custom provider**:
-
-Since LDX provides OpenAI-compatible interfaces, you can use the `openai` provider and override the base URL:
-
-```json
-{
-  "providers": {
-    "openai": {
-      "apiKey": "sk-your_api_key",
-      "baseUrl": "https://api.liandanxia.io/v1",
-      "disabled": false
-    }
-  }
-}
-```
-
-Or create a custom provider (recommended):
-
-```json
-{
-  "providers": {
-    "ldx": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "LDX",
-      "models": {
-        "gpt-4o-mini": {},
-        "gpt-4o": {},
-        "claude-sonnet-4-20250514": {}
-      },
-      "options": {
-        "baseURL": "https://api.liandanxia.io/v1",
-        "apiKey": "sk-your_api_key"
-      }
-    }
-  }
-}
-```
-
-#### 2. Agent configuration
-
-OpenCode supports three agent types:
-
-- **coder** - Main coding agent for complex tasks
-- **task** - Task planning agent
-- **title** - Session title generation agent
-
-```json
-{
-  "agents": {
-    "coder": {
-      "model": "ldx/gpt-4o",
-      "maxTokens": 50000,
-      "reasoningEffort": "medium"
-    },
-    "task": {
-      "model": "ldx/gpt-4o-mini",
-      "maxTokens": 5000
-    },
-    "title": {
-      "model": "ldx/gpt-4o-mini",
-      "maxTokens": 80
-    }
-  }
-}
-```
-
-#### 3. Model reference format
-
-Model references use `provider/model` format:
-
-```
-ldx/gpt-4o-mini
-ldx/gpt-4o
-ldx/claude-sonnet-4-20250514
-```
-
-## Verify Configuration
-
-### 1. Verify gateway request
 
 ```bash
 curl https://api.liandanxia.io/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{
-    "model":"gpt-4o-mini",
-    "messages":[{"role":"user","content":"hello"}]
+    "model": "qwen3.5-flash",
+    "messages": [{"role": "user", "content": "hello"}],
+    "stream": false
   }'
 ```
 
-### 2. Launch OpenCode
+## Configure OpenCode
+
+OpenCode uses the `provider` config key, not `providers`. Create or update `opencode.json` in your project root:
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ldx/qwen3.5-flash",
+  "provider": {
+    "ldx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LDX",
+      "options": {
+        "baseURL": "https://api.liandanxia.io/v1",
+        "apiKey": "sk-your_api_key"
+      },
+      "models": {
+        "qwen3.5-flash": {},
+        "qwen3.5-plus": {}
+      }
+    }
+  }
+}
+```
+
+To avoid storing the key in project config, reference an environment variable:
+
+```bash
+export LDX_API_KEY="sk-your_api_key"
+```
+
+```json
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "ldx/qwen3.5-flash",
+  "provider": {
+    "ldx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LDX",
+      "options": {
+        "baseURL": "https://api.liandanxia.io/v1",
+        "apiKey": "{env:LDX_API_KEY}"
+      },
+      "models": {
+        "qwen3.5-flash": {},
+        "qwen3.5-plus": {}
+      }
+    }
+  }
+}
+```
+
+## Start And Verify
 
 ```bash
 opencode
 ```
 
-### 3. Test conversation
+In OpenCode, send:
 
-In the OpenCode interface, enter:
-
-```
-Hello, please introduce yourself
+```text
+Please summarize the current project structure.
 ```
 
-### Success criteria
+Success criteria:
 
-- ✅ `chat/completions` returns valid JSON
-- ✅ OpenCode recognizes and loads `ldx/...` models
-- ✅ First interactive request completes successfully
-
-## Advanced Configuration
-
-### Complete configuration example
-
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "data": {
-    "directory": ".opencode"
-  },
-  "wd": "/path/to/working/directory",
-  "agents": {
-    "coder": {
-      "model": "ldx/gpt-4o",
-      "maxTokens": 50000,
-      "reasoningEffort": "medium"
-    },
-    "task": {
-      "model": "ldx/gpt-4o-mini",
-      "maxTokens": 5000
-    },
-    "title": {
-      "model": "ldx/gpt-4o-mini",
-      "maxTokens": 80
-    }
-  },
-  "providers": {
-    "ldx": {
-      "npm": "@ai-sdk/openai-compatible",
-      "name": "LDX",
-      "models": {
-        "gpt-4o-mini": {},
-        "gpt-4o": {},
-        "claude-sonnet-4-20250514": {}
-      },
-      "options": {
-        "baseURL": "https://api.liandanxia.io/v1",
-        "apiKey": "sk-your_api_key"
-      }
-    }
-  },
-  "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/files"],
-      "type": "stdio"
-    }
-  },
-  "lsp": {
-    "typescript": {
-      "command": "typescript-language-server",
-      "args": ["--stdio"],
-      "disabled": false
-    }
-  },
-  "contextPaths": [
-    ".github/copilot-instructions.md",
-    ".cursorrules",
-    "opencode.md"
-  ],
-  "tui": {
-    "theme": "opencode"
-  },
-  "debug": false,
-  "autoCompact": true
-}
-```
-
-### Environment variable support
-
-OpenCode also supports API Key configuration via environment variables:
-
-```bash
-# Set LDX API Key (if using openai provider)
-export OPENAI_API_KEY="sk-your_api_key"
-
-# Or use custom environment variable
-export LDX_API_KEY="sk-your_api_key"
-```
-
-Then reference in config file:
-
-```json
-{
-  "providers": {
-    "ldx": {
-      "options": {
-        "baseURL": "https://api.liandanxia.io/v1",
-        "apiKey": "${LDX_API_KEY}"
-      }
-    }
-  }
-}
-```
-
-### MCP server integration
-
-OpenCode supports Model Context Protocol (MCP) servers:
-
-```json
-{
-  "mcpServers": {
-    "filesystem": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-filesystem", "/path/to/files"],
-      "type": "stdio"
-    },
-    "github": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
-      "env": ["GITHUB_PERSONAL_ACCESS_TOKEN=ghp_..."],
-      "type": "stdio"
-    }
-  }
-}
-```
-
-### LSP language servers
-
-Configure code intelligence support:
-
-```json
-{
-  "lsp": {
-    "typescript": {
-      "command": "typescript-language-server",
-      "args": ["--stdio"]
-    },
-    "python": {
-      "command": "pylsp",
-      "args": []
-    },
-    "go": {
-      "command": "gopls",
-      "args": ["serve"]
-    }
-  }
-}
-```
+- `curl /v1/models` returns a model list.
+- `curl /v1/chat/completions` returns valid JSON.
+- OpenCode can use `ldx/qwen3.5-flash` for the first reply.
 
 ## Troubleshooting
 
-### 1. Authentication failure (401)
+| Problem | Likely Cause | Fix |
+| --- | --- | --- |
+| Provider is not found | Config uses `providers` | Use the official `provider` key. |
+| `401` | API key is wrong or env var is not visible | Set `LDX_API_KEY` again in the same terminal, or verify with curl. |
+| `404` | Base URL is missing `/v1` | Use `https://api.liandanxia.io/v1`. |
+| Model unavailable | Model name is not enabled for your account | Call `/v1/models`, then copy an available model name. |
 
-**Cause**: Invalid `apiKey` or format error
+Next, see [First Request Example](/en/getting-started/first-request) for the underlying API format.
 
-**Solution**:
-```bash
-# Check apiKey in config file
-cat .opencode.json | grep apiKey
+## References
 
-# Ensure correct key format
-"apiKey": "sk-your_api_key"
-```
-
-### 2. Endpoint not found (404)
-
-**Cause**: Incorrect `baseURL` or missing `/v1`
-
-**Solution**:
-```json
-{
-  "providers": {
-    "ldx": {
-      "options": {
-        "baseURL": "https://api.liandanxia.io/v1"
-      }
-    }
-  }
-}
-```
-
-**Note**: OpenCode's `baseURL` **must** include the `/v1` suffix.
-
-### 3. Model unavailable (400)
-
-**Cause**: Model name or mapping error
-
-**Solution**:
-```bash
-# Query available models first
-curl https://api.liandanxia.io/v1/models \
-  -H "Authorization: Bearer sk-your_api_key"
-
-# Use correct model name in config
-{
-  "agents": {
-    "coder": {
-      "model": "ldx/gpt-4o-mini"
-    }
-  }
-}
-```
-
-### 4. Config file syntax error
-
-**Cause**: JSON format error
-
-**Solution**:
-```bash
-# Validate JSON format with jq
-cat .opencode.json | jq .
-
-# Or use online JSON validator
-```
-
-### 5. Rate limit error (429)
-
-**Cause**: Requests too fast, triggering rate limit
-
-**Solution**:
-- Reduce request frequency
-- Implement retry mechanism
-- Contact admin to increase quota
-
-## Recommended troubleshooting order
-
-1. **Verify JSON syntax** → Use `jq` or JSON validator
-2. **Verify baseURL** → Ensure `/v1` suffix is included
-3. **Verify model mapping** → Confirm model name is in available list
-4. **Verify API Key** → Check key permissions and validity
-
-## Security and Best Practices
-
-### Configuration file management
-
-**Project config structure** (can be committed):
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "providers": {
-    "ldx": {
-      "options": {
-        "baseURL": "https://api.liandanxia.io/v1",
-        "apiKey": "${LDX_API_KEY}"
-      }
-    }
-  },
-  "agents": {
-    "coder": {
-      "model": "ldx/gpt-4o-mini"
-    }
-  }
-}
-```
-
-**Local key file** (not committed):
-Create `.env` file:
-```bash
-LDX_API_KEY=sk-your_api_key
-```
-
-Add to `.gitignore`:
-```
-.env
-.opencode.local.json
-```
-
-### Multi-environment configuration
-
-**Development environment** (`.opencode.json`):
-```json
-{
-  "agents": {
-    "coder": {
-      "model": "ldx/gpt-4o-mini"
-    }
-  }
-}
-```
-
-**Production environment** (`.opencode.prod.json`):
-```json
-{
-  "agents": {
-    "coder": {
-      "model": "ldx/gpt-4o"
-    }
-  }
-}
-```
-
-Specify config file when using:
-```bash
-opencode --config .opencode.prod.json
-```
-
-## Reference Resources
-
-- [OpenCode Official Docs](https://opencode.ai/docs)
-- [OpenCode Configuration Reference](https://opencode-ai-opencode.mintlify.app/core-concepts/configuration)
 - [OpenCode Providers](https://opencode.ai/docs/providers/)
-- [OpenCode GitHub](https://github.com/opencode-ai/opencode)
+- [OpenCode Config](https://opencode.ai/docs/config/)
+- [OpenCode GitHub](https://github.com/sst/opencode)
+- [First Request Example](/en/getting-started/first-request)
+- [Error Codes](/en/getting-started/error-codes)
