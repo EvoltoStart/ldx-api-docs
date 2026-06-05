@@ -188,4 +188,4 @@ description: "人民币计价的模型价格速查：文本、图像、视频、
 5. 语音模型先确认单位：TTS 按字符计费，ASR 按秒计费。
 6. 免费额度和折扣只用于试用和成本预估，实际可用额度以开通时间、有效期和上游规则为准。
 
-下一步可以查看 [认证](/zh/getting-started/authentication) 和 [首个请求](/zh/getting-started/first-request) 完成实际调用。
+下一步可以查看 [认证](/zh/getting-started/authentication) 和 [首个请求示例](/zh/getting-started/first-request) 完成实际调用。
