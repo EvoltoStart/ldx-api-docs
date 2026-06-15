@@ -42,6 +42,23 @@ GET /v1beta/models?key=sk-your_api_key
 
 Use standard `Authorization: Bearer ...` for `GET /v1/models`; do not treat `GET /v1/models?key=...` as the general model-list authentication pattern.
 
+## OpenAI chat prompt extras
+
+`POST /v1/chat/completions` also accepts two optional boolean parameters:
+
+- `get_time`
+- `get_weather`
+
+When `get_time=true`, the server injects the current time into the system prompt.
+When `get_weather=true`, the server tries to parse a city from the latest user message, fetches a weather summary from Amap, and injects it into the system prompt.
+
+Weather lookup requires this config:
+
+```yaml
+weather:
+  amap_key: "your Amap Web Service key"
+```
+
 ## Image and video compatibility endpoints
 
 The current real compatibility set also includes:

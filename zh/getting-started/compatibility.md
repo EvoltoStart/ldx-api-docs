@@ -40,6 +40,23 @@ GET /v1beta/models?key=sk-你的_api_key
 
 `GET /v1/models` 建议使用标准 `Authorization: Bearer ...`；不要把 `GET /v1/models?key=...` 作为通用模型列表认证方式。
 
+## OpenAI 聊天增强参数
+
+`POST /v1/chat/completions` 额外支持两个可选布尔参数：
+
+- `get_time`
+- `get_weather`
+
+当 `get_time=true` 时，服务端会把当前时间注入到系统提示词中。
+当 `get_weather=true` 时，服务端会尝试从最新用户消息里解析城市，并调用高德天气接口生成天气摘要注入系统提示词。
+
+天气功能需要在配置中设置：
+
+```yaml
+weather:
+  amap_key: "你的高德 Web 服务 key"
+```
+
 ## 图像 / 视频兼容接口
 
 当前真实可用的兼容接口还包括：
