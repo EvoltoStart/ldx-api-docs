@@ -14,7 +14,7 @@ Hermes Agent can select model providers through `hermes model` or `hermes setup`
 ## Prerequisites
 
 - You have an LDX API key: `sk-...`.
-- Your machine can reach `https://api.liandanxia.io`.
+- Your machine can reach `https://api.liandanxia.io/silver`.
 - The example model `qwen3.5-flash` appears in the current pricing docs. Use `/v1/models` as the source of truth.
 
 ## Install Hermes
@@ -56,8 +56,8 @@ Use these values in the Hermes UI:
 | Setting | Recommended Value |
 | --- | --- |
 | Provider | Choose `OpenAI Compatible` / `Custom`, or any provider that lets you edit Base URL. |
-| OpenAI-compatible Base URL | `https://api.liandanxia.io/v1` |
-| Anthropic-compatible Base URL | `https://api.liandanxia.io` |
+| OpenAI-compatible Base URL | `https://api.liandanxia.io/silver/v1` |
+| Anthropic-compatible Base URL | `https://api.liandanxia.io/silver` |
 | API Key | `sk-your_api_key` |
 | Model | `qwen3.5-flash`, or a real model returned by `/v1/models`. |
 
@@ -68,12 +68,12 @@ OpenAI-compatible setup uses the `/v1` Base URL. Anthropic-compatible setup uses
 ## Verify LDX
 
 ```bash
-curl https://api.liandanxia.io/v1/models \
+curl https://api.liandanxia.io/silver/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
 ```bash
-curl https://api.liandanxia.io/v1/chat/completions \
+curl https://api.liandanxia.io/silver/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -102,7 +102,7 @@ Read the current project structure and give three improvement suggestions.
 | Provider does not allow a custom Base URL | A fixed official provider was selected | Use OpenAI Compatible / Custom Provider. |
 | `401` | API key is invalid or not saved | Run `hermes model` or `hermes setup` again. |
 | `404` | Model name or Base URL is wrong | Query `/v1/models`; for OpenAI-compatible setup, use the `/v1` Base URL. |
-| Anthropic mode fails | Base URL includes `/v1` | Use root URL `https://api.liandanxia.io` for Anthropic-compatible setup. |
+| Anthropic mode fails | Base URL includes `/v1` | Use root URL `https://api.liandanxia.io/silver` for Anthropic-compatible setup. |
 
 Next, see [First Request Example](/en/getting-started/first-request).
 

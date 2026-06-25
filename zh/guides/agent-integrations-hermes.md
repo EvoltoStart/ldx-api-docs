@@ -14,7 +14,7 @@ Hermes Agent 支持通过 `hermes model` 或 `hermes setup` 选择模型 Provide
 ## 前置条件
 
 - 已准备 LDX API Key：`sk-...`。
-- 当前网络可访问 `https://api.liandanxia.com`。
+- 当前网络可访问 `https://api.liandanxia.com/silver`。
 - 示例模型 `qwen3.5-flash` 来自当前价格文档；实际以 `/v1/models` 返回为准。
 
 ## 安装 Hermes
@@ -56,8 +56,8 @@ hermes setup
 | 配置项 | 推荐值 |
 | --- | --- |
 | Provider | 选择 `OpenAI Compatible` / `Custom`，或任何允许修改 Base URL 的 Provider。 |
-| OpenAI 兼容 Base URL | `https://api.liandanxia.com/v1` |
-| Anthropic 兼容 Base URL | `https://api.liandanxia.com` |
+| OpenAI 兼容 Base URL | `https://api.liandanxia.com/silver/v1` |
+| Anthropic 兼容 Base URL | `https://api.liandanxia.com/silver` |
 | API Key | `sk-你的_api_key` |
 | Model | `qwen3.5-flash`，或 `/v1/models` 返回的真实模型名。 |
 
@@ -68,12 +68,12 @@ OpenAI 兼容配置使用 `/v1` Base URL；Anthropic 兼容配置使用根地址
 ## 验证 LDX 接口
 
 ```bash
-curl https://api.liandanxia.com/v1/models \
+curl https://api.liandanxia.com/silver/v1/models \
   -H "Authorization: Bearer sk-你的_api_key"
 ```
 
 ```bash
-curl https://api.liandanxia.com/v1/chat/completions \
+curl https://api.liandanxia.com/silver/v1/chat/completions \
   -H "Authorization: Bearer sk-你的_api_key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -102,7 +102,7 @@ hermes
 | Provider 不支持自定义 Base URL | 选择了固定官方 Provider | 改选 OpenAI Compatible / Custom Provider。 |
 | `401` | API Key 无效或未保存 | 重新执行 `hermes model` 或 `hermes setup`。 |
 | `404` | 模型名或 Base URL 错误 | 先查 `/v1/models`，OpenAI 兼容 Base URL 填 `/v1`。 |
-| Anthropic 模式请求失败 | Base URL 写成了 `/v1` | Anthropic 兼容模式填根地址 `https://api.liandanxia.com`。 |
+| Anthropic 模式请求失败 | Base URL 写成了 `/v1` | Anthropic 兼容模式填根地址 `https://api.liandanxia.com/silver`。 |
 
 下一步可查看 [首个请求示例](/zh/getting-started/first-request)。
 

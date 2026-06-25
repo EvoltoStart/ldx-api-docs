@@ -3,7 +3,7 @@ title: "Integrate OpenCode"
 description: "Configure OpenCode with an LDX OpenAI-compatible provider."
 ---
 
-Use this guide to route OpenCode model calls through LDX API. The LDX OpenAI-compatible Base URL is `https://api.liandanxia.io/v1`.
+Use this guide to route OpenCode model calls through LDX API. The LDX OpenAI-compatible Base URL is `https://api.liandanxia.io/silver/v1`.
 
 ## When To Use This
 
@@ -15,18 +15,18 @@ Use this guide to route OpenCode model calls through LDX API. The LDX OpenAI-com
 
 - OpenCode is installed.
 - You have an LDX API key: `sk-...`.
-- Your machine can reach `https://api.liandanxia.io`.
+- Your machine can reach `https://api.liandanxia.io/silver`.
 - The example model `qwen3.5-flash` appears in the current pricing docs. Use `GET /v1/models` as the source of truth for your account.
 
 ## Verify LDX First
 
 ```bash
-curl https://api.liandanxia.io/v1/models \
+curl https://api.liandanxia.io/silver/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
 ```bash
-curl https://api.liandanxia.io/v1/chat/completions \
+curl https://api.liandanxia.io/silver/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -49,7 +49,7 @@ OpenCode uses the `provider` config key, not `providers`. Create or update `open
       "npm": "@ai-sdk/openai-compatible",
       "name": "LDX",
       "options": {
-        "baseURL": "https://api.liandanxia.io/v1",
+        "baseURL": "https://api.liandanxia.io/silver/v1",
         "apiKey": "sk-your_api_key"
       },
       "models": {
@@ -76,7 +76,7 @@ export LDX_API_KEY="sk-your_api_key"
       "npm": "@ai-sdk/openai-compatible",
       "name": "LDX",
       "options": {
-        "baseURL": "https://api.liandanxia.io/v1",
+        "baseURL": "https://api.liandanxia.io/silver/v1",
         "apiKey": "{env:LDX_API_KEY}"
       },
       "models": {
@@ -112,7 +112,7 @@ Success criteria:
 | --- | --- | --- |
 | Provider is not found | Config uses `providers` | Use the official `provider` key. |
 | `401` | API key is wrong or env var is not visible | Set `LDX_API_KEY` again in the same terminal, or verify with curl. |
-| `404` | Base URL is missing `/v1` | Use `https://api.liandanxia.io/v1`. |
+| `404` | Base URL is missing `/v1` | Use `https://api.liandanxia.io/silver/v1`. |
 | Model unavailable | Model name is not enabled for your account | Call `/v1/models`, then copy an available model name. |
 
 Next, see [First Request Example](/en/getting-started/first-request) for the underlying API format.

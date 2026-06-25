@@ -21,7 +21,7 @@ The official GitHub Copilot Chat client does not always expose a general field f
 - VS Code installed.
 - GitHub Copilot installed and signed in.
 - A valid API key: `sk-...`.
-- Network access to `https://api.liandanxia.io`.
+- Network access to `https://api.liandanxia.io/silver`.
 - At least one available model from `GET /v1/models`.
 
 ## Validate LDX First
@@ -29,14 +29,14 @@ The official GitHub Copilot Chat client does not always expose a general field f
 Before configuring Copilot, confirm that your API key and model work.
 
 ```bash
-curl https://api.liandanxia.io/v1/models \
+curl https://api.liandanxia.io/silver/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
 Then test Chat Completions:
 
 ```bash
-curl https://api.liandanxia.io/v1/chat/completions \
+curl https://api.liandanxia.io/silver/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -58,7 +58,7 @@ If your Copilot extension supports custom models or OpenAI-compatible providers,
 | Setting | Recommended value | Notes |
 | --- | --- | --- |
 | Provider type | `openai-compatible` or `openai` | The exact name depends on the extension. |
-| Base URL | `https://api.liandanxia.io/v1` | If the extension requires a full endpoint, use `https://api.liandanxia.io/v1/chat/completions`. |
+| Base URL | `https://api.liandanxia.io/silver/v1` | If the extension requires a full endpoint, use `https://api.liandanxia.io/silver/v1/chat/completions`. |
 | API Key | `sk-your_api_key` | Do not paste the Base URL into the API key field. |
 | Model | `qwen3.5-flash` | Example only. Use `/v1/models` as the source of truth. |
 | Streaming | Enabled | Copilot Chat usually benefits from streaming output. |

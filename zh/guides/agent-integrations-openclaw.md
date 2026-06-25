@@ -3,7 +3,7 @@ title: "接入 OpenClaw"
 description: "使用 OpenClaw 自定义模型 Provider 接入 LDX API。"
 ---
 
-本指南用于把 OpenClaw 的模型调用接入 LDX API。LDX 的 OpenAI 兼容 Base URL 是 `https://api.liandanxia.com/v1`。
+本指南用于把 OpenClaw 的模型调用接入 LDX API。LDX 的 OpenAI 兼容 Base URL 是 `https://api.liandanxia.com/silver/v1`。
 
 ## 适用场景
 
@@ -15,18 +15,18 @@ description: "使用 OpenClaw 自定义模型 Provider 接入 LDX API。"
 
 - 已安装 OpenClaw。
 - 已准备 LDX API Key：`sk-...`。
-- 当前网络可访问 `https://api.liandanxia.com`。
+- 当前网络可访问 `https://api.liandanxia.com/silver`。
 - 示例模型 `qwen3.5-flash`、`qwen3.5-plus` 来自当前价格文档；实际可用模型以 `GET /v1/models` 返回为准。
 
 ## 先验证 LDX 接口
 
 ```bash
-curl https://api.liandanxia.com/v1/models \
+curl https://api.liandanxia.com/silver/v1/models \
   -H "Authorization: Bearer sk-你的_api_key"
 ```
 
 ```bash
-curl https://api.liandanxia.com/v1/chat/completions \
+curl https://api.liandanxia.com/silver/v1/chat/completions \
   -H "Authorization: Bearer sk-你的_api_key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -43,7 +43,7 @@ OpenClaw 官方建议在修改 provider 或模型 allowlist 这类 map 时使用
 ```bash
 openclaw config set models.providers.ldx '{
   "api": "openai-completions",
-  "baseUrl": "https://api.liandanxia.com/v1",
+  "baseUrl": "https://api.liandanxia.com/silver/v1",
   "apiKey": "sk-你的_api_key",
   "models": [
     {"id": "qwen3.5-flash"},
@@ -60,7 +60,7 @@ openclaw config set models.providers.ldx '{
     "providers": {
       "ldx": {
         "api": "openai-completions",
-        "baseUrl": "https://api.liandanxia.com/v1",
+        "baseUrl": "https://api.liandanxia.com/silver/v1",
         "apiKey": "sk-你的_api_key",
         "models": [
           {"id": "qwen3.5-flash"},
@@ -107,7 +107,7 @@ openclaw run "你好，请介绍一下当前项目"
 | --- | --- | --- |
 | `Model is not allowed` | 启用了 allowlist 但没有加入 LDX 模型 | 使用 `agents.defaults.models` 的 `--merge` 命令加入模型。 |
 | `401` | API Key 错误 | 重新设置 `models.providers.ldx.apiKey`。 |
-| `404` | Base URL 错误 | 使用 `https://api.liandanxia.com/v1`，不要填根地址。 |
+| `404` | Base URL 错误 | 使用 `https://api.liandanxia.com/silver/v1`，不要填根地址。 |
 | 模型列表为空 | provider 未保存或模型 ID 不正确 | 先确认 `/v1/models` 返回值，再更新 `models.providers.ldx.models`。 |
 
 下一步可查看 [错误码](/zh/getting-started/error-codes) 了解 API 失败响应。

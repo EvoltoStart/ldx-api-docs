@@ -9,7 +9,7 @@ Before you start, prepare:
 
 | Item | Example | Notes |
 | --- | --- | --- |
-| API Base URL | `https://api.liandanxia.io` | The English docs use this domain in examples. |
+| API Base URL | `https://api.liandanxia.io/silver` | The English docs use this domain in examples. |
 | API Key | `sk-your_api_key` | Send it as a Bearer token in the request header. |
 | Model | `qwen3.5-flash` | This example model appears in the current pricing docs. Use `GET /v1/models` as the source of truth for your account. |
 
@@ -20,14 +20,14 @@ If you are not sure which header to use, read [Authentication](/en/getting-start
 Put the base URL and API key into environment variables so the following examples can be copied directly.
 
 ```bash
-export LDX_BASE_URL="https://api.liandanxia.io"
+export LDX_BASE_URL="https://api.liandanxia.io/silver"
 export LDX_API_KEY="sk-your_api_key"
 ```
 
 Windows PowerShell:
 
 ```powershell
-$env:LDX_BASE_URL = "https://api.liandanxia.io"
+$env:LDX_BASE_URL = "https://api.liandanxia.io/silver"
 $env:LDX_API_KEY = "sk-your_api_key"
 ```
 

@@ -1529,7 +1529,7 @@
   },
   "servers": [
     {
-      "url": "https://api.liandanxia.io",
+      "url": "https://api.liandanxia.io/silver",
       "description": "API Base URL"
     }
   ],

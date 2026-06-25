@@ -2722,7 +2722,7 @@
   },
   "servers": [
     {
-      "url": "https://api.liandanxia.com",
+      "url": "https://api.liandanxia.com/silver",
       "description": "API Base URL"
     }
   ],
