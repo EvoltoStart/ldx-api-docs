@@ -15,7 +15,7 @@ Kilo Code can connect external models through interactive provider configuration
 
 - Kilo Code CLI or editor extension is installed according to the official Kilo Code docs.
 - You have an LDX API key: `sk-...`.
-- Your machine can reach `https://api.liandanxia.io/silver`.
+- Your machine can reach `https://api.liandanxia.io`.
 - The example model `qwen3.5-flash` appears in the current pricing docs. Use `/v1/models` as the source of truth.
 
 ## Start Kilo Code
@@ -40,7 +40,7 @@ Choose `OpenAI Compatible`, `Custom OpenAI`, or another provider type that allow
 | --- | --- |
 | Provider Name | `LDX` |
 | Provider Type | `OpenAI Compatible` |
-| Base URL | `https://api.liandanxia.io/silver/v1` |
+| Base URL | `https://api.liandanxia.io/v1` |
 | API Key | `sk-your_api_key` |
 | Default Model | `qwen3.5-flash` |
 
@@ -65,14 +65,14 @@ LDX / qwen3.5-flash
 To choose another model, query:
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/models \
+curl https://api.liandanxia.io/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
 ## Verify Endpoint
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/chat/completions \
+curl https://api.liandanxia.io/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{

@@ -3,7 +3,7 @@ title: "接入 OpenCode"
 description: "使用 OpenCode 自定义 provider 接入 LDX OpenAI 兼容接口。"
 ---
 
-本指南用于把 OpenCode 的模型请求转发到 LDX API。LDX 侧使用 OpenAI 兼容入口：`https://api.liandanxia.com/silver/v1`。
+本指南用于把 OpenCode 的模型请求转发到 LDX API。LDX 侧使用 OpenAI 兼容入口：`https://api.liandanxia.com/v1`。
 
 ## 适用场景
 
@@ -15,18 +15,18 @@ description: "使用 OpenCode 自定义 provider 接入 LDX OpenAI 兼容接口�
 
 - 已安装 OpenCode。
 - 已准备 LDX API Key：`sk-...`。
-- 当前网络可访问 `https://api.liandanxia.com/silver`。
+- 当前网络可访问 `https://api.liandanxia.com`。
 - 示例模型 `qwen3.5-flash` 来自当前价格文档；实际可用模型以 `GET /v1/models` 返回为准。
 
 ## 先验证 LDX 接口
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/models \
+curl https://api.liandanxia.com/v1/models \
   -H "Authorization: Bearer sk-你的_api_key"
 ```
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/chat/completions \
+curl https://api.liandanxia.com/v1/chat/completions \
   -H "Authorization: Bearer sk-你的_api_key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -49,7 +49,7 @@ OpenCode 官方配置使用 `provider` 字段，不是 `providers`。在项目�
       "npm": "@ai-sdk/openai-compatible",
       "name": "LDX",
       "options": {
-        "baseURL": "https://api.liandanxia.com/silver/v1",
+        "baseURL": "https://api.liandanxia.com/v1",
         "apiKey": "sk-你的_api_key"
       },
       "models": {
@@ -76,7 +76,7 @@ export LDX_API_KEY="sk-你的_api_key"
       "npm": "@ai-sdk/openai-compatible",
       "name": "LDX",
       "options": {
-        "baseURL": "https://api.liandanxia.com/silver/v1",
+        "baseURL": "https://api.liandanxia.com/v1",
         "apiKey": "{env:LDX_API_KEY}"
       },
       "models": {
@@ -112,7 +112,7 @@ opencode
 | --- | --- | --- |
 | 找不到 provider | 配置写成了 `providers` | 改为官方字段 `provider`。 |
 | `401` | API Key 错误或环境变量未生效 | 在同一个终端重新设置 `LDX_API_KEY`，或直接验证 curl。 |
-| `404` | Base URL 少了 `/v1` | OpenCode 的 `baseURL` 填 `https://api.liandanxia.com/silver/v1`。 |
+| `404` | Base URL 少了 `/v1` | OpenCode 的 `baseURL` 填 `https://api.liandanxia.com/v1`。 |
 | 模型不可用 | 模型名不在账号可用列表 | 先调用 `/v1/models`，再复制真实模型名。 |
 
 下一步可查看 [首个请求示例](/zh/getting-started/first-request) 了解底层 API 调用格式。

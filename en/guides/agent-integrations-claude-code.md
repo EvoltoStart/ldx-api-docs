@@ -3,7 +3,7 @@ title: "Integrate Claude Code"
 description: "Configure Claude Code through the LDX Anthropic Messages-compatible endpoint."
 ---
 
-Use this guide to route Claude Code model calls through LDX. Claude Code appends `/v1/messages` to `ANTHROPIC_BASE_URL`, so configure the root URL: `https://api.liandanxia.io/silver`.
+Use this guide to route Claude Code model calls through LDX. Claude Code appends `/v1/messages` to `ANTHROPIC_BASE_URL`, so configure the root URL: `https://api.liandanxia.io`.
 
 ## When To Use This
 
@@ -15,7 +15,7 @@ Use this guide to route Claude Code model calls through LDX. Claude Code appends
 
 - Claude Code is installed.
 - You have an LDX API key: `sk-...`.
-- Your machine can reach `https://api.liandanxia.io/silver`.
+- Your machine can reach `https://api.liandanxia.io`.
 - The example model `qwen3.5-flash` appears in the current pricing docs. Use `/v1/models` as the source of truth.
 
 ## Configure Environment Variables
@@ -23,7 +23,7 @@ Use this guide to route Claude Code model calls through LDX. Claude Code appends
 Linux / macOS / WSL:
 
 ```bash
-export ANTHROPIC_BASE_URL=https://api.liandanxia.io/silver
+export ANTHROPIC_BASE_URL=https://api.liandanxia.io
 export ANTHROPIC_AUTH_TOKEN=sk-your_api_key
 export ANTHROPIC_MODEL=qwen3.5-flash
 ```
@@ -31,7 +31,7 @@ export ANTHROPIC_MODEL=qwen3.5-flash
 Windows PowerShell:
 
 ```powershell
-$env:ANTHROPIC_BASE_URL="https://api.liandanxia.io/silver"
+$env:ANTHROPIC_BASE_URL="https://api.liandanxia.io"
 $env:ANTHROPIC_AUTH_TOKEN="sk-your_api_key"
 $env:ANTHROPIC_MODEL="qwen3.5-flash"
 ```
@@ -40,7 +40,7 @@ Configuration notes:
 
 | Setting | Correct Value | Notes |
 | --- | --- | --- |
-| `ANTHROPIC_BASE_URL` | `https://api.liandanxia.io/silver` | Use the root URL, without `/v1`. |
+| `ANTHROPIC_BASE_URL` | `https://api.liandanxia.io` | Use the root URL, without `/v1`. |
 | `ANTHROPIC_AUTH_TOKEN` | `sk-...` | Claude Code sends this as Authorization Bearer. |
 | `ANTHROPIC_API_KEY` | `sk-...` | Optional alternative; used as `x-api-key` when `AUTH_TOKEN` is not set. |
 | `ANTHROPIC_MODEL` | `qwen3.5-flash` | Use a real model returned by `/v1/models`. |
@@ -52,7 +52,7 @@ Write user-level config to `~/.claude/settings.json`:
 ```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://api.liandanxia.io/silver",
+    "ANTHROPIC_BASE_URL": "https://api.liandanxia.io",
     "ANTHROPIC_AUTH_TOKEN": "sk-your_api_key",
     "ANTHROPIC_MODEL": "qwen3.5-flash"
   }
@@ -64,7 +64,7 @@ For shared project config, do not include a real API key:
 ```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://api.liandanxia.io/silver",
+    "ANTHROPIC_BASE_URL": "https://api.liandanxia.io",
     "ANTHROPIC_MODEL": "qwen3.5-flash"
   }
 }
@@ -73,12 +73,12 @@ For shared project config, do not include a real API key:
 ## Verify LDX
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/models \
+curl https://api.liandanxia.io/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/messages \
+curl https://api.liandanxia.io/v1/messages \
   -H "x-api-key: sk-your_api_key" \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
@@ -115,7 +115,7 @@ export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
 
 | Problem | Likely Cause | Fix |
 | --- | --- | --- |
-| `404` | `ANTHROPIC_BASE_URL` includes `/v1` | Use `https://api.liandanxia.io/silver`. |
+| `404` | `ANTHROPIC_BASE_URL` includes `/v1` | Use `https://api.liandanxia.io`. |
 | `401` | API key is wrong or sent with the wrong header | Prefer `ANTHROPIC_AUTH_TOKEN=sk-...`, then verify with curl. |
 | Model unavailable | `ANTHROPIC_MODEL` is not enabled for your account | Call `/v1/models`, then copy an available model name. |
 | qwen model not shown in picker | Claude Code gateway discovery filters model IDs | Set `ANTHROPIC_MODEL` explicitly. |

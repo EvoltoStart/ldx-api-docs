@@ -19,7 +19,7 @@ Start with these sections:
 
 ## Base URLs
 
-- Inference and compatibility APIs: `https://api.liandanxia.io/silver`
+- Inference and compatibility APIs: `https://api.liandanxia.io`
 
 ## Recommended path
 
@@ -31,7 +31,7 @@ Start with these sections:
 ## Smallest working request
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/chat/completions \
+curl https://api.liandanxia.io/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{

@@ -7,8 +7,8 @@ description: "Claude Code、GitHub Copilot、OpenCode、OpenClaw 等 Agent 工�
 
 ## 通用配置
 
-- 根地址：`https://api.liandanxia.com/silver`
-- OpenAI 兼容 Base URL：`https://api.liandanxia.com/silver/v1`
+- 根地址：`https://api.liandanxia.com`
+- OpenAI 兼容 Base URL：`https://api.liandanxia.com/v1`
 - OpenAI 兼容认证头：`Authorization: Bearer sk-你的_api_key`
 - Anthropic 兼容认证头：`x-api-key: sk-你的_api_key`，并携带 `anthropic-version: 2023-06-01`
 - 模型发现：`GET /v1/models`
@@ -18,7 +18,7 @@ description: "Claude Code、GitHub Copilot、OpenCode、OpenClaw 等 Agent 工�
 ## 快速连通性检查
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/models \
+curl https://api.liandanxia.com/v1/models \
   -H "Authorization: Bearer sk-你的_api_key"
 ```
 

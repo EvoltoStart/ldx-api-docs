@@ -3,7 +3,7 @@ title: "Integrate OpenClaw"
 description: "Configure OpenClaw custom model provider with LDX API."
 ---
 
-Use this guide to connect OpenClaw model calls to LDX API. The LDX OpenAI-compatible Base URL is `https://api.liandanxia.io/silver/v1`.
+Use this guide to connect OpenClaw model calls to LDX API. The LDX OpenAI-compatible Base URL is `https://api.liandanxia.io/v1`.
 
 ## When To Use This
 
@@ -15,18 +15,18 @@ Use this guide to connect OpenClaw model calls to LDX API. The LDX OpenAI-compat
 
 - OpenClaw is installed.
 - You have an LDX API key: `sk-...`.
-- Your machine can reach `https://api.liandanxia.io/silver`.
+- Your machine can reach `https://api.liandanxia.io`.
 - The example models `qwen3.5-flash` and `qwen3.5-plus` appear in the current pricing docs. Use `GET /v1/models` as the source of truth for your account.
 
 ## Verify LDX First
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/models \
+curl https://api.liandanxia.io/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/chat/completions \
+curl https://api.liandanxia.io/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -43,7 +43,7 @@ OpenClaw recommends `--strict-json --merge` when changing provider and model all
 ```bash
 openclaw config set models.providers.ldx '{
   "api": "openai-completions",
-  "baseUrl": "https://api.liandanxia.io/silver/v1",
+  "baseUrl": "https://api.liandanxia.io/v1",
   "apiKey": "sk-your_api_key",
   "models": [
     {"id": "qwen3.5-flash"},
@@ -60,7 +60,7 @@ If your OpenClaw version does not support writing a JSON block from CLI, edit th
     "providers": {
       "ldx": {
         "api": "openai-completions",
-        "baseUrl": "https://api.liandanxia.io/silver/v1",
+        "baseUrl": "https://api.liandanxia.io/v1",
         "apiKey": "sk-your_api_key",
         "models": [
           {"id": "qwen3.5-flash"},
@@ -107,7 +107,7 @@ Success criteria:
 | --- | --- | --- |
 | `Model is not allowed` | Allowlist is enabled but LDX model is not listed | Add the model with the `agents.defaults.models` merge command. |
 | `401` | API key is wrong | Reset `models.providers.ldx.apiKey`. |
-| `404` | Base URL is wrong | Use `https://api.liandanxia.io/silver/v1`, not the root URL. |
+| `404` | Base URL is wrong | Use `https://api.liandanxia.io/v1`, not the root URL. |
 | Empty model list | Provider was not saved or model IDs are wrong | Confirm `/v1/models`, then update `models.providers.ldx.models`. |
 
 Next, see [Error Codes](/en/getting-started/error-codes) for API failure meanings.

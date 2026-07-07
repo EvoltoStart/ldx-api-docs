@@ -21,7 +21,7 @@ GitHub Copilot Chat 官方客户端通常不提供直接填写任意 OpenAI 兼�
 - 已安装 VS Code
 - 已安装并登录 GitHub Copilot
 - 已准备可用 API Key：`sk-...`
-- 本机可访问：`https://api.liandanxia.com/silver`
+- 本机可访问：`https://api.liandanxia.com`
 - 已通过 `GET /v1/models` 确认可用模型
 
 ## 先验证 LDX 网关
@@ -29,14 +29,14 @@ GitHub Copilot Chat 官方客户端通常不提供直接填写任意 OpenAI 兼�
 在配置 Copilot 前，先确认 API Key 和模型可用。
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/models \
+curl https://api.liandanxia.com/v1/models \
   -H "Authorization: Bearer sk-你的_api_key"
 ```
 
 再验证 Chat Completions：
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/chat/completions \
+curl https://api.liandanxia.com/v1/chat/completions \
   -H "Authorization: Bearer sk-你的_api_key" \
   -H "Content-Type: application/json" \
   -d '{
@@ -58,7 +58,7 @@ curl https://api.liandanxia.com/silver/v1/chat/completions \
 | 配置项 | 推荐值 | 说明 |
 | --- | --- | --- |
 | Provider 类型 | `openai-compatible` 或 `openai` | 具体名称取决于扩展。 |
-| Base URL | `https://api.liandanxia.com/silver/v1` | 如果扩展要求完整接口地址，使用 `https://api.liandanxia.com/silver/v1/chat/completions`。 |
+| Base URL | `https://api.liandanxia.com/v1` | 如果扩展要求完整接口地址，使用 `https://api.liandanxia.com/v1/chat/completions`。 |
 | API Key | `sk-你的_api_key` | 不要把 Base URL 填到 API Key 字段。 |
 | Model | `qwen3.5-flash` | 示例模型；实际以 `/v1/models` 返回为准。 |
 | Streaming | 开启 | Copilot Chat 通常适合流式输出。 |

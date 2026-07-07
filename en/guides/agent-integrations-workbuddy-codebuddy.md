@@ -15,7 +15,7 @@ WorkBuddy/CodeBuddy can add custom models through a local `models.json` file. LD
 
 - WorkBuddy/CodeBuddy is installed and signed in.
 - You have an LDX API key: `sk-...`.
-- Your machine can reach `https://api.liandanxia.io/silver`.
+- Your machine can reach `https://api.liandanxia.io`.
 - The example model `qwen3.5-flash` appears in the current pricing docs. Use `/v1/models` as the source of truth.
 
 ## Config File Location
@@ -51,7 +51,7 @@ The CodeBuddy official example expects `apiKey` to contain the actual key value,
       "id": "ldx-qwen3.5-flash",
       "name": "LDX qwen3.5-flash",
       "vendor": "LDX",
-      "url": "https://api.liandanxia.io/silver/v1/chat/completions",
+      "url": "https://api.liandanxia.io/v1/chat/completions",
       "apiKey": "sk-your_api_key",
       "maxInputTokens": 128000,
       "maxOutputTokens": 8192,
@@ -90,7 +90,7 @@ Field notes:
 ## Verify API
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/chat/completions \
+curl https://api.liandanxia.io/v1/chat/completions \
   -H "Authorization: Bearer sk-your_api_key" \
   -H "Content-Type: application/json" \
   -d '{"model":"qwen3.5-flash","messages":[{"role":"user","content":"hi"}],"stream":false}'
@@ -102,7 +102,7 @@ curl https://api.liandanxia.io/silver/v1/chat/completions \
 | --- | --- | --- |
 | Model picker does not show the model | Wrong file location or app was not fully restarted | Confirm `.codebuddy/models.json`, then quit and reopen the app. |
 | `401` | `apiKey` is wrong or expired | Verify the same key with curl first. |
-| `404` | `url` is not the full Chat Completions URL | Use `https://api.liandanxia.io/silver/v1/chat/completions`. |
+| `404` | `url` is not the full Chat Completions URL | Use `https://api.liandanxia.io/v1/chat/completions`. |
 | Project config overrides user config | Project-level `availableModels` does not merge with user-level config | List all required model IDs in project config. |
 
 Use [Models and Pricing](/en/getting-started/pricing) as the source of truth for model names, context length, and price.

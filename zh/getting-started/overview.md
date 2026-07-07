@@ -19,7 +19,7 @@ description: "从准备 API Key 到完成第一条模型调用的推荐接入顺
 
 ## Base URL
 
-- 中文站（国内）：`https://api.liandanxia.com/silver`
+- 中文站（国内）：`https://api.liandanxia.com`
 - 
 ## 推荐接入顺序
 

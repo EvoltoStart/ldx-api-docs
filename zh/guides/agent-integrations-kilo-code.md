@@ -15,7 +15,7 @@ Kilo Code 支持通过交互式 Provider 配置接入外部模型。LDX 提供 O
 
 - 已按 Kilo Code 官方文档安装 CLI 或编辑器扩展。
 - 已准备 LDX API Key：`sk-...`。
-- 当前网络可访问 `https://api.liandanxia.com/silver`。
+- 当前网络可访问 `https://api.liandanxia.com`。
 - 示例模型 `qwen3.5-flash` 来自当前价格文档；实际以 `/v1/models` 返回为准。
 
 ## 启动 Kilo Code
@@ -40,7 +40,7 @@ kilo
 | --- | --- |
 | Provider Name | `LDX` |
 | Provider Type | `OpenAI Compatible` |
-| Base URL | `https://api.liandanxia.com/silver/v1` |
+| Base URL | `https://api.liandanxia.com/v1` |
 | API Key | `sk-你的_api_key` |
 | Default Model | `qwen3.5-flash` |
 
@@ -65,14 +65,14 @@ LDX / qwen3.5-flash
 如需其他模型，先查询：
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/models \
+curl https://api.liandanxia.com/v1/models \
   -H "Authorization: Bearer sk-你的_api_key"
 ```
 
 ## 验证接口
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/chat/completions \
+curl https://api.liandanxia.com/v1/chat/completions \
   -H "Authorization: Bearer sk-你的_api_key" \
   -H "Content-Type: application/json" \
   -d '{

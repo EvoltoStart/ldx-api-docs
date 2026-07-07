@@ -15,7 +15,7 @@ WorkBuddy/CodeBuddy 支持通过本地 `models.json` 添加自定义模型。LDX
 
 - 已安装并登录 WorkBuddy/CodeBuddy。
 - 已准备 LDX API Key：`sk-...`。
-- 当前网络可访问 `https://api.liandanxia.com/silver`。
+- 当前网络可访问 `https://api.liandanxia.com`。
 - 示例模型 `qwen3.5-flash` 来自当前价格文档；实际以 `/v1/models` 返回为准。
 
 ## 配置文件位置
@@ -51,7 +51,7 @@ CodeBuddy 官方示例要求 `apiKey` 写实际密钥值，不是环境变量名
       "id": "ldx-qwen3.5-flash",
       "name": "LDX qwen3.5-flash",
       "vendor": "LDX",
-      "url": "https://api.liandanxia.com/silver/v1/chat/completions",
+      "url": "https://api.liandanxia.com/v1/chat/completions",
       "apiKey": "sk-你的_api_key",
       "maxInputTokens": 128000,
       "maxOutputTokens": 8192,
@@ -90,7 +90,7 @@ CodeBuddy 官方示例要求 `apiKey` 写实际密钥值，不是环境变量名
 ## 验证 API
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/chat/completions \
+curl https://api.liandanxia.com/v1/chat/completions \
   -H "Authorization: Bearer sk-你的_api_key" \
   -H "Content-Type: application/json" \
   -d '{"model":"qwen3.5-flash","messages":[{"role":"user","content":"hi"}],"stream":false}'
@@ -102,7 +102,7 @@ curl https://api.liandanxia.com/silver/v1/chat/completions \
 | --- | --- | --- |
 | 模型选择器不显示 | 文件位置错误或应用未完全重启 | 确认 `.codebuddy/models.json` 路径后完全退出并重开。 |
 | `401` | `apiKey` 填错或密钥失效 | 用同一个 Key 先跑 curl 验证。 |
-| `404` | `url` 不是完整 Chat Completions 地址 | 填 `https://api.liandanxia.com/silver/v1/chat/completions`。 |
+| `404` | `url` 不是完整 Chat Completions 地址 | 填 `https://api.liandanxia.com/v1/chat/completions`。 |
 | 项目配置覆盖用户配置 | 项目级 `availableModels` 不合并用户级 | 在项目级配置里列出需要的全部模型 ID。 |
 
 实际模型、上下文长度和价格请以 [模型与价格](/zh/getting-started/pricing) 为准。

@@ -9,7 +9,7 @@ description: "从模型列表到第一条 Chat Completions 请求，按真实接
 
 | 项目 | 示例                           | 说明 |
 | --- |------------------------------| --- |
-| API Base URL | `https://api.liandanxia.com/silver` | 中国区文档示例使用该域名。 |
+| API Base URL | `https://api.liandanxia.com` | 中国区文档示例使用该域名。 |
 | API Key | `sk-你的_api_key`              | 在请求头中作为 Bearer Token 传入。 |
 | 模型名 | `qwen3.5-flash`              | 示例模型来自当前价格文档；实际可用模型以模型列表接口返回为准。 |
 
@@ -20,14 +20,14 @@ description: "从模型列表到第一条 Chat Completions 请求，按真实接
 建议先把域名和 API Key 放进环境变量，后续示例可以直接复用。
 
 ```bash
-export LDX_BASE_URL="https://api.liandanxia.com/silver"
+export LDX_BASE_URL="https://api.liandanxia.com"
 export LDX_API_KEY="sk-你的_api_key"
 ```
 
 Windows PowerShell 可以使用：
 
 ```powershell
-$env:LDX_BASE_URL = "https://api.liandanxia.com/silver"
+$env:LDX_BASE_URL = "https://api.liandanxia.com"
 $env:LDX_API_KEY = "sk-你的_api_key"
 ```
 

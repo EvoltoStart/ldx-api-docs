@@ -7,8 +7,8 @@ Use this page as the agent tool integration entry point. Different tools support
 
 ## Common Configuration
 
-- Root URL: `https://api.liandanxia.io/silver`
-- OpenAI-compatible Base URL: `https://api.liandanxia.io/silver/v1`
+- Root URL: `https://api.liandanxia.io`
+- OpenAI-compatible Base URL: `https://api.liandanxia.io/v1`
 - OpenAI-compatible auth header: `Authorization: Bearer sk-your_api_key`
 - Anthropic-compatible auth headers: `x-api-key: sk-your_api_key` and `anthropic-version: 2023-06-01`
 - Model discovery: `GET /v1/models`
@@ -18,7 +18,7 @@ Use this page as the agent tool integration entry point. Different tools support
 ## Quick Connectivity Check
 
 ```bash
-curl https://api.liandanxia.io/silver/v1/models \
+curl https://api.liandanxia.io/v1/models \
   -H "Authorization: Bearer sk-your_api_key"
 ```
 

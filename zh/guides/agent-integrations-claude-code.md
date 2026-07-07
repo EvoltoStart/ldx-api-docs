@@ -3,7 +3,7 @@ title: "接入 Claude Code"
 description: "通过 LDX Anthropic Messages 兼容接口配置 Claude Code。"
 ---
 
-本指南用于让 Claude Code 通过 LDX 网关调用模型。Claude Code 会基于 `ANTHROPIC_BASE_URL` 拼接 `/v1/messages`，因此这里填写根地址：`https://api.liandanxia.com/silver`。
+本指南用于让 Claude Code 通过 LDX 网关调用模型。Claude Code 会基于 `ANTHROPIC_BASE_URL` 拼接 `/v1/messages`，因此这里填写根地址：`https://api.liandanxia.com`。
 
 ## 适用场景
 
@@ -15,7 +15,7 @@ description: "通过 LDX Anthropic Messages 兼容接口配置 Claude Code。"
 
 - 已安装 Claude Code。
 - 已准备 LDX API Key：`sk-...`。
-- 当前网络可访问 `https://api.liandanxia.com/silver`。
+- 当前网络可访问 `https://api.liandanxia.com`。
 - 示例模型 `qwen3.5-flash` 来自当前价格文档；实际可用模型以 `/v1/models` 返回为准。
 
 ## 配置环境变量
@@ -23,7 +23,7 @@ description: "通过 LDX Anthropic Messages 兼容接口配置 Claude Code。"
 Linux / macOS / WSL：
 
 ```bash
-export ANTHROPIC_BASE_URL=https://api.liandanxia.com/silver
+export ANTHROPIC_BASE_URL=https://api.liandanxia.com
 export ANTHROPIC_AUTH_TOKEN=sk-你的_api_key
 export ANTHROPIC_MODEL=qwen3.5-flash
 ```
@@ -31,7 +31,7 @@ export ANTHROPIC_MODEL=qwen3.5-flash
 Windows PowerShell：
 
 ```powershell
-$env:ANTHROPIC_BASE_URL="https://api.liandanxia.com/silver"
+$env:ANTHROPIC_BASE_URL="https://api.liandanxia.com"
 $env:ANTHROPIC_AUTH_TOKEN="sk-你的_api_key"
 $env:ANTHROPIC_MODEL="qwen3.5-flash"
 ```
@@ -40,7 +40,7 @@ $env:ANTHROPIC_MODEL="qwen3.5-flash"
 
 | 配置项 | 正确值 | 说明 |
 | --- | --- | --- |
-| `ANTHROPIC_BASE_URL` | `https://api.liandanxia.com/silver` | 填根地址，不加 `/v1`。 |
+| `ANTHROPIC_BASE_URL` | `https://api.liandanxia.com` | 填根地址，不加 `/v1`。 |
 | `ANTHROPIC_AUTH_TOKEN` | `sk-...` | Claude Code 会作为 Authorization Bearer 发送。 |
 | `ANTHROPIC_API_KEY` | `sk-...` | 可选替代项；未设置 `AUTH_TOKEN` 时作为 `x-api-key` 使用。 |
 | `ANTHROPIC_MODEL` | `qwen3.5-flash` | 使用 `/v1/models` 返回的真实模型名。 |
@@ -52,7 +52,7 @@ $env:ANTHROPIC_MODEL="qwen3.5-flash"
 ```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://api.liandanxia.com/silver",
+    "ANTHROPIC_BASE_URL": "https://api.liandanxia.com",
     "ANTHROPIC_AUTH_TOKEN": "sk-你的_api_key",
     "ANTHROPIC_MODEL": "qwen3.5-flash"
   }
@@ -64,7 +64,7 @@ $env:ANTHROPIC_MODEL="qwen3.5-flash"
 ```json
 {
   "env": {
-    "ANTHROPIC_BASE_URL": "https://api.liandanxia.com/silver",
+    "ANTHROPIC_BASE_URL": "https://api.liandanxia.com",
     "ANTHROPIC_MODEL": "qwen3.5-flash"
   }
 }
@@ -73,12 +73,12 @@ $env:ANTHROPIC_MODEL="qwen3.5-flash"
 ## 验证 LDX 接口
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/models \
+curl https://api.liandanxia.com/v1/models \
   -H "Authorization: Bearer sk-你的_api_key"
 ```
 
 ```bash
-curl https://api.liandanxia.com/silver/v1/messages \
+curl https://api.liandanxia.com/v1/messages \
   -H "x-api-key: sk-你的_api_key" \
   -H "anthropic-version: 2023-06-01" \
   -H "Content-Type: application/json" \
@@ -115,7 +115,7 @@ export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
 
 | 问题 | 可能原因 | 处理方式 |
 | --- | --- | --- |
-| `404` | `ANTHROPIC_BASE_URL` 错填为 `/v1` | 改为 `https://api.liandanxia.com/silver`。 |
+| `404` | `ANTHROPIC_BASE_URL` 错填为 `/v1` | 改为 `https://api.liandanxia.com`。 |
 | `401` | API Key 错误或头部不匹配 | 优先使用 `ANTHROPIC_AUTH_TOKEN=sk-...`，再用 curl 验证。 |
 | 模型不可用 | `ANTHROPIC_MODEL` 不在账号可用列表 | 调用 `/v1/models` 后复制真实模型名。 |
 | 模型选择器看不到 qwen 模型 | Claude Code 网关发现有命名过滤 | 显式设置 `ANTHROPIC_MODEL`。 |
