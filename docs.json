@@ -56,7 +56,7 @@
                 ]
               },
               {
-                "group": "AI 调用接口",
+                "group": "API 调用接口",
                 "openapi": "/zh/openapi/relay-api.mintlify.json"
               }
             ]
@@ -106,7 +106,7 @@
                 ]
               },
               {
-                "group": "AI Relay API",
+                "group": "API Relay API",
                 "openapi": "/en/openapi/relay-api.mintlify.json"
               }
             ]
