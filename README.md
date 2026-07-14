@@ -17,8 +17,8 @@
 - GitHub 仓库只作为 Mintlify 发布仓库。
 - 不建议直接在 GitHub 仓库长期手动修改文档。
 - 新增页面需要同时更新内网项目里的 `docs.json` 和 `.gitlab-ci.yml` 同步白名单。
-- OpenAPI 页面只发布 `docs/zh/openapi/core-api.mintlify.json`、`docs/zh/openapi/compatibility-api.mintlify.json`、`docs/en/openapi/core-api.mintlify.json`、`docs/en/openapi/compatibility-api.mintlify.json`。
-- `api.json` 与 `relay.json` 可作为内部导出源参与生成，但不再作为 Mintlify 发布文件同步到文档仓库。
+- OpenAPI 页面只发布 `docs/zh/openapi/relay-api.mintlify.json` 和 `docs/en/openapi/relay-api.mintlify.json`（已合并原先的 core-api 与 compatibility-api）。
+- `api.json`（已重命名为 `platform-api.json`）与 `relay.json` 已移除，不再作为发布文件。
 
 ## 目录说明
 
@@ -40,5 +40,5 @@ docs/
 ```bash
 node -e "JSON.parse(require('fs').readFileSync('docs.json','utf8')); console.log('docs.json ok')"
 node docs/zh/openapi/generate-mintlify-openapi.js
-npx -y @redocly/cli lint docs/zh/openapi/core-api.mintlify.json docs/zh/openapi/compatibility-api.mintlify.json docs/en/openapi/core-api.mintlify.json docs/en/openapi/compatibility-api.mintlify.json --max-problems 30
+npx -y @redocly/cli lint docs/zh/openapi/relay-api.mintlify.json docs/en/openapi/relay-api.mintlify.json --max-problems 30
 ```

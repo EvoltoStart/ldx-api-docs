@@ -56,12 +56,8 @@
                 ]
               },
               {
-                "group": "核心 API",
-                "openapi": "/zh/openapi/core-api.mintlify.json"
-              },
-              {
-                "group": "兼容 API",
-                "openapi": "/zh/openapi/compatibility-api.mintlify.json"
+                "group": "AI 调用接口",
+                "openapi": "/zh/openapi/relay-api.mintlify.json"
               }
             ]
           }
@@ -110,12 +106,8 @@
                 ]
               },
               {
-                "group": "Core API",
-                "openapi": "/en/openapi/core-api.mintlify.json"
-              },
-              {
-                "group": "Compatibility API",
-                "openapi": "/en/openapi/compatibility-api.mintlify.json"
+                "group": "AI Relay API",
+                "openapi": "/en/openapi/relay-api.mintlify.json"
               }
             ]
           }
