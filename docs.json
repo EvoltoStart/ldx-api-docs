@@ -46,7 +46,7 @@
           },
           {
             "tab": "API 参考",
-            "openapi": "/docs/zh/openapi/relay-api.mintlify.json",
+            "openapi": "docs/zh/openapi/relay-api.mintlify.json",
             "groups": [
               {
                 "group": "入口说明",
@@ -94,7 +94,7 @@
           },
           {
             "tab": "API Reference",
-            "openapi": "/docs/en/openapi/relay-api.mintlify.json",
+            "openapi": "docs/en/openapi/relay-api.mintlify.json",
             "groups": [
               {
                 "group": "Entry Guides",
