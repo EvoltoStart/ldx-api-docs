@@ -46,7 +46,6 @@
           },
           {
             "tab": "API 参考",
-            "openapi": "docs/zh/openapi/relay-api.mintlify.json",
             "groups": [
               {
                 "group": "入口说明",
@@ -56,6 +55,10 @@
                   "docs/zh/getting-started/first-request",
                   "docs/zh/getting-started/compatibility"
                 ]
+              },
+              {
+                "group": "AI 调用接口",
+                "openapi": "docs/zh/openapi/relay-api.mintlify.json"
               }
             ]
           }
@@ -94,7 +97,6 @@
           },
           {
             "tab": "API Reference",
-            "openapi": "docs/en/openapi/relay-api.mintlify.json",
             "groups": [
               {
                 "group": "Entry Guides",
@@ -104,6 +106,10 @@
                   "docs/en/getting-started/first-request",
                   "docs/en/getting-started/compatibility"
                 ]
+              },
+              {
+                "group": "AI Relay API",
+                "openapi": "docs/en/openapi/relay-api.mintlify.json"
               }
             ]
           }
