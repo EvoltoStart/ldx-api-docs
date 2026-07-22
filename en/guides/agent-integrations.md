@@ -32,6 +32,7 @@ curl https://api.liandanxia.io/v1/models \
 - [Integrate OpenCode](/en/guides/agent-integrations-opencode)
 - [Integrate OpenClaw](/en/guides/agent-integrations-openclaw)
 - [Integrate Hermes](/en/guides/agent-integrations-hermes)
+- [Integrate CC Switch](/en/guides/agent-integrations-ccswitch) — graphical configuration for all tools above
 
 ## References
 

@@ -4,10 +4,10 @@
   "name": "LDX API Docs",
   "description": "LDX backend API, relay API, and deployment documentation.",
   "logo": {
-    "light": "/docs/images/ldx-logo.svg",
-    "dark": "/docs/images/ldx-logo.svg"
+    "light": "/images/ldx-logo.svg",
+    "dark": "/images/ldx-logo.svg"
   },
-  "favicon": "/docs/images/ldx-icon.svg",
+  "favicon": "/images/ldx-icon.svg",
   "colors": {
     "primary": "#16A34A"
   },
@@ -22,24 +22,24 @@
               {
                 "group": "快速开始",
                 "pages": [
-                  "docs/zh/getting-started/pricing",
-                  "docs/zh/getting-started/billing-rules",
-                  "docs/zh/getting-started/error-codes"
+                  "zh/getting-started/pricing",
+                  "zh/getting-started/billing-rules",
+                  "zh/getting-started/error-codes"
                 ]
               },
               {
                 "group": "Agent 接入指南",
                 "pages": [
-                  "docs/zh/guides/agent-integrations",
-                  "docs/zh/guides/agent-integrations-claude-code",
-                  "docs/zh/guides/agent-integrations-github-copilot",
-                  "docs/zh/guides/agent-integrations-github-copilot-cli",
-                  "docs/zh/guides/agent-integrations-kilo-code",
-                  "docs/zh/guides/agent-integrations-workbuddy-codebuddy",
-                  "docs/zh/guides/agent-integrations-opencode",
-                  "docs/zh/guides/agent-integrations-openclaw",
-                  "docs/zh/guides/agent-integrations-hermes",
-                  "docs/zh/guides/agent-integrations-ccswitch"
+                  "zh/guides/agent-integrations",
+                  "zh/guides/agent-integrations-claude-code",
+                  "zh/guides/agent-integrations-github-copilot",
+                  "zh/guides/agent-integrations-github-copilot-cli",
+                  "zh/guides/agent-integrations-kilo-code",
+                  "zh/guides/agent-integrations-workbuddy-codebuddy",
+                  "zh/guides/agent-integrations-opencode",
+                  "zh/guides/agent-integrations-openclaw",
+                  "zh/guides/agent-integrations-hermes",
+                  "zh/guides/agent-integrations-ccswitch"
                 ]
               }
             ]
@@ -50,15 +50,15 @@
               {
                 "group": "入口说明",
                 "pages": [
-                  "docs/zh/getting-started/overview",
-                  "docs/zh/getting-started/authentication",
-                  "docs/zh/getting-started/first-request",
-                  "docs/zh/getting-started/compatibility"
+                  "zh/getting-started/overview",
+                  "zh/getting-started/authentication",
+                  "zh/getting-started/first-request",
+                  "zh/getting-started/compatibility"
                 ]
               },
               {
                 "group": "AI 调用接口",
-                "openapi": "docs/zh/openapi/relay-api.mintlify.json"
+                "openapi": "zh/openapi/relay-api.mintlify.json"
               }
             ]
           }
@@ -73,24 +73,24 @@
               {
                 "group": "Quick Start",
                 "pages": [
-                  "docs/en/getting-started/pricing",
-                  "docs/en/getting-started/billing-rules",
-                  "docs/en/getting-started/error-codes"
+                  "en/getting-started/pricing",
+                  "en/getting-started/billing-rules",
+                  "en/getting-started/error-codes"
                 ]
               },
               {
                 "group": "Agent Integration Guides",
                 "pages": [
-                  "docs/en/guides/agent-integrations",
-                  "docs/en/guides/agent-integrations-claude-code",
-                  "docs/en/guides/agent-integrations-github-copilot",
-                  "docs/en/guides/agent-integrations-github-copilot-cli",
-                  "docs/en/guides/agent-integrations-kilo-code",
-                  "docs/en/guides/agent-integrations-workbuddy-codebuddy",
-                  "docs/en/guides/agent-integrations-opencode",
-                  "docs/en/guides/agent-integrations-openclaw",
-                  "docs/en/guides/agent-integrations-hermes",
-                  "docs/en/guides/agent-integrations-ccswitch"
+                  "en/guides/agent-integrations",
+                  "en/guides/agent-integrations-claude-code",
+                  "en/guides/agent-integrations-github-copilot",
+                  "en/guides/agent-integrations-github-copilot-cli",
+                  "en/guides/agent-integrations-kilo-code",
+                  "en/guides/agent-integrations-workbuddy-codebuddy",
+                  "en/guides/agent-integrations-opencode",
+                  "en/guides/agent-integrations-openclaw",
+                  "en/guides/agent-integrations-hermes",
+                  "en/guides/agent-integrations-ccswitch"
                 ]
               }
             ]
@@ -101,15 +101,15 @@
               {
                 "group": "Entry Guides",
                 "pages": [
-                  "docs/en/getting-started/overview",
-                  "docs/en/getting-started/authentication",
-                  "docs/en/getting-started/first-request",
-                  "docs/en/getting-started/compatibility"
+                  "en/getting-started/overview",
+                  "en/getting-started/authentication",
+                  "en/getting-started/first-request",
+                  "en/getting-started/compatibility"
                 ]
               },
               {
                 "group": "AI Relay API",
-                "openapi": "docs/en/openapi/relay-api.mintlify.json"
+                "openapi": "en/openapi/relay-api.mintlify.json"
               }
             ]
           }

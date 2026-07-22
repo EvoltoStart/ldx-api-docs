@@ -32,6 +32,7 @@ curl https://api.liandanxia.com/v1/models \
 - [接入 OpenCode](/zh/guides/agent-integrations-opencode)
 - [接入 OpenClaw](/zh/guides/agent-integrations-openclaw)
 - [接入 Hermes](/zh/guides/agent-integrations-hermes)
+- [接入 CC Switch](/zh/guides/agent-integrations-ccswitch) — 图形化管理以上工具的 LDX 配置
 
 ## 参考资料
 
