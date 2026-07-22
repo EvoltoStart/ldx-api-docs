@@ -74,7 +74,7 @@ curl https://api.liandanxia.com/v1/chat/completions \
 | 工具 | CC Switch 工具 | 建议预设 | Endpoint URL | 说明 |
 | --- | --- | --- | --- | --- |
 | Claude Code | Claude Code | Custom | `https://api.liandanxia.com` | 使用 Anthropic Messages，填根地址，不加 `/v1`。 |
-| Codex | Codex | 支持 Responses 的 Codex 预设或 Custom | `https://api.liandanxia.com/v1` | Codex 使用 Responses API，直连时不要开启本地路由。 |
+| Codex | Codex | Custom | `https://api.liandanxia.com/v1` | Codex 客户端仍请求 `/responses`；在 CC Switch 高级选项中开启本地路由，并将上游格式选择为 `chat/completions`。 |
 | OpenCode | OpenCode | OpenAI Compatible 或 Custom | `https://api.liandanxia.com/v1` | 使用 OpenAI 兼容 Chat Completions。 |
 | OpenClaw | OpenClaw | OpenAI Compatible 或 Custom | `https://api.liandanxia.com/v1` | 使用 OpenAI 兼容 Chat Completions。 |
 | Hermes | Hermes | OpenAI Compatible 或 Custom | `https://api.liandanxia.com/v1` | OpenAI 兼容模式使用 `/v1` Base URL。 |
@@ -123,7 +123,9 @@ https://api.liandanxia.com
 
 ## Codex 配置要点
 
-Codex 使用 OpenAI Responses API，LDX 提供 `/v1/responses`，因此优先使用直连配置：
+Codex 客户端会请求 OpenAI Responses API。通过 CC Switch 接入 LDX 时，建议开启 CC Switch 本地路由，并在 Provider 高级选项中将上游格式选择为 `chat/completions`，由 CC Switch 把 Codex 的 `/responses` 请求转换为 LDX 的 OpenAI 兼容 Chat Completions 请求。
+
+Endpoint URL 填写：
 
 ```text
 https://api.liandanxia.com/v1
@@ -134,19 +136,20 @@ https://api.liandanxia.com/v1
 | 配置项 | 值 | 说明 |
 | --- | --- | --- |
 | API Key | `sk-你的_api_key` | 作为 Codex 的 OpenAI API Key 使用。 |
-| Endpoint URL | `https://api.liandanxia.com/v1` | Codex 会请求 `/v1/responses`。 |
+| Endpoint URL | `https://api.liandanxia.com/v1` | CC Switch 本地路由会接收 Codex 的 `/responses` 请求。 |
 | Model | `qwen3.5-flash` | 以 `/v1/models` 返回为准。 |
-| Needs Local Routing | 关闭 | 直连 LDX Responses API 时不需要本地路由。 |
+| Needs Local Routing | 开启 | 让 Codex 请求先进入 CC Switch 本地路由服务。 |
+| Upstream Format / 上游格式 | `Chat Completions` | 必须选择 Chat Completions，避免直接走 `/v1/responses`。 |
 
-<Note>
-只有当你明确要让 CC Switch 把 Codex 的 Responses 请求转换成 Chat Completions 请求时，才需要开启本地路由。
-</Note>
+<Warning>
+不要在 CC Switch Codex Provider 中直接使用 `/v1/responses` 上游格式。若直接走 Responses，可能出现 `unexpected status 503 Service Unavailable: CC Switch local proxy failed while handling Codex endpoint /responses ... upstream_status: HTTP 503; cause: DistributorGetChannelFailed`。这种情况请开启本地路由，并把上游格式改为 `Chat Completions`。
+</Warning>
 
-### 可选：Codex 本地路由
+### Codex 本地路由
 
-本地路由适合这些场景：
+Codex 接入 LDX 时推荐使用本地路由，适合这些场景：
 
-- 你要接入的上游只支持 Chat Completions，不支持 Responses。
+- 让 CC Switch 把 Codex 的 `/responses` 请求转换为 LDX 支持更稳定的 `Chat Completions`。
 - 你希望所有 Codex 请求经过 CC Switch 代理，并在 CC Switch 中查看路由日志。
 - 你正在排查 Provider 切换和请求转发问题，需要观察代理链路。
 
@@ -156,9 +159,10 @@ https://api.liandanxia.com/v1
 2. 启动路由服务，默认监听 `127.0.0.1:15721`。
 3. 在**应用路由**区域开启 **Codex** 路由开关。
 4. 在 Codex 的 LDX Provider 高级选项中开启 **Needs Local Routing**。
-5. Endpoint URL 仍填写 `https://api.liandanxia.com/v1`。
+5. 在 Codex 的 LDX Provider 高级选项中，将 **Upstream Format / 上游格式** 选择为 `Chat Completions`。
+6. Endpoint URL 仍填写 `https://api.liandanxia.com/v1`。
 
-路由模式链路如下：
+转换为 Chat Completions 时，链路如下：
 
 ```text
 Codex CLI
@@ -223,8 +227,9 @@ Provider 切换后的生效方式因工具而异：
 | 切换 Provider 后不生效 | 目标 CLI 还在使用旧进程或旧环境变量 | 关闭并重新打开终端，再启动工具。 |
 | `401` 或 `403` | API Key 错误、过期或包含多余空格 | 重新编辑 Provider，确认 API Key 以 `sk-` 开头且无空格。 |
 | `404` | Endpoint URL 类型填错 | Claude Code 填 `https://api.liandanxia.com`；OpenAI 兼容工具填 `https://api.liandanxia.com/v1`。 |
-| Codex 提示需要路由服务 | Provider 开启了 Needs Local Routing，但路由服务未启动 | 启动 CC Switch 路由服务，或关闭 Needs Local Routing 改用 Responses 直连。 |
+| Codex 提示需要路由服务 | Provider 开启了 Needs Local Routing，但路由服务未启动 | 启动 CC Switch 路由服务，并确认应用路由中已开启 Codex。 |
 | Codex 本地代理连接失败 | 路由服务未运行、端口被占用或应用路由未开启 | 检查 **设置 → 高级 → 路由服务**，确认 `127.0.0.1:15721` 可用。 |
+| Codex 请求 `/v1/responses` 返回 `unexpected status 503 Service Unavailable`，并包含 `CC Switch local proxy failed while handling Codex endpoint /responses`、`DistributorGetChannelFailed` | Codex Provider 直接使用了 Responses 上游格式，或没有把本地路由的上游格式切到 Chat Completions | 开启 **Needs Local Routing**，并在 Provider 高级选项中将 **Upstream Format / 上游格式** 改为 `Chat Completions`。 |
 | 模型列表为空 | Endpoint URL 或 API Key 不正确 | 先用 curl 验证 `/v1/models` 是否能返回模型列表。 |
 | Claude Code 非 Claude 模型行为异常 | Claude Code 附加了归属元数据 | 在 Provider 高级选项中开启 **隐藏署名**，或设置 `CLAUDE_CODE_ATTRIBUTION_HEADER=0`。 |
 

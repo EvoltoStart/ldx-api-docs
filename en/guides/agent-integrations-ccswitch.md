@@ -72,7 +72,7 @@ When adding a Provider, focus on **API Key** and **Request URL**. Choose the req
 | Tool | CC Switch Tool | Suggested Preset | Endpoint URL | Notes |
 | --- | --- | --- | --- | --- |
 | Claude Code | Claude Code | Custom | `https://api.liandanxia.io` | Uses Anthropic Messages. Use the root URL, without `/v1`. |
-| Codex | Codex | Responses-capable Codex preset or Custom | `https://api.liandanxia.io/v1` | Codex uses the Responses API. Do not enable local routing for direct LDX access. |
+| Codex | Codex | Custom | `https://api.liandanxia.io/v1` | Codex still sends `/responses`; enable local routing in CC Switch advanced options and set the upstream format to `Chat Completions`. |
 | OpenCode | OpenCode | OpenAI Compatible or Custom | `https://api.liandanxia.io/v1` | Uses OpenAI-compatible Chat Completions. |
 | OpenClaw | OpenClaw | OpenAI Compatible or Custom | `https://api.liandanxia.io/v1` | Uses OpenAI-compatible Chat Completions. |
 | Hermes | Hermes | OpenAI Compatible or Custom | `https://api.liandanxia.io/v1` | OpenAI-compatible mode uses the `/v1` Base URL. |
@@ -121,7 +121,9 @@ You can also use `ANTHROPIC_AUTH_TOKEN` if you want Claude Code to send authenti
 
 ## Codex Notes
 
-Codex uses the OpenAI Responses API, and LDX provides `/v1/responses`, so prefer direct access:
+Codex clients call the OpenAI Responses API. When connecting Codex to LDX through CC Switch, enable CC Switch local routing and set the Provider's upstream format to `Chat Completions`. CC Switch will convert Codex `/responses` requests into LDX OpenAI-compatible Chat Completions requests.
+
+Set Endpoint URL to:
 
 ```text
 https://api.liandanxia.io/v1
@@ -132,19 +134,20 @@ Recommended settings:
 | Field | Value | Notes |
 | --- | --- | --- |
 | API Key | `sk-your_api_key` | Used as Codex's OpenAI API key. |
-| Endpoint URL | `https://api.liandanxia.io/v1` | Codex will call `/v1/responses`. |
+| Endpoint URL | `https://api.liandanxia.io/v1` | CC Switch local routing receives Codex `/responses` requests. |
 | Model | `qwen3.5-flash` | Verify with `/v1/models`. |
-| Needs Local Routing | Off | Direct LDX Responses access does not need local routing. |
+| Needs Local Routing | On | Send Codex requests through the CC Switch local routing service first. |
+| Upstream Format | `chat/completions` | Select Chat Completions to avoid calling `/v1/responses` upstream directly. |
 
-<Note>
-Only enable local routing when you explicitly want CC Switch to convert Codex Responses requests into Chat Completions requests.
-</Note>
+<Warning>
+Do not use `/v1/responses` as the direct upstream format for the CC Switch Codex Provider. Direct Responses routing may fail with `unexpected status 503 Service Unavailable: CC Switch local proxy failed while handling Codex endpoint /responses ... upstream_status: HTTP 503; cause: DistributorGetChannelFailed`. Enable local routing and set the upstream format to `chat/completions` instead.
+</Warning>
 
-### Optional: Codex Local Routing
+### Codex Local Routing
 
-Local routing is useful when:
+Local routing is recommended for Codex with LDX. It is useful when:
 
-- The upstream provider only supports Chat Completions and does not support Responses.
+- You want CC Switch to convert Codex `/responses` requests into LDX's more stable `/chat/completions` path.
 - You want all Codex requests to pass through CC Switch and appear in its routing logs.
 - You are debugging Provider switching or request forwarding and need to observe the proxy path.
 
@@ -154,9 +157,10 @@ Setup:
 2. Start the routing service. The default listener is `127.0.0.1:15721`.
 3. In **App Routing**, enable the **Codex** routing toggle.
 4. In the Codex LDX Provider's advanced options, enable **Needs Local Routing**.
-5. Keep Endpoint URL as `https://api.liandanxia.io/v1`.
+5. In the Codex LDX Provider's advanced options, set **Upstream Format** to `Chat Completions`.
+6. Keep Endpoint URL as `https://api.liandanxia.io/v1`.
 
-Routing mode uses this path:
+When converted to Chat Completions, the path is:
 
 ```text
 Codex CLI
@@ -221,8 +225,9 @@ Success criteria:
 | Provider switch does not take effect | The target CLI is still using the old process or old environment variables | Close and reopen the terminal, then start the tool again. |
 | `401` or `403` | API key is wrong, expired, or contains extra whitespace | Re-edit the Provider and confirm the API key starts with `sk-` and has no whitespace. |
 | `404` | Endpoint URL type is wrong | Claude Code uses `https://api.liandanxia.io`; OpenAI-compatible tools use `https://api.liandanxia.io/v1`. |
-| Codex says the routing service is required | The Provider has Needs Local Routing enabled, but the routing service is not running | Start the CC Switch routing service, or disable Needs Local Routing and use direct Responses access. |
+| Codex says the routing service is required | The Provider has Needs Local Routing enabled, but the routing service is not running | Start the CC Switch routing service and confirm Codex is enabled in App Routing. |
 | Codex local proxy connection fails | Routing service is not running, the port is occupied, or app routing is disabled | Check **Settings → Advanced → Routing Service** and confirm `127.0.0.1:15721` is available. |
+| Codex `/v1/responses` returns `unexpected status 503 Service Unavailable` with `CC Switch local proxy failed while handling Codex endpoint /responses` and `DistributorGetChannelFailed` | The Codex Provider is using Responses as the direct upstream format, or local routing was not switched to Chat Completions | Enable **Needs Local Routing** and set **Upstream Format** to `Chat Completions` in the Provider advanced options. |
 | Model list is empty | Endpoint URL or API key is wrong | Verify with curl that `/v1/models` returns models. |
 | Non-Claude models behave unexpectedly in Claude Code | Claude Code adds attribution metadata | Enable **Hide Attribution** in Provider advanced options, or set `CLAUDE_CODE_ATTRIBUTION_HEADER=0`. |
 
