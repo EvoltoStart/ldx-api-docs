@@ -156,7 +156,9 @@ Setup:
 1. Open CC Switch **Settings → Advanced → Routing Service**.
 2. Start the routing service. The default listener is `127.0.0.1:15721`.
 3. In **App Routing**, enable the **Codex** routing toggle.
+4.    ![CC Switch Configure application routing](/images/ccswitch_router_en1.png)
 4. In the Codex LDX Provider advanced options, set the Upstream Format to "Chat Completions".
+5.    ![CC Switch Select upstream format](/images/ccswitch_router_en2.png)
 5. Keep Endpoint URL as `https://api.liandanxia.io/v1`.
 
 When converted to Chat Completions, the path is:

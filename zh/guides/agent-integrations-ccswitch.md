@@ -158,7 +158,9 @@ Codex 接入 LDX 时推荐使用本地路由，适合这些场景：
 1. 进入 CC Switch **设置 → 高级 → 路由服务**。
 2. 启动路由服务，默认监听 `127.0.0.1:15721`。
 3. 在**应用路由**区域开启 **Codex** 路由开关。
+   ![CC Switch 配置应用路由](/images/ccswitch_router_zh1.png)
 4. 在 Codex 的 LDX Provider 高级选项中，将 Upstream Format / 上游格式 选择为 Chat Completions。
+   ![CC Switch 选择上游格式](/images/ccswitch_router_zh2.png)
 5. Endpoint URL 仍填写 `https://api.liandanxia.com/v1`。
 
 转换为 Chat Completions 时，链路如下：
