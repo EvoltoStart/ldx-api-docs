@@ -21,6 +21,7 @@ Standard authentication applies to core `/v1/*` endpoints, including:
 - `POST /v1/audio/transcriptions`
 - `POST /v1/audio/translations`
 - `POST /v1/audio/speech`
+- `POST /v1/audio/generations`
 - `POST /v1/rerank`
 
 Header:

@@ -21,6 +21,7 @@ description: "对外 API 的认证方式、兼容请求头和常见认证失败�
 - `POST /v1/audio/transcriptions`
 - `POST /v1/audio/translations`
 - `POST /v1/audio/speech`
+- `POST /v1/audio/generations`
 - `POST /v1/rerank`
 
 请求头：
